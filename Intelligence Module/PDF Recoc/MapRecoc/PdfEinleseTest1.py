@@ -10,7 +10,7 @@ pages = convert_from_path(
     "TestFiles/MFH-RF1-Brandschutzplan.pdf",
     300,
     poppler_path=r"C:\Program Files\poppler-24.07.0\Library\bin",
-)  # Converts each page to an image at 300 DPI
+) 
 for i, page in enumerate(pages):
     # Temp IMG
     image_path = f"temp_page_{i}.png"
@@ -18,8 +18,19 @@ for i, page in enumerate(pages):
     # OCV
     image = cv2.imread(image_path, 0)  # 0 means load in grayscale
 
-    # Text Detect
+    # Door Detect
+    # template = cv2.imread('TestFiles/Door.png')
+    # w, h = template.shape[:-1]
 
+    # res = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
+    # threshold = .8
+    # loc = np.where(res >= threshold)
+    # for pt in zip(*loc[::-1]):  # Switch columns and rows
+    #     cv2.rectangle(image, pt, (pt[0] + w, pt[1] + h), (0, 0, 255), 2)
+
+    # cv2.imwrite('result.png', image)
+
+    # Text Detect
     binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
 
     #kernel = np.ones((1, 1), np.uint8)
