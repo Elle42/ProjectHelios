@@ -1,0 +1,8 @@
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\bin\Debug\BuildingGen.exe.config
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\bin\Debug\BuildingGen.exe
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\bin\Debug\BuildingGen.pdb
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\obj\Debug\BuildingGen.csproj.AssemblyReference.cache
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\obj\Debug\BuildingGen.csproj.SuggestedBindingRedirects.cache
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\obj\Debug\BuildingGen.csproj.CoreCompileInputs.cache
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\obj\Debug\BuildingGen.exe
+D:\Matura Project\Repos\Intelligence Module\MapGen\BuildingGen\BuildingGen\obj\Debug\BuildingGen.pdb
