@@ -10,17 +10,37 @@ namespace BuildingGen
     {
         private List<TileRules> _RuleSet;
 
+        enum Dir
+        {
+            Top = 1,
+            Right = 2,
+            Bottom = 3,
+            Left = 4
+        }
+
         public RuleSet()
         { 
             _RuleSet= new List<TileRules>();
-            _RuleSet.Append(new TileRules(1, new int[]{1,2}, new int[] { 1, 2 }, new int[] { 1, 2 }, new int[] { 1, 2 }));
-            _RuleSet.Append(new TileRules(2, new int[]{1,2,3}, new int[] { 1, 2 ,3}, new int[] { 1, 2 ,3}, new int[] { 1, 2 ,3}));
-            _RuleSet.Append(new TileRules(3, new int[]{2,3}, new int[] {2 ,3}, new int[] {2 ,3}, new int[] {2 ,3}));
+            _RuleSet.Append(new TileRules(0, new int[]{1,2}, new int[] { 1, 2 }, new int[] { 1, 2 }, new int[] { 1, 2 }));
+            _RuleSet.Append(new TileRules(1, new int[]{1,2,3}, new int[] { 1, 2 ,3}, new int[] { 1, 2 ,3}, new int[] { 1, 2 ,3}));
+            _RuleSet.Append(new TileRules(2, new int[]{2,3}, new int[] {2 ,3}, new int[] {2 ,3}, new int[] {2 ,3}));
         }
 
-        public TileRules GetRules(int id)
+        public int[] GetRules(int id, int dir)
         {
-            return _RuleSet[id];
+            switch(dir)
+            {
+                case (int)Dir.Top:
+                    return _RuleSet[id].TopWL;
+                case (int)Dir.Right:
+                    return _RuleSet[id].RightWL;
+                case (int)Dir.Left: 
+                    return _RuleSet[id].LeftWL;
+                case (int)Dir.Bottom:
+                    return _RuleSet[id].BottomWL;
+                default:
+                    return new int[]{ };
+            }
         }
     }
 
@@ -35,10 +55,12 @@ namespace BuildingGen
             RightWL = right;
         }
 
+
+
         int Id;
-        int[] TopWL;
-        int[] BottomWL;
-        int[] RightWL;
-        int[] LeftWL;
+        public int[] TopWL { get; }
+        public int[] BottomWL { get; }
+        public int[] RightWL { get; }
+        public int[] LeftWL { get; }
     }
 }

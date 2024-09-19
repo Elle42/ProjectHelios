@@ -12,6 +12,8 @@ namespace BuildingGen
 {
     class TileMap
     {
+        public const int MAXPOSIBLE = 3;
+
         private int height;
         private int width;
         private List<Tile> Map;
@@ -31,6 +33,11 @@ namespace BuildingGen
             this.width = width;
         }
 
+        public int GetLength()
+        {
+            return Map.Count;
+        }
+
         public Tile GetTile2D(int x, int y)
         {
             return Map[(x*y) + x];
@@ -40,6 +47,113 @@ namespace BuildingGen
         {
             return Map[(width * y) + x].Collapse();
         }
+
+        // ----------------------------------------------------------------------------------
+        // Propagation
+        // ----------------------------------------------------------------------------------
+        public bool Propagation(int x, int y, int depth)
+        {
+
+            if(depth > 0)
+            {
+                if(x > 0)
+                {
+                    PropLeft(x, y);
+                    if(!Propagation(x-1,y,depth-1))
+                    {
+                        return false;
+                    }
+                }
+                if (x < width - 1)
+                {
+                    PropRight(x, y);
+                    if (!Propagation(x + 1, y, depth - 1))
+                    {
+                        return false;
+                    }
+                }
+                if (y < height - 1)
+                {
+                    PropUp(x, y);
+                    if (!Propagation(x, y + 1, depth - 1))
+                    {
+                        return false;
+                    }
+                }
+                if (y > 0)
+                {
+                    PropDown(x, y);
+                    if (!Propagation(x, y - 1, depth - 1))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else 
+            {
+                return true;
+            }
+        }
+
+        private bool PropRight(int x, int y)
+        {
+            int[] temp = new int[MAXPOSIBLE];
+            temp = this.GetTile2D(x + 1, y).GetSuperPosition().GetPosibilityIds();
+            if (temp.Length == 0)
+            {
+                return false;
+            }
+            else
+            {
+                this.GetTile2D(x - 1, y).GetSuperPosition().ComparePosibilityIds(temp);
+                return true;
+            }
+        }
+        private bool PropLeft(int x, int y)
+        {
+            int[] temp = new int[MAXPOSIBLE];
+            temp = this.GetTile2D(x - 1, y).GetSuperPosition().GetPosibilityIds();
+            if (temp.Length == 0)
+            {
+                return false;
+            }
+            else
+            {
+                this.GetTile2D(x - 1, y).GetSuperPosition().ComparePosibilityIds(temp);
+                return true;
+            }
+        }
+        private bool PropUp(int x, int y)
+        {
+            int[] temp = new int[MAXPOSIBLE];
+            temp = this.GetTile2D(x, y-1).GetSuperPosition().GetPosibilityIds();
+            if (temp.Length == 0)
+            {
+                return false;
+            }
+            else
+            {
+                this.GetTile2D(x, y + 1).GetSuperPosition().ComparePosibilityIds(temp);
+                return true;
+            }
+        }
+        private bool PropDown(int x, int y)
+        {
+            int[] temp = new int[MAXPOSIBLE];
+            temp = this.GetTile2D(x, y + 1).GetSuperPosition().GetPosibilityIds();
+            if (temp.Length == 0)
+            {
+                return false;
+            }
+            else
+            {
+                this.GetTile2D(x, y + 1).GetSuperPosition().ComparePosibilityIds(temp);
+                return true;
+            }
+        }
+
+        // ----------------------------------------------------------------------------------
 
         public void ConsoleLogTiles()
         {
@@ -89,7 +203,7 @@ namespace BuildingGen
 
         public int Collapse()
         {
-            Random rn = new Random(Guid.NewGuid().GetHashCode());
+            Random rn = new Random(DateTime.Now.Millisecond);
             int WeightSum = 0;
 
             foreach(Posibility p in superPosition)
@@ -98,10 +212,11 @@ namespace BuildingGen
             }
 
             int Collapsed = rn.Next(WeightSum);
+            Console.WriteLine("Random => " + Collapsed);
 
             for(int i = 0; i < superPosition.GetLength(); i++)
             {
-                if(superPosition.GetPosibility(i).weight >= WeightSum)
+                if(superPosition.GetPosibility(i).weight >= Collapsed)
                 {
                     superPosition.Collapse(i);
                     this.Collapsed = true;
@@ -109,7 +224,7 @@ namespace BuildingGen
                 }
                 else
                 {
-                    WeightSum -= superPosition.GetPosibility(i).weight;
+                    Collapsed -= superPosition.GetPosibility(i).weight;
                 }
             }
 
@@ -144,6 +259,31 @@ namespace BuildingGen
         public LinkedList<Posibility> GetPosibilities()
         {
             return this._Posibilities;
+        }
+
+        public int[] GetPosibilityIds()
+        {
+            int[] temp = new int[TileMap.MAXPOSIBLE];
+            foreach(Posibility p in _Posibilities)
+            {
+                temp.Append(p.tileId);
+            }
+
+            return temp;
+        }
+
+        public void ComparePosibilityIds(int[] posibilityIds)
+        {
+            var node = _Posibilities.First;
+            while (node != null)
+            {
+                var nextNode = node.Next;
+                if (!posibilityIds.Contains(node.Value.tileId))
+                {
+                    _Posibilities.Remove(node);
+                }
+                node = nextNode;
+            }
         }
 
         public int GetLength()
