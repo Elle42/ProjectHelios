@@ -11,12 +11,14 @@ from sys import argv
 from PIL import Image
 from logging.handlers import RotatingFileHandler
 
-# Configs
+
+# Configs --------------------------
 config = configparser.ConfigParser()
 config.read('conf.ini')
+# ----------------------------------
 
-# Logger
-# Custom Logger
+
+# Logger ------------------------------------
 logger = logging.getLogger('rotating_logger')
 logger.propagate = False
 # Globales Log Level
@@ -25,63 +27,72 @@ match config['general']['logLevel']:
         logger.setLevel(logging.DEBUG)
     case 'INFO':
         logger.setLevel(logging.INFO)
-
 # Max File Size 5 mb dann rotaten
-handler = RotatingFileHandler('PdfEinlese.log', maxBytes=5*1024*1024, backupCount=3)
-
+handler = RotatingFileHandler(config['general']['logFile'], maxBytes=5*1024*1024, backupCount=3)
 # Formatirung des Logs
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
-
 # Handler
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 logger.addHandler(handler)
+# ------------------------------------------
+
 
 # Init All
-# Read Args
+# Read Args----------
 filePath = argv[1]      # Name von zu Konvertierenden File, muss sowiso im $dirPath$ Vorhanden sein
 fileMode = argv[2]      # Single bleibt fürn Anfang Standard
 rotation = argv[3]      # rr Gegen- und rl mit dem Uhrzeigersinn
 usedPages = argv[4:]    # Angabe welche Seiten der PDF Verarbeitet werden sollen, Angabe muss bereits in der Richtigen Reihenfolge sein
+# -------------------
 
 
-# Pfad der Anwendung
+# Pfade und Ordnerstrucktur --------------------------------------------
 rootPath = argv[0].rsplit('\\', 1)[0]
-
+outputPath = config['general']['outputPath'] + "/"
 # Initalize Folder
-if not os.path.exists("Converted/" + filePath.split('.',1)[0]):
-    os.makedirs("Converted/" + filePath.split('.',1)[0]) 
+if not os.path.exists(outputPath + filePath.split('.',1)[0]):
+    os.makedirs(outputPath + filePath.split('.',1)[0]) 
     logger.info('Directory ' + filePath.split('.',1)[0] + ' Created!')
-
 # Pfade Laden
 tmpPath = config['general']['tmpPath']
 dirPath = rootPath + f"\PlanPdf\\"
-db_path = rootPath + f"\Converted\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
-api = config['db']['PathToDLL']
-fdb.load_api(api)
+# ----------------------------------------------------------------------
 
+
+
+# Datenbank Initialisierung --------------------------------------------
+# Pfade Laden
+db_path = rootPath + "\\" + outputPath + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
+api = config['db']['pathToDLL']
+fdb.load_api(api)
 #Users
 db_User = "HeliosUser"
 db_Password = "class"
-
+# Wenn benoetigt soll die Datenbank erstellt werden
 if not os.path.exists(db_path):
-    # Create the database if it doesn't exist
-    con = fdb.create_database(f"create database '{db_path}' user '{db_User}' password '{db_Password}'")
-    con.close()
-    logger.info(f"Database created at {db_path}")
+    # Datenbank existiert nicht
+    try:
+        con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
+        con.close()
+    except:
+        logger.exception("DatenBank Kann Nicht erstellt werden")
+    logger.info(f"Datenbank erstellt: {db_path}")
 else:
-    logger.info(f"Database already exists at {db_path}")
-
-
+    # Datenbank existiert bereits
+    logger.info(f"Datenbank existiert bereits: {db_path}")
 # Db Connection
 con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
 cur = con.cursor()
 logger.info("DB Verbindung wurde aufgebeaut!")
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
+# ----------------------------------------------------------------------
 
 
+
+# ---------------------------------------------------------------------------------------------------------------------
 # Texte im Bild erkennen, in einer datenbank mit den koordinaten abspeichern und Mit Rechtecken überdecken
 def TextRecocnition(image, binary, cur, rotation, i):
     if rotation == "nr":
@@ -98,10 +109,12 @@ def TextRecocnition(image, binary, cur, rotation, i):
                 # Erkannten Text in die Datenbank schreiben
                 cur.execute("INSERT INTO Converted_" + str(i) + "(id, text, cordLeft, cordTop) VALUES (?, ?, ?, ?)", 
                             (j, data['text'][j], data['left'][j], data['top'][j]))
-
     return image
+# ---------------------------------------------------------------------------------------------------------------------
 
-# Verschiedene File Modes Unterscheiden
+
+
+# Verschiedene File Modes Unterscheiden -------------------------------------------------------------------------------
 if fileMode == 'single':
     logger.info("Pdf wird im FileMode Single aufgerufen")
     logger.info("Es werden insgesamt" + str(len(usedPages)) + " Seiten bearbeitet!")
@@ -111,7 +124,7 @@ if fileMode == 'single':
     pages = convert_from_path(
         str(dirPath) + str(filePath),
         300,
-        poppler_path=r'C:\Program Files\poppler-24.07.0\Library\bin'
+        poppler_path = config['Poppler']['pathToPoppler']
     )
     logger.info("PDF wurde gelesen!")
 
@@ -159,10 +172,10 @@ if fileMode == 'single':
             image = TextRecocnition(image,binary, cur, "nr", i)
 
             # Speichern der Convertierten IMGs
-            logger.info(f"Gespeichert Unter: Converted/{filePath.split('.',1)[0]}/Converted{i}.png")
-            if not os.path.exists("Converted/" + filePath.split('.',1)[0]):
-                os.makedirs("Converted/" + filePath.split('.',1)[0]) 
-            cv2.imwrite(f"Converted/{filePath.split('.',1)[0]}/Converted{i}.png", image)
+            logger.info(f"Gespeichert Unter: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png")
+            if not os.path.exists(outputPath + filePath.split('.',1)[0]):
+                os.makedirs(outputPath + filePath.split('.',1)[0]) 
+            cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", image)
 
             # Wenn benötigten Seiten gelesen worden sind beenden
             if(len(usedPages) == 0):

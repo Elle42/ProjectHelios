@@ -171,50 +171,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\hashlib.py',
    'PYMODULE'),
-  ('logging',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py',
-   'PYMODULE'),
-  ('pickle',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py',
-   'PYMODULE'),
-  ('pprint',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pprint.py',
-   'PYMODULE'),
-  ('dataclasses',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py',
-   'PYMODULE'),
-  ('inspect',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
-   'PYMODULE'),
-  ('token',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\token.py',
-   'PYMODULE'),
-  ('dis',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\dis.py',
-   'PYMODULE'),
-  ('opcode',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\opcode.py',
-   'PYMODULE'),
-  ('ast',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ast.py',
-   'PYMODULE'),
-  ('_compat_pickle',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_compat_pickle.py',
-   'PYMODULE'),
-  ('string',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\string.py',
-   'PYMODULE'),
   ('bisect',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\bisect.py',
@@ -262,6 +218,10 @@
   ('email.quoprimime',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('string',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\string.py',
    'PYMODULE'),
   ('email.headerregistry',
    'C:\\Program '
@@ -374,6 +334,10 @@
   ('tokenize',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tokenize.py',
+   'PYMODULE'),
+  ('token',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\token.py',
    'PYMODULE'),
   ('pathlib',
    'C:\\Program '
@@ -618,6 +582,38 @@
   ('multiprocessing.reduction',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\reduction.py',
+   'PYMODULE'),
+  ('pickle',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py',
+   'PYMODULE'),
+  ('pprint',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pprint.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py',
+   'PYMODULE'),
+  ('inspect',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
+   'PYMODULE'),
+  ('dis',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\dis.py',
+   'PYMODULE'),
+  ('opcode',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\opcode.py',
+   'PYMODULE'),
+  ('ast',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ast.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_compat_pickle.py',
    'PYMODULE'),
   ('multiprocessing.process',
    'C:\\Program '
@@ -986,6 +982,14 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\stringprep.py',
    'PYMODULE'),
+  ('logging.handlers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\logging\\handlers.py',
+   'PYMODULE'),
+  ('smtplib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\smtplib.py',
+   'PYMODULE'),
   ('PIL.Image',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PIL\\Image.py',
    'PYMODULE'),
@@ -1212,6 +1216,14 @@
   ('PIL._version',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PIL\\_version.py',
    'PYMODULE'),
+  ('configparser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\configparser.py',
+   'PYMODULE'),
+  ('logging',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py',
+   'PYMODULE'),
   ('fdb',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\fdb\\__init__.py',
    'PYMODULE'),
@@ -1265,18 +1277,6 @@
   ('ctypes.macholib.framework',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\macholib\\framework.py',
-   'PYMODULE'),
-  ('sqlite3',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\__init__.py',
-   'PYMODULE'),
-  ('sqlite3.dump',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\dump.py',
-   'PYMODULE'),
-  ('sqlite3.dbapi2',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\dbapi2.py',
    'PYMODULE'),
   ('pytesseract',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\pytesseract\\__init__.py',
@@ -1940,10 +1940,6 @@
   ('PIL\\_imaging.cp311-win_amd64.pyd',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\PIL\\_imaging.cp311-win_amd64.pyd',
    'EXTENSION'),
-  ('_sqlite3.pyd',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_sqlite3.pyd',
-   'EXTENSION'),
   ('numpy\\core\\_multiarray_tests.cp311-win_amd64.pyd',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\numpy\\core\\_multiarray_tests.cp311-win_amd64.pyd',
    'EXTENSION'),
@@ -1998,57 +1994,60 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_uuid.pyd',
    'EXTENSION'),
-  ('VCRUNTIME140.dll',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\VCRUNTIME140.dll',
-   'BINARY'),
-  ('api-ms-win-crt-string-l1-1-0.dll',
+  ('api-ms-win-crt-process-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-string-l1-1-0.dll',
+   'Toolkit\\api-ms-win-crt-process-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-crt-locale-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-crt-locale-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-crt-time-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-time-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-heap-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-heap-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-convert-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-convert-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-runtime-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-runtime-l1-1-0.dll',
-   'BINARY'),
   ('api-ms-win-crt-environment-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-crt-environment-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-process-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-process-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-stdio-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-stdio-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-conio-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-crt-conio-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-crt-math-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-crt-math-l1-1-0.dll',
    'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
   ('api-ms-win-crt-filesystem-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('MSVCP140.dll',
+   'C:\\Program Files\\Firebird\\Firebird_5_0\\MSVCP140.dll',
    'BINARY'),
   ('VCRUNTIME140_1.dll',
    'C:\\Program '
@@ -2057,9 +2056,6 @@
   ('api-ms-win-crt-utility-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-crt-utility-l1-1-0.dll',
-   'BINARY'),
-  ('MSVCP140.dll',
-   'C:\\Program Files\\Firebird\\Firebird_5_0\\MSVCP140.dll',
    'BINARY'),
   ('libcrypto-3.dll',
    'C:\\Program '
@@ -2072,10 +2068,6 @@
   ('libffi-8.dll',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\libffi-8.dll',
-   'BINARY'),
-  ('sqlite3.dll',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\sqlite3.dll',
    'BINARY'),
   ('numpy.libs\\libopenblas64__v0.3.23-293-gc2f4bdbb-gcc_10_3_0-2bde3a66a51006b2b53eb373ff767a3f.dll',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\numpy.libs\\libopenblas64__v0.3.23-293-gc2f4bdbb-gcc_10_3_0-2bde3a66a51006b2b53eb373ff767a3f.dll',
@@ -2092,38 +2084,6 @@
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-crt-private-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-profile-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-profile-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-memory-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-memory-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-libraryloader-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-libraryloader-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-synch-l1-2-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-synch-l1-2-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-debug-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-debug-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-rtlsupport-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-localization-l1-2-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-localization-l1-2-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-sysinfo-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-sysinfo-l1-1-0.dll',
-   'BINARY'),
   ('api-ms-win-core-file-l1-2-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-core-file-l1-2-0.dll',
@@ -2132,65 +2092,97 @@
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-core-datetime-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-file-l1-1-0.dll',
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-file-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-namedpipe-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-namedpipe-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-handle-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-handle-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-errorhandling-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'Toolkit\\api-ms-win-core-libraryloader-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-string-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-core-string-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-timezone-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-timezone-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processthreads-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-processthreads-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-file-l2-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-file-l2-1-0.dll',
-   'BINARY'),
   ('api-ms-win-core-processthreads-l1-1-1.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-core-processthreads-l1-1-1.dll',
    'BINARY'),
-  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+  ('api-ms-win-core-synch-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-processenvironment-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-heap-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-heap-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-interlocked-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-interlocked-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-util-l1-1-0.dll',
-   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-util-l1-1-0.dll',
+   'Toolkit\\api-ms-win-core-synch-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-console-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
    'Toolkit\\api-ms-win-core-console-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-synch-l1-1-0.dll',
+  ('api-ms-win-core-handle-l1-1-0.dll',
    'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
-   'Toolkit\\api-ms-win-core-synch-l1-1-0.dll',
+   'Toolkit\\api-ms-win-core-handle-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l2-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-interlocked-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-profile-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-profile-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processenvironment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-util-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-util-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-namedpipe-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-memory-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-memory-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-debug-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-debug-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-timezone-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-timezone-l1-1-0.dll',
    'BINARY')],
  [],
  [],
@@ -2198,14 +2190,14 @@
    'D:\\Matura Project\\Repos\\Intelligence Module\\PDF '
    'Recoc\\PDF-Einlesen\\build\\ReadPdf\\base_library.zip',
    'DATA'),
-  ('cv2\\load_config_py3.py',
-   'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\cv2\\load_config_py3.py',
-   'DATA'),
   ('cv2\\config-3.py',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\cv2\\config-3.py',
    'DATA'),
   ('cv2\\config.py',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\cv2\\config.py',
+   'DATA'),
+  ('cv2\\load_config_py3.py',
+   'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\cv2\\load_config_py3.py',
    'DATA'),
   ('cv2\\__init__.py',
    'C:\\Users\\mutte\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\cv2\\__init__.py',

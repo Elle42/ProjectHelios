@@ -39,3 +39,12 @@
 2024-10-10 13:48:18,222 - rotating_logger - INFO - Gespeichert Unter: Converted/MFH-RF1-Brandschutzplan/Converted1.png
 2024-10-10 13:48:20,298 - rotating_logger - INFO - Gespeichert Unter: Converted/MFH-RF1-Brandschutzplan/Converted3.png
 2024-10-10 13:48:22,467 - rotating_logger - INFO - Gespeichert Unter: Converted/MFH-RF1-Brandschutzplan/Converted5.png
+2024-10-10 15:33:41,992 - rotating_logger - INFO - Database already exists at D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted/\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-10-10 15:33:42,039 - rotating_logger - INFO - DB Verbindung wurde aufgebeaut!
+2024-10-10 15:33:42,040 - rotating_logger - INFO - Pdf wird im FileMode Single aufgerufen
+2024-10-10 15:33:42,040 - rotating_logger - INFO - Es werden insgesamt3 Seiten bearbeitet!
+2024-10-10 15:33:42,041 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-10-10 15:33:46,422 - rotating_logger - INFO - PDF wurde gelesen!
+2024-10-10 15:33:48,737 - rotating_logger - INFO - Gespeichert Unter: Converted/MFH-RF1-Brandschutzplan/Converted1.png
+2024-10-10 15:33:50,820 - rotating_logger - INFO - Gespeichert Unter: Converted/MFH-RF1-Brandschutzplan/Converted3.png
+2024-10-10 15:33:52,983 - rotating_logger - INFO - Gespeichert Unter: Converted/MFH-RF1-Brandschutzplan/Converted5.png
