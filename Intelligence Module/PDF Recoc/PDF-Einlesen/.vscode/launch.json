@@ -8,8 +8,8 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "MFH-RF1-Brandschutzplan.pdf",
                 "single",
+                "MFH-RF1-Brandschutzplan.pdf",
                 "nr",
                 "1",
                 "3",

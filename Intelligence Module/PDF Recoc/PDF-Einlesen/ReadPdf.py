@@ -42,10 +42,11 @@ logger.addHandler(handler)
 
 # Init All
 # Read Args----------
-filePath = argv[1]      # Name von zu Konvertierenden File, muss sowiso im $dirPath$ Vorhanden sein
-fileMode = argv[2]      # Single bleibt fürn Anfang Standard
-rotation = argv[3]      # rr Gegen- und rl mit dem Uhrzeigersinn
-usedPages = argv[4:]    # Angabe welche Seiten der PDF Verarbeitet werden sollen, Angabe muss bereits in der Richtigen Reihenfolge sein
+fileMode = argv[1]
+if fileMode == 'single':      #
+    filePath = argv[2]      # Name von zu Konvertierenden File, muss sowiso im $dirPath$ Vorhanden sein
+    rotation = argv[3]      # rr Gegen- und rl mit dem Uhrzeigersinn
+    usedPages = argv[4:]    # Angabe welche Seiten der PDF Verarbeitet werden sollen, Angabe muss bereits in der Richtigen Reihenfolge sein
 # -------------------
 
 
@@ -86,7 +87,7 @@ else:
 # Db Connection
 con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
 cur = con.cursor()
-logger.info("DB Verbindung wurde aufgebeaut!")
+logger.info("DB Verbindung wurde aufgebaut!")
 pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
 # ----------------------------------------------------------------------
 
@@ -98,6 +99,7 @@ def TextRecocnition(image, binary, cur, rotation, i):
     if rotation == "nr":
         # Mit KI Texte erkennen
         data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
+        logger.debug("Es wurden " + str(len(data)) + "einzelne Woerter gefunden")
 
         # Alle erkannten Texte verarbeitet
         for j in range(len(data['text'])):
@@ -147,6 +149,7 @@ if fileMode == 'single':
             
             # If the table exists, drop it
             if cur.fetchone():
+                logger.debug("Table CONVERTED_{i} exestiert bereits -> Table Wird gedropped")
                 cur.execute(f"DROP TABLE {table_name}")
             
             # Create the new table
@@ -158,12 +161,15 @@ if fileMode == 'single':
                     cordTop INTEGER
                 )
             """)
+            logger.debug("Neuer Table CONVERTED_{i} wurde erstellt!")
             con.commit()
 
             # Abfrage wie Rotation behandelt werden soll
             if(rotation == 'rr'):
+                logger.debug("Rotation -> rr")
                 image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
             if(rotation == 'rl'):
+                logger.debug("Rotation -> rl")
                 image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
 
@@ -174,6 +180,7 @@ if fileMode == 'single':
             # Speichern der Convertierten IMGs
             logger.info(f"Gespeichert Unter: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png")
             if not os.path.exists(outputPath + filePath.split('.',1)[0]):
+                logger.debug("Neues Verzeichnis \'" + outputPath + filePath.split('.',1)[0] + "\' erstellt")
                 os.makedirs(outputPath + filePath.split('.',1)[0]) 
             cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", image)
 
