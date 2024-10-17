@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.MainPage">
+
+    <StackLayout Padding="10">
+        <Label Text="Bluetooth Control" 
+               FontSize="24" 
+               HorizontalOptions="Center" />
+        <Button Text="Send ON" 
+                Clicked="OnSendOnClicked"/>
+        <Button Text="Send OFF" 
+                Clicked="OnSendOffClicked"/>
+    </StackLayout>
+
+</ContentPage>
