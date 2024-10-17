@@ -43,10 +43,15 @@ logger.addHandler(handler)
 # Init All
 # Read Args----------
 fileMode = argv[1]
-if fileMode == 'single':      #
+# File Mode Single
+if fileMode == 'single':    #
     filePath = argv[2]      # Name von zu Konvertierenden File, muss sowiso im $dirPath$ Vorhanden sein
     rotation = argv[3]      # rr Gegen- und rl mit dem Uhrzeigersinn
     usedPages = argv[4:]    # Angabe welche Seiten der PDF Verarbeitet werden sollen, Angabe muss bereits in der Richtigen Reihenfolge sein
+# File Mode Multi
+if fileMode == 'multi':
+    rotation = argv[2]      # rr Gegen- und rl mit dem Uhrzeigersinn
+    usedPdf = argv[3:]
 # -------------------
 
 
@@ -96,95 +101,125 @@ pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
 # ---------------------------------------------------------------------------------------------------------------------
 # Texte im Bild erkennen, in einer datenbank mit den koordinaten abspeichern und Mit Rechtecken überdecken
 def TextRecocnition(image, binary, cur, rotation, i):
-    if rotation == "nr":
-        # Mit KI Texte erkennen
-        data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
-        logger.debug("Es wurden " + str(len(data)) + "einzelne Woerter gefunden")
+    # Mit KI Texte erkennen
+    data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
+    logger.debug("Es wurden " + str(len(data)) + "einzelne Woerter gefunden")
 
-        # Alle erkannten Texte verarbeitet
-        for j in range(len(data['text'])):
-            if int(data['conf'][j]) > 20 and data['text'][j].strip() != "":
-                # Rechteck über den Text Zeichnen
-                x, y, w, h = data['left'][j], data['top'][j], data['width'][j], data['height'][j]
-                image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), thickness=-1)
+    # Alle erkannten Texte verarbeitet
+    for j in range(len(data['text'])):
+        if int(data['conf'][j]) > 20 and data['text'][j].strip() != "":
+            # Rechteck über den Text Zeichnen
+            x, y, w, h = data['left'][j], data['top'][j], data['width'][j], data['height'][j]
+            image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), thickness=-1)
 
-                # Erkannten Text in die Datenbank schreiben
-                cur.execute("INSERT INTO Converted_" + str(i) + "(id, text, cordLeft, cordTop) VALUES (?, ?, ?, ?)", 
-                            (j, data['text'][j], data['left'][j], data['top'][j]))
+            # Erkannten Text in die Datenbank schreiben
+            cur.execute("INSERT INTO Converted_" + str(i) + "(id, text, cordLeft, cordTop) VALUES (?, ?, ?, ?)", 
+                        (j, data['text'][j], data['left'][j], data['top'][j]))
     return image
 # ---------------------------------------------------------------------------------------------------------------------
 
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# Nach einlese als Img findet hier die verarbeitung Statt
+def ConversionLoop(pages):
+    # Main Loop
+    for i, page in enumerate(pages):
+        # Seite Als Bild zwischenspeichern
+        image_path = tmpPath + f"temp_page_{i}.png"
+        page.save(image_path, "PNG")
+        image = cv2.imread(image_path, 0)
+
+        # Das Erzeugte Temp in ein Binär Format bringen damit die text erkennung leichter funktioniert
+        _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
+
+        # Table In der Datenbank für die Derzeitige Seite erstellen     (!IF NOT EXISTS funktioniert in der Datenbank nicht!)
+        # Check if table exists before dropping it
+        table_name = "CONVERTED_" + str(i)
+        cur.execute(f"SELECT 1 FROM rdb$relations WHERE rdb$relation_name = '{table_name.upper()}'")
+        
+        # If the table exists, drop it
+        if cur.fetchone():
+            logger.debug("Table CONVERTED_" + str(i) + " exestiert bereits -> Table Wird gedropped")
+            cur.execute(f"DROP TABLE {table_name}")
+        
+        # Create the new table
+        cur.execute(f"""
+            CREATE TABLE {table_name} (
+                id INTEGER PRIMARY KEY,
+                text VARCHAR(40),
+                cordLeft INTEGER,
+                cordTop INTEGER
+            )
+        """)
+        logger.debug("Neuer Table CONVERTED_{i} wurde erstellt!")
+        con.commit()
+
+        # Abfrage wie Rotation behandelt werden soll
+        if(rotation == 'rr'):
+            logger.debug("Rotation -> rr")
+            image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        if(rotation == 'rl'):
+            logger.debug("Rotation -> rl")
+            image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+
+
+        # Den Gesamten Text in der Derzeitigen Seite Lesen
+        # In die DatenBank schreiben
+        image = TextRecocnition(image,binary, cur, "nr", i)
+
+        # Speichern der Convertierten IMGs
+        logger.info(f"Gespeichert Unter: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png")
+        if not os.path.exists(outputPath + filePath.split('.',1)[0]):
+            logger.debug("Neues Verzeichnis \'" + outputPath + filePath.split('.',1)[0] + "\' erstellt")
+            os.makedirs(outputPath + filePath.split('.',1)[0]) 
+        cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", image)
+
+        # Wenn benötigten Seiten gelesen worden sind beenden
+        if(len(usedPages) == 0):
+            break
+
+
+
 # Verschiedene File Modes Unterscheiden -------------------------------------------------------------------------------
+# Single --------------------------------------------------------------------------------------------------------------
 if fileMode == 'single':
     logger.info("Pdf wird im FileMode Single aufgerufen")
     logger.info("Es werden insgesamt" + str(len(usedPages)) + " Seiten bearbeitet!")
     logger.debug(str(dirPath) + str(filePath))
 
-    # Pdf Lesen
-    pages = convert_from_path(
+    # Pdf Lesen und in png convertieren
+    temp = convert_from_path(
         str(dirPath) + str(filePath),
         300,
         poppler_path = config['Poppler']['pathToPoppler']
     )
     logger.info("PDF wurde gelesen!")
 
-    # Main Loop
-    for i, page in enumerate(pages):
-        if(i == int(usedPages[0])):
-            usedPages.pop(0)
-            # Seite Als Bild zwischenspeichern
-            image_path = tmpPath + f"temp_page_{i}.png"
-            page.save(image_path, "PNG")
-            image = cv2.imread(image_path, 0)
+    # Nur die genutzten Seiten sollten uebergeben werden
+    pages = [temp[int(i)] for i in usedPages]
 
-            # Das Erzeugte Temp in ein Binär Format bringen damit die text erkennung leichter funktioniert
-            _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
+    # Start der Conversion
+    ConversionLoop(pages)
 
-            # Table In der Datenbank für die Derzeitige Seite erstellen     (!IF NOT EXISTS funktioniert in der Datenbank nicht!)
-            # Check if table exists before dropping it
-            table_name = "CONVERTED_" + str(i)
-            cur.execute(f"SELECT 1 FROM rdb$relations WHERE rdb$relation_name = '{table_name.upper()}'")
-            
-            # If the table exists, drop it
-            if cur.fetchone():
-                logger.debug("Table CONVERTED_{i} exestiert bereits -> Table Wird gedropped")
-                cur.execute(f"DROP TABLE {table_name}")
-            
-            # Create the new table
-            cur.execute(f"""
-                CREATE TABLE {table_name} (
-                    id INTEGER PRIMARY KEY,
-                    text VARCHAR(40),
-                    cordLeft INTEGER,
-                    cordTop INTEGER
-                )
-            """)
-            logger.debug("Neuer Table CONVERTED_{i} wurde erstellt!")
-            con.commit()
+    
 
-            # Abfrage wie Rotation behandelt werden soll
-            if(rotation == 'rr'):
-                logger.debug("Rotation -> rr")
-                image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
-            if(rotation == 'rl'):
-                logger.debug("Rotation -> rl")
-                image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+# Multi ---------------------------------------------------------------------------------------------------------------
+if fileMode == 'multi':
+    logger.info("Pdf wird im FileMode Multi aufgerufen")
 
+    # Alle Pdfs Lesen und in pngs Convertieren
+    i = 0
+    for pdf in usedPdf:
+        temp = convert_from_path(
+            str(dirPath) + str(filePath),
+            300,
+            poppler_path = config['Poppler']['pathToPoppler']
+        )
 
-            # Den Gesamten Text in der Derzeitigen Seite Lesen
-            # In die DatenBank schreiben
-            image = TextRecocnition(image,binary, cur, "nr", i)
-
-            # Speichern der Convertierten IMGs
-            logger.info(f"Gespeichert Unter: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png")
-            if not os.path.exists(outputPath + filePath.split('.',1)[0]):
-                logger.debug("Neues Verzeichnis \'" + outputPath + filePath.split('.',1)[0] + "\' erstellt")
-                os.makedirs(outputPath + filePath.split('.',1)[0]) 
-            cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", image)
-
-            # Wenn benötigten Seiten gelesen worden sind beenden
-            if(len(usedPages) == 0):
-                break
-  
+        # Convertierte pngs in array laden
+        pages[i] = temp
+        i = i + 1
+    
+    # Start der Conversion
+    ConversionLoop(pages)
