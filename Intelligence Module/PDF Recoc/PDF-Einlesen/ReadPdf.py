@@ -7,16 +7,28 @@ import pytesseract
 import fdb
 import logging
 import configparser
+import sys
 from sys import argv
 from PIL import Image
 from logging.handlers import RotatingFileHandler
 
 
+# Root Path
+rootPath = "Angelegt :)"
+
+# Root Verzeichnis extrahieren
+if getattr(sys, 'frozen', False):  # Check ob Anwendung als Exe mit Pyinstaller Gestarted wird
+    # Anwendung Läuft unter Pyinstaller
+    rootPath = os.path.dirname(sys.executable)
+else:
+    # Anwendung läuft unter Python
+    rootPath = os.path.dirname(os.path.abspath(__file__))
+
+
 # Configs --------------------------
 config = configparser.ConfigParser()
-config.read('conf.ini')
+config.read(rootPath + '\\conf.ini')
 # ----------------------------------
-
 
 # Logger ------------------------------------
 logger = logging.getLogger('rotating_logger')
@@ -54,10 +66,13 @@ if fileMode == 'multi':
     usedPdf = argv[3:]
 # -------------------
 
+# Tests 
+logger.debug("----------------->" + str(__file__))
 
 # Pfade und Ordnerstrucktur --------------------------------------------
-rootPath = argv[0].rsplit('\\', 1)[0]
-outputPath = config['general']['outputPath'] + "/"
+logger.debug("Uebergebener Awnendungs Path: " + argv[0])
+logger.debug("Root Path: " + rootPath)
+outputPath = rootPath + config['general']['outputPath'] + "\\"
 # Initalize Folder
 if not os.path.exists(outputPath + filePath.split('.',1)[0]):
     os.makedirs(outputPath + filePath.split('.',1)[0]) 
@@ -71,7 +86,8 @@ dirPath = rootPath + f"\PlanPdf\\"
 
 # Datenbank Initialisierung --------------------------------------------
 # Pfade Laden
-db_path = rootPath + "\\" + outputPath + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
+db_path = rootPath + "\\" + config['general']['outputPath'] + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
+logger.debug(db_path)
 api = config['db']['pathToDLL']
 fdb.load_api(api)
 #Users
@@ -103,7 +119,7 @@ pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
 def TextRecocnition(image, binary, cur, rotation, i):
     # Mit KI Texte erkennen
     data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
-    logger.debug("Es wurden " + str(len(data)) + "einzelne Woerter gefunden")
+    logger.debug("Es wurden " + str(len(data)) + " einzelne Woerter gefunden")
 
     # Alle erkannten Texte verarbeitet
     for j in range(len(data['text'])):
@@ -129,7 +145,6 @@ def ConversionLoop(pages):
         image_path = tmpPath + f"temp_page_{i}.png"
         page.save(image_path, "PNG")
         image = cv2.imread(image_path, 0)
-
         # Das Erzeugte Temp in ein Binär Format bringen damit die text erkennung leichter funktioniert
         _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
 
@@ -163,7 +178,6 @@ def ConversionLoop(pages):
             logger.debug("Rotation -> rl")
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
-
         # Den Gesamten Text in der Derzeitigen Seite Lesen
         # In die DatenBank schreiben
         image = TextRecocnition(image,binary, cur, "nr", i)
@@ -185,10 +199,11 @@ def ConversionLoop(pages):
 # Single --------------------------------------------------------------------------------------------------------------
 if fileMode == 'single':
     logger.info("Pdf wird im FileMode Single aufgerufen")
-    logger.info("Es werden insgesamt" + str(len(usedPages)) + " Seiten bearbeitet!")
+    logger.info("Es werden insgesamt  " + str(len(usedPages)) + " Seiten bearbeitet!")
     logger.debug(str(dirPath) + str(filePath))
 
     # Pdf Lesen und in png convertieren
+    logger.info("PDF lesen ...")
     temp = convert_from_path(
         str(dirPath) + str(filePath),
         300,
@@ -198,7 +213,6 @@ if fileMode == 'single':
 
     # Nur die genutzten Seiten sollten uebergeben werden
     pages = [temp[int(i)] for i in usedPages]
-
     # Start der Conversion
     ConversionLoop(pages)
 
