@@ -63,26 +63,23 @@ if fileMode == 'single':    #
 # File Mode Multi
 if fileMode == 'multi':
     rotation = argv[2]      # rr Gegen- und rl mit dem Uhrzeigersinn
-    usedPdf = argv[3:]
+    usedDir = argv[3]       # Alle Pdfs sollten in einem Folder sein
+    usedPdf = argv[4:]
+    filePath = usedDir
 # -------------------
-
-# Tests 
-logger.debug("----------------->" + str(__file__))
 
 # Pfade und Ordnerstrucktur --------------------------------------------
 logger.debug("Uebergebener Awnendungs Path: " + argv[0])
 logger.debug("Root Path: " + rootPath)
-outputPath = rootPath + config['general']['outputPath'] + "\\"
+outputPath = rootPath + "\\" + config['general']['outputPath'] + "\\"
 # Initalize Folder
 if not os.path.exists(outputPath + filePath.split('.',1)[0]):
     os.makedirs(outputPath + filePath.split('.',1)[0]) 
-    logger.info('Directory ' + filePath.split('.',1)[0] + ' Created!')
+    logger.debug("Neues Verzeichnis \'" + outputPath + filePath.split('.',1)[0] + "\' erstellt")
 # Pfade Laden
 tmpPath = config['general']['tmpPath']
 dirPath = rootPath + f"\PlanPdf\\"
 # ----------------------------------------------------------------------
-
-
 
 # Datenbank Initialisierung --------------------------------------------
 # Pfade Laden
@@ -182,16 +179,20 @@ def ConversionLoop(pages):
         # In die DatenBank schreiben
         image = TextRecocnition(image,binary, cur, "nr", i)
 
+        # Blurring und Thresholding
+        blurred = cv2.GaussianBlur(image, (9,9), 0)
+
+        _, thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
+
         # Speichern der Convertierten IMGs
-        logger.info(f"Gespeichert Unter: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png")
-        if not os.path.exists(outputPath + filePath.split('.',1)[0]):
-            logger.debug("Neues Verzeichnis \'" + outputPath + filePath.split('.',1)[0] + "\' erstellt")
-            os.makedirs(outputPath + filePath.split('.',1)[0]) 
-        cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", image)
+        logger.info(f"Gespeichert Unter: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png") 
+        cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", thresh)
+        cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Blurred{i}.png", blurred)
 
         # Wenn benötigten Seiten gelesen worden sind beenden
-        if(len(usedPages) == 0):
-            break
+        if(fileMode == "single"):
+            if(len(usedPages) == 0):
+                break
 
 
 
@@ -224,16 +225,17 @@ if fileMode == 'multi':
 
     # Alle Pdfs Lesen und in pngs Convertieren
     i = 0
+    pages = []
     for pdf in usedPdf:
         temp = convert_from_path(
-            str(dirPath) + str(filePath),
+            str(dirPath) + str(usedDir) + "\\" + pdf,
             300,
             poppler_path = config['Poppler']['pathToPoppler']
         )
 
         # Convertierte pngs in array laden
-        pages[i] = temp
-        i = i + 1
+        pages.append(temp[0])
+   
     
     # Start der Conversion
     ConversionLoop(pages)

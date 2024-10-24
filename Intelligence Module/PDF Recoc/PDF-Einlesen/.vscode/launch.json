@@ -7,13 +7,20 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
+            // "args": [
+            //     "single",
+            //     "MFH-RF1-Brandschutzplan.pdf",
+            //     "nr",
+            //     "0",
+            //     "3",
+            //     "5"
+            // ]
             "args": [
-                "single",
-                "MFH-RF1-Brandschutzplan.pdf",
+                "multi",
                 "nr",
-                "0",
-                "3",
-                "5"
+                "GIA",
+                "BSP_BUERO_OG.pdf",
+                "BSP_LAGER.pdf"
             ]
         }
     ]

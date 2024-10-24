@@ -1007,3 +1007,262 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I
 2024-10-23 15:53:37,431 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
 2024-10-23 15:53:38,211 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
 2024-10-23 15:53:38,234 - rotating_logger - INFO - Gespeichert Unter: Converted\Mutter-Portfolio/Converted3.png
+2024-10-24 09:18:28,068 - rotating_logger - DEBUG - ----------------->D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:18:28,069 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:18:28,070 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:19:15,042 - rotating_logger - DEBUG - ----------------->D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:19:15,043 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:19:15,043 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:19:15,044 - rotating_logger - INFO - Directory GIA/ Created!
+2024-10-24 09:19:15,044 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/\TEXTSDB.fdb
+2024-10-24 09:19:15,520 - rotating_logger - ERROR - DatenBank Kann Nicht erstellt werden
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 102, in <module>
+    con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 988, in create_database
+    raise exception_from_status(DatabaseError, isc_status,
+fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I/O error during "CreateFile (create)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\PDF-EINLESEN\\CONVERTED\\GIA\\TEXTSDB.FDB"\n- Error while trying to create file\n- Das System kann den angegebenen Pfad nicht finden. ', -902, 335544344)
+2024-10-24 09:19:15,525 - rotating_logger - INFO - Datenbank erstellt: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/\TEXTSDB.fdb
+2024-10-24 09:19:49,805 - rotating_logger - DEBUG - ----------------->D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:19:49,806 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:19:49,806 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:19:49,807 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:19:49,841 - rotating_logger - ERROR - DatenBank Kann Nicht erstellt werden
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 102, in <module>
+    con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 988, in create_database
+    raise exception_from_status(DatabaseError, isc_status,
+fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I/O error during "CreateFile (create)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\PDF-EINLESEN\\CONVERTED\\GIA\\TEXTSDB.FDB"\n- Error while trying to create file\n- Das System kann den angegebenen Pfad nicht finden. ', -902, 335544344)
+2024-10-24 09:19:49,850 - rotating_logger - INFO - Datenbank erstellt: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:20:35,246 - rotating_logger - DEBUG - ----------------->D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:20:35,247 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:20:35,248 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:20:35,248 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:20:35,280 - rotating_logger - ERROR - DatenBank Kann Nicht erstellt werden
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 102, in <module>
+    con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 988, in create_database
+    raise exception_from_status(DatabaseError, isc_status,
+fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I/O error during "CreateFile (create)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\PDF-EINLESEN\\CONVERTED\\GIA\\TEXTSDB.FDB"\n- Error while trying to create file\n- Das System kann den angegebenen Pfad nicht finden. ', -902, 335544344)
+2024-10-24 09:20:35,285 - rotating_logger - INFO - Datenbank erstellt: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:23:16,464 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:23:16,464 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:23:16,466 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:23:29,157 - rotating_logger - ERROR - DatenBank Kann Nicht erstellt werden
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 101, in <module>
+    con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 988, in create_database
+    raise exception_from_status(DatabaseError, isc_status,
+fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I/O error during "CreateFile (create)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\PDF-EINLESEN\\CONVERTED\\GIA\\TEXTSDB.FDB"\n- Error while trying to create file\n- Das System kann den angegebenen Pfad nicht finden. ', -902, 335544344)
+2024-10-24 09:23:29,761 - rotating_logger - INFO - Datenbank erstellt: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:25:46,514 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:25:46,515 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:25:46,517 - rotating_logger - DEBUG - Neues Verzeichnis 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA' erstellt
+2024-10-24 09:25:46,517 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:26:03,322 - rotating_logger - INFO - Datenbank erstellt: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:26:03,348 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:26:03,348 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:27:33,440 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:27:33,441 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:27:33,442 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:27:33,445 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:27:33,514 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:27:33,515 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:29:27,154 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:29:27,155 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:29:27,155 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:29:27,158 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:29:27,221 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:29:27,222 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:29:39,712 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:29:39,713 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:29:39,714 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:29:39,717 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:29:39,780 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:29:39,781 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:30:10,309 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:30:10,310 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:30:10,310 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:30:10,314 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:30:10,385 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:30:10,386 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:31:20,454 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:31:20,455 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:31:20,456 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:31:20,459 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:31:20,525 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:31:20,526 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:31:40,708 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:31:40,709 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:31:40,709 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:31:40,713 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:31:40,782 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:31:40,783 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:32:43,869 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:32:43,870 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:32:43,871 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:32:43,874 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:32:43,944 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:32:43,944 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:32:46,204 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:32:46,215 - rotating_logger - DEBUG - Rotation -> rr
+2024-10-24 09:32:47,953 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:32:47,977 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:33:40,022 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:33:40,023 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:33:40,024 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:33:40,028 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:33:40,115 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:33:40,116 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:33:42,373 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:33:42,382 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:33:42,391 - rotating_logger - DEBUG - Rotation -> rr
+2024-10-24 09:33:43,827 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:33:43,849 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:34:17,221 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:34:17,223 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:34:17,224 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:34:17,228 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:34:17,317 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:34:17,318 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:34:19,368 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:34:19,375 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:34:19,383 - rotating_logger - DEBUG - Rotation -> rr
+2024-10-24 09:34:20,789 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:34:20,812 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:34:21,662 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:34:21,679 - rotating_logger - DEBUG - Rotation -> rr
+2024-10-24 09:34:23,240 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:34:23,277 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:36:43,671 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:36:43,672 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:36:43,673 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:36:43,677 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:36:43,733 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:36:43,734 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:36:45,883 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:36:45,889 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:36:47,274 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:36:47,297 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:36:48,169 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:36:48,172 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:36:49,791 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:36:49,828 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:39:39,011 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:39:39,012 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:39:39,013 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:39:39,017 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:39:39,074 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:39:39,076 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:39:41,401 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:39:41,408 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:39:42,796 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:39:42,829 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:39:43,684 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:39:43,687 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:39:45,263 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:39:45,305 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:41:04,453 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:41:04,454 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:41:04,455 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:41:04,459 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:41:04,514 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:41:04,514 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:41:06,721 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:41:06,729 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:41:08,131 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:41:08,163 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:41:09,029 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:41:09,032 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:41:10,658 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:41:10,702 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:41:53,125 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:41:53,126 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:41:53,126 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:41:53,131 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:41:53,196 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:41:53,197 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:41:55,585 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:41:55,592 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:41:57,109 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:41:57,144 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:41:58,125 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:41:58,129 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:41:59,823 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:41:59,870 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:43:39,476 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:43:39,476 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:43:39,477 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:43:39,481 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:43:39,543 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:43:39,543 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:43:41,968 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:43:41,975 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:43:43,391 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:44:19,595 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:44:19,596 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:44:19,596 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:44:19,599 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:44:19,654 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:44:19,655 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:44:21,863 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:44:21,870 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:44:23,265 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:44:23,301 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:44:24,194 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:44:24,196 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:44:25,762 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:44:25,807 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:45:37,861 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:45:37,862 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:45:37,863 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:45:37,866 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:45:37,920 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:45:37,921 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:45:40,344 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:45:40,351 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:45:41,797 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:46:19,201 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:46:19,202 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:46:19,202 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:46:19,206 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:46:19,257 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:46:19,259 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:46:21,747 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:46:21,756 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:46:23,172 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:47:00,852 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:47:00,853 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:47:00,854 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:47:00,857 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:47:00,943 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:47:00,944 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:47:03,056 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:47:03,063 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:47:04,478 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:47:04,509 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:47:05,426 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:47:05,429 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:47:07,055 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:47:07,103 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-10-24 09:47:15,070 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-10-24 09:47:15,071 - rotating_logger - DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-10-24 09:47:15,072 - rotating_logger - DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:47:15,076 - rotating_logger - INFO - Datenbank existiert bereits: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-10-24 09:47:15,129 - rotating_logger - INFO - DB Verbindung wurde aufgebaut!
+2024-10-24 09:47:15,130 - rotating_logger - INFO - Pdf wird im FileMode Multi aufgerufen
+2024-10-24 09:47:17,251 - rotating_logger - DEBUG - Table CONVERTED_0 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:47:17,258 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:47:18,614 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:47:18,637 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-10-24 09:47:19,543 - rotating_logger - DEBUG - Table CONVERTED_1 exestiert bereits -> Table Wird gedropped
+2024-10-24 09:47:19,546 - rotating_logger - DEBUG - Neuer Table CONVERTED_{i} wurde erstellt!
+2024-10-24 09:47:21,152 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
+2024-10-24 09:47:21,183 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
