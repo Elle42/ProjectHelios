@@ -1,0 +1,1 @@
+connect 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\TEXTSDB.fdb' user 'HeliosUser' password 'class';
