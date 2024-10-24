@@ -14,11 +14,11 @@ from logging.handlers import RotatingFileHandler
 
 
 # Root Path
-rootPath = "Angelegt :)"
+rootPath = "Initialized :)"
 
 # Extract Root Dir
-if getattr(sys, 'frozen', False):  # Check if it is running under Pyinstaller
-    # Running as EXE
+if getattr(sys, 'frozen', False):  # Check if it is running under PyInstaller
+    # Running as an executable
     rootPath = os.path.dirname(sys.executable)
 else:
     # Running under Python
@@ -26,106 +26,117 @@ else:
 
 print(rootPath)
 
-# Configs --------------------------
+# Configurations --------------------------
 config = configparser.ConfigParser()
 config.read(rootPath + '\\conf.ini')
-# ----------------------------------
+# ------------------------------------------
 
-# Logger ------------------------------------
+# Logger setup ----------------------------
 logger = logging.getLogger('rotating_logger')
 logger.propagate = False
-# Global Log Level
+# Global log level based on configuration
 match config['general']['logLevel']:
     case 'DEBUG':
         logger.setLevel(logging.DEBUG)
     case 'INFO':
         logger.setLevel(logging.INFO)
-# Max File Size 5 mb then rotate
+
+# Rotating log handler with max file size of 5 MB
 handler = RotatingFileHandler(config['general']['logFile'], maxBytes=5*1024*1024, backupCount=3)
-# Formatter of the Log -> Adds Time -> Level -> Message
+
+# Log format -> Time -> Level -> Message
 formatter = logging.Formatter('%(asctime)s -  %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
-# Handler
+
+# Console handler for logging to stdout
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
+
 logger.addHandler(console_handler)
 logger.addHandler(handler)
 # ------------------------------------------
 
 
-# Init All
-# Read Args----------
+# Initialize Variables
+# Read arguments----------
 fileMode = argv[1]
-# File Mode Single
-if fileMode == 'single':    #
-    filePath = argv[2]      # Name of the File to Convert, has to be found in the dir Folder
-    rotation = argv[3]      # rr Counter and rl Clockwise
-    usedPages = argv[4:]    # Which pages shoulb be used -> !They have to be sorted!
-# File Mode Multi
-if fileMode == 'multi':
-    rotation = argv[2]      # rr Counter and rl Clockwise
-    usedDir = argv[3]       # All Pdfs should bi in Folder in the Dir folder
-    usedPdf = argv[4:]      # Names of all used Pdfs
-    filePath = usedDir      # Correction that the Conversion Loop runs in Multi mode
-# -------------------
 
-# Paths and Directories ------------------------------------------------
+# File mode: Single
+if fileMode == 'single':    
+    filePath = argv[2]      # Path to the PDF file to convert
+    rotation = argv[3]      # Rotation direction: rr for counter-clockwise, rl for clockwise
+    usedPages = argv[4:]    # Pages to process, must be sorted
+# File mode: Multi
+if fileMode == 'multi':
+    rotation = argv[2]      # Rotation direction: rr for counter-clockwise, rl for clockwise
+    usedDir = argv[3]       # Directory containing the PDFs to convert
+    usedPdf = argv[4:]      # List of PDF file names
+    filePath = usedDir      # Ensures the conversion loop runs correctly in multi mode
+# ------------------------
+
+# Paths and Directories -------------------------------------------------
 logger.debug("Root Path: " + rootPath)
 outputPath = rootPath + "\\" + config['general']['outputPath'] + "\\"
-# Initalize Folders
+
+# Initialize folders if they don't exist
 if not os.path.exists(outputPath + filePath.split('.',1)[0]):
     os.makedirs(outputPath + filePath.split('.',1)[0]) 
-    logger.debug("New Directory \'" + outputPath + filePath.split('.',1)[0] + "\' created!")
-# Load Paths
+    logger.debug(f"New directory '{outputPath + filePath.split('.', 1)[0]}' created!")
+
+# Load additional paths
 tmpPath = config['general']['tmpPath']
 dirPath = rootPath + f"\PlanPdf\\"
 # ----------------------------------------------------------------------
 
-# Initialyze Database --------------------------------------------------
-# Load Paths
+# Initialize Database --------------------------------------------------
+# Define database path
 db_path = rootPath + "\\" + config['general']['outputPath'] + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
 logger.debug(db_path)
 api = config['db']['pathToDLL']
 fdb.load_api(api)
-# Users
+
+# Database credentials
 db_User = "HeliosUser"
 db_Password = "class"
-# If none exists it should create a new Database
+
+# Create a new database if one does not exist
 if not os.path.exists(db_path):
-    # No Database Found
+    # No database found, attempt creation
     try:
         con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
         con.close()
     except:
-        logger.exception("Couldnt create database")
-    logger.info(f"Database createt at: {db_path}")
+        logger.exception("Could not create database")
+    logger.info(f"Database created at: {db_path}")
 else:
-    # An Existing Database was found
+    # Existing database found
     logger.info(f"Database already exists at: {db_path}")
-# Db Connection
+
+# Connect to the database
 con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
 cur = con.cursor()
-logger.info("Database Connection succesful!")
+logger.info("Database connection successful!")
+
+# Pytesseract
 pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
 # ----------------------------------------------------------------------
 
 
-
 # ---------------------------------------------------------------------------------------------------------------------
-# Recocnise all texts in the image and store them in the Database, The texts are Coverd up with white rectangles
+# Recognize all texts in the image and store them in the database, texts are covered with white rectangles
 def TextRecocnition(image, binary, cur, rotation, i):
-    # Use the AI to Extract all Texts
+    # Use Tesseract to extract all text
     data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
-    logger.debug("There were " + str(len(data)) + " words found!")
+    logger.debug(f"{len(data)} words detected!")
 
-    # Alle erkannten Texte verarbeitet
+    # Process all detected texts
     for j in range(len(data['text'])):
         if int(data['conf'][j]) > 20 and data['text'][j].strip() != "":
-            # Rechteck über den Text Zeichnen
+            # Draw a white rectangle over the text
             x, y, w, h = data['left'][j], data['top'][j], data['width'][j], data['height'][j]
             image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), thickness=-1)
 
-            # Erkannten Text in die Datenbank schreiben
+            # Write the recognized text into the database
             cur.execute("INSERT INTO Converted_" + str(i) + "(id, text, cordLeft, cordTop) VALUES (?, ?, ?, ?)", 
                         (j, data['text'][j], data['left'][j], data['top'][j]))
     return image
@@ -134,25 +145,25 @@ def TextRecocnition(image, binary, cur, rotation, i):
 
 
 # ---------------------------------------------------------------------------------------------------------------------
-# Takes the read Images and Processes them
+# Takes the read images and processes them
 def ConversionLoop(pages):
-    # Main Loop
+    # Main conversion loop
     for i, page in enumerate(pages):
         # Save the page as a temporary image
         image_path = rootPath + "\\" + tmpPath + f"temp_page_{i}.png"
         page.save(image_path, "PNG")
         image = cv2.imread(image_path, 0)
-        # For the Image Recognition software -> Brings the image in a binary format
+
+        # Convert the image to binary for text recognition
         _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
 
-        # Table In der Datenbank für die Derzeitige Seite erstellen     (!IF NOT EXISTS funktioniert in der Datenbank nicht!)
-        # Check if table exists before dropping it
+        # Create or drop the table for the current page in the database
         table_name = "CONVERTED_" + str(i)
         cur.execute(f"SELECT 1 FROM rdb$relations WHERE rdb$relation_name = '{table_name.upper()}'")
         
-        # If the table exists, drop it
+        # If table exists, drop it
         if cur.fetchone():
-            logger.debug("Table CONVERTED_" + str(i) + " already exists -> Dropped!")
+            logger.debug(f"Table {table_name} already exists -> Dropping it!")
             cur.execute(f"DROP TABLE {table_name}")
         
         # Create the new table
@@ -164,66 +175,64 @@ def ConversionLoop(pages):
                 cordTop INTEGER
             )
         """)
-        logger.debug(f"New table CONVERTED_{str(i)} created!")
+        logger.debug(f"New table {table_name} created!")
         con.commit()
 
-        # Abfrage wie Rotation behandelt werden soll
+        # Handle rotation as specified
         if(rotation == 'rr'):
-            logger.debug("Rotation -> rr")
+            logger.debug("Rotating image 90 degrees counterclockwise")
             image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
         if(rotation == 'rl'):
-            logger.debug("Rotation -> rl")
+            logger.debug("Rotating image 90 degrees clockwise")
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
-        # Text Recognition
-        # writes int database cur
+        # Text recognition
         image = TextRecocnition(image,binary, cur, "nr", i)
 
-        # Blurring und Thresholding
+        # Apply Gaussian blur and thresholding
         blurred = cv2.GaussianBlur(image, (9,9), 0)
-
         _, thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
 
-        # Saves the Converted Images
-        logger.info(f"Saved at: {outputPath}{filePath.split('.',1)[0]}\Converted{str(i)}.png") 
+        # Save the processed images
+        logger.info(f"Image saved at: {outputPath}{filePath.split('.',1)[0]}/Converted{i}.png") 
         cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Converted{i}.png", thresh)
         cv2.imwrite(f"{outputPath}{filePath.split('.',1)[0]}/Blurred{i}.png", blurred)
 
-        # If all needed pages are read break
+        # Stop processing after the required pages in single mode
         if(fileMode == "single"):
             if(len(usedPages) == 0):
                 break
 
 
 
-# Different File Modes ------------------------------------------------------------------------------------------------
-# Single --------------------------------------------------------------------------------------------------------------
+# File Modes ----------------------------------------------------------------------------------------------------------
+# Single mode ---------------------------------------------------------------------------------------------------------
 if fileMode == 'single':
-    logger.info(f"Read Pdf {filePath} in file mode single!")
-    logger.info("There will be  " + str(len(usedPages)) + " pages converted!")
-    logger.debug(str(dirPath) + str(filePath))
+    logger.info(f"Reading PDF {filePath} in single file mode")
+    logger.info(f"Converting {len(usedPages)} pages!")
+    logger.debug(f"Directory path: {dirPath + filePath}")
 
-    # Convert Pdf int .png
-    logger.info("Read Pdf ... ... ...")
+    # Convert PDF to PNG
+    logger.info("Reading PDF ...")
     temp = convert_from_path(
         str(dirPath) + str(filePath),
         300,
         poppler_path = config['Poppler']['pathToPoppler']
     )
-    logger.info("Pdf succesfully read!")
+    logger.info("PDF successfully read!")
 
-    # Only used Pages will be processed
+    # Process only the specified pages
     pages = [temp[int(i)] for i in usedPages]
-    # Start conversion
+    # Start the conversion process
     ConversionLoop(pages)
 
     
 
 # Multi ---------------------------------------------------------------------------------------------------------------
 if fileMode == 'multi':
-    logger.info("Read Pdfs in file mode multi!")
+    logger.info("Reading PDFs in multi-file mode")
 
-    # Convert Pdf into .png
+    # Convert PDFs to PNG
     i = 0
     pages = []
     for pdf in usedPdf:
@@ -233,9 +242,9 @@ if fileMode == 'multi':
             poppler_path = config['Poppler']['pathToPoppler']
         )
 
-        # Load images into Array
+        # Load first page of each PDF into the array
         pages.append(temp[0])
    
     
-    # Start conversion
+    # Start the conversion process
     ConversionLoop(pages)
