@@ -1,0 +1,45 @@
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.csproj.SuggestedBindingRedirects.cache
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\MainWindow.g.cs
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\App.g.cs
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface_MarkupCompile.cache
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\Interface.exe.config
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\Interface.exe
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\Interface.pdb
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\System.Drawing.Common.dll
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\System.Drawing.Common.pdb
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\System.Drawing.Common.xml
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\MainWindow.baml
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.g.resources
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.csproj.GenerateResource.cache
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.csproj.CopyComplete
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.exe
+C:\Schule\Diplomarbeit\Interface\Interface\obj\Debug\Interface.pdb
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\PdfiumViewer.dll
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\PdfiumViewer.xml
+C:\Schule\Diplomarbeit\Interface\Interface\bin\Debug\nl\PdfiumViewer.resources.dll
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\Interface.exe.config
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\Interface.exe
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\Interface.pdb
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\PdfiumViewer.dll
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\System.Drawing.Common.dll
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\PdfiumViewer.xml
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\System.Drawing.Common.pdb
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\System.Drawing.Common.xml
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\bin\Debug\nl\PdfiumViewer.resources.dll
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.csproj.SuggestedBindingRedirects.cache
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\MainWindow.g.cs
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\App.g.cs
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface_MarkupCompile.cache
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface_MarkupCompile.lref
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\MainWindow.baml
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.g.resources
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.csproj.GenerateResource.cache
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.csproj.CopyComplete
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.exe
+C:\Schule\Diplomarbeit\ProjectHelios\Intelligence Module\Interface\obj\Debug\Interface.pdb
