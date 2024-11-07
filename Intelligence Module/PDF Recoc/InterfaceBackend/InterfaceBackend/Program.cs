@@ -8,7 +8,7 @@ namespace InterfaceBackend
         {
             Console.WriteLine("Hello World!");
 
-            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+            // Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
 
             Reader r = new Reader("test");
 

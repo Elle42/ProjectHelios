@@ -1492,3 +1492,20 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I
 2024-11-07 10:15:37,254 -  DEBUG - New table CONVERTED_2 created!
 2024-11-07 10:15:38,594 -  DEBUG - 12 words detected!
 2024-11-07 10:15:38,616 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-11-07 11:16:42,923 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 11:16:42,925 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 11:16:42,929 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 11:16:43,109 -  INFO - Database connection successful!
+2024-11-07 11:16:43,110 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 11:16:46,188 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-11-07 11:16:46,209 -  DEBUG - New table CONVERTED_0 created!
+2024-11-07 11:16:47,719 -  DEBUG - 12 words detected!
+2024-11-07 11:16:47,745 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-07 11:16:48,663 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-11-07 11:16:48,668 -  DEBUG - New table CONVERTED_1 created!
+2024-11-07 11:16:50,286 -  DEBUG - 12 words detected!
+2024-11-07 11:16:50,319 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-07 11:16:51,177 -  DEBUG - Table CONVERTED_2 already exists -> Dropping it!
+2024-11-07 11:16:51,179 -  DEBUG - New table CONVERTED_2 created!
+2024-11-07 11:16:52,431 -  DEBUG - 12 words detected!
+2024-11-07 11:16:52,457 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted2.png

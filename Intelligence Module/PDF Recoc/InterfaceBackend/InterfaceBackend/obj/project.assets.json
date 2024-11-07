@@ -2,40 +2,41 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "ini-parser/2.5.2": {
+      "ini-parser-netstandard/2.5.2": {
         "type": "package",
         "compile": {
-          "lib/net20/INIFileParser.dll": {
-            "related": ".dll.mdb;.xml"
+          "lib/netstandard2.0/INIFileParser.dll": {
+            "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net20/INIFileParser.dll": {
-            "related": ".dll.mdb;.xml"
+          "lib/netstandard2.0/INIFileParser.dll": {
+            "related": ".xml"
           }
         }
       }
     }
   },
   "libraries": {
-    "ini-parser/2.5.2": {
-      "sha512": "hp3gKmC/14+6eKLgv7Jd1Z7OV86lO+tNfOXr/stQbwmRhdQuXVSvrRAuAe7G5+lwhkov0XkqZ8/bn1PYWMx6eg==",
+    "ini-parser-netstandard/2.5.2": {
+      "sha512": "rTyGzgT/a+mD2HxopOGpb/yWWhu5TTPgF59XUlHjhlNv7dbt9DME/qozIR7HreVAVpNnZSqP9A8TeViK5s949g==",
       "type": "package",
-      "path": "ini-parser/2.5.2",
+      "path": "ini-parser-netstandard/2.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ini-parser.2.5.2.nupkg.sha512",
-        "ini-parser.nuspec",
+        "ini-parser-netstandard.2.5.2.nupkg.sha512",
+        "ini-parser-netstandard.nuspec",
         "lib/net20/INIFileParser.dll",
-        "lib/net20/INIFileParser.dll.mdb",
-        "lib/net20/INIFileParser.xml"
+        "lib/net20/INIFileParser.xml",
+        "lib/netstandard2.0/INIFileParser.dll",
+        "lib/netstandard2.0/INIFileParser.xml"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "ini-parser >= 2.5.2"
+      "ini-parser-netstandard >= 2.5.2"
     ]
   },
   "packageFolders": {
@@ -82,7 +83,7 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "ini-parser": {
+          "ini-parser-netstandard": {
             "target": "Package",
             "version": "[2.5.2, )"
           }
@@ -124,17 +125,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Das Paket \"ini-parser 2.5.2\" wurde nicht mit dem Projektzielframework \"net6.0\", sondern mit \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" wiederhergestellt. Dieses Paket ist mit Ihrem Projekt möglicherweise nicht vollständig kompatibel.",
-      "libraryId": "ini-parser",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }
