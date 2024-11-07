@@ -24,11 +24,9 @@ else:
     # Running under Python
     rootPath = os.path.dirname(os.path.abspath(__file__))
 
-print(rootPath)
-
 # Configurations --------------------------
 config = configparser.ConfigParser()
-config.read(rootPath + '\\conf.ini')
+config.read(rootPath.rsplit('\\', 1)[0] + '\\conf.ini')
 # ------------------------------------------
 
 # Logger setup ----------------------------
@@ -85,7 +83,7 @@ if not os.path.exists(outputPath + filePath.split('.',1)[0]):
 
 # Load additional paths
 tmpPath = config['general']['tmpPath']
-dirPath = rootPath + f"\PlanPdf\\"
+dirPath = rootPath.rsplit('\\', 1)[0] + config['general']['pdfRootPath'] + "\\"
 # ----------------------------------------------------------------------
 
 # Initialize Database --------------------------------------------------

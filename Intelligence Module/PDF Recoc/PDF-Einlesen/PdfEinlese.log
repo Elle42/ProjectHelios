@@ -1396,3 +1396,99 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I
 2024-10-24 10:32:15,297 - rotating_logger - DEBUG - Es wurden 12 einzelne Woerter gefunden
 2024-10-24 10:32:15,344 - rotating_logger - INFO - Gespeichert Unter: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\Converted1.png
 2024-10-24 11:10:52,710 - rotating_logger - DEBUG - Uebergebener Awnendungs Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py
+2024-11-07 09:18:39,748 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 09:18:39,762 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:18:39,797 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:18:40,241 -  INFO - Database connection successful!
+2024-11-07 09:18:40,241 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 09:18:43,043 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-11-07 09:18:43,074 -  DEBUG - New table CONVERTED_0 created!
+2024-11-07 09:18:44,819 -  DEBUG - 12 words detected!
+2024-11-07 09:18:44,857 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-07 09:18:45,762 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-11-07 09:18:45,762 -  DEBUG - New table CONVERTED_1 created!
+2024-11-07 09:18:47,328 -  DEBUG - 12 words detected!
+2024-11-07 09:18:47,369 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-07 09:24:43,370 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 09:24:43,371 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:24:43,375 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:24:43,457 -  INFO - Database connection successful!
+2024-11-07 09:24:43,457 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 09:47:27,656 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 09:48:13,514 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 09:48:13,515 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:48:13,521 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:48:13,693 -  INFO - Database connection successful!
+2024-11-07 09:48:13,694 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 09:48:45,347 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 09:48:45,348 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:48:45,352 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:48:45,423 -  INFO - Database connection successful!
+2024-11-07 09:48:45,424 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 09:50:31,047 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 09:50:31,048 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:50:31,052 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 09:50:31,127 -  INFO - Database connection successful!
+2024-11-07 09:50:31,128 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 09:50:33,531 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-11-07 09:50:33,541 -  DEBUG - New table CONVERTED_0 created!
+2024-11-07 09:50:35,005 -  DEBUG - 12 words detected!
+2024-11-07 09:50:35,031 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-07 09:50:35,924 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-11-07 09:50:35,927 -  DEBUG - New table CONVERTED_1 created!
+2024-11-07 09:50:37,455 -  DEBUG - 12 words detected!
+2024-11-07 09:50:37,484 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-07 10:12:04,894 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 10:12:04,896 -  DEBUG - New directory 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA' created!
+2024-11-07 10:12:04,897 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 10:12:05,123 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 10:12:05,144 -  INFO - Database connection successful!
+2024-11-07 10:12:05,145 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 10:12:08,026 -  DEBUG - New table CONVERTED_0 created!
+2024-11-07 10:12:08,034 -  DEBUG - Rotating image 90 degrees counterclockwise
+2024-11-07 10:12:09,422 -  DEBUG - 12 words detected!
+2024-11-07 10:12:09,456 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-07 10:12:10,372 -  DEBUG - New table CONVERTED_1 created!
+2024-11-07 10:12:10,379 -  DEBUG - Rotating image 90 degrees counterclockwise
+2024-11-07 10:12:11,920 -  DEBUG - 12 words detected!
+2024-11-07 10:12:11,951 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-07 10:12:12,805 -  DEBUG - New table CONVERTED_2 created!
+2024-11-07 10:12:12,812 -  DEBUG - Rotating image 90 degrees counterclockwise
+2024-11-07 10:12:14,067 -  DEBUG - 12 words detected!
+2024-11-07 10:12:14,094 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted2.png
+2024-11-07 10:12:49,098 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 10:12:49,099 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 10:12:49,103 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA\TEXTSDB.fdb
+2024-11-07 10:12:49,383 -  INFO - Database connection successful!
+2024-11-07 10:12:49,383 -  INFO - Reading PDFs in multi-file mode
+2024-11-07 10:12:52,396 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-11-07 10:12:52,403 -  DEBUG - New table CONVERTED_0 created!
+2024-11-07 10:12:53,775 -  DEBUG - 12 words detected!
+2024-11-07 10:12:53,799 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-07 10:12:54,691 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-11-07 10:12:54,694 -  DEBUG - New table CONVERTED_1 created!
+2024-11-07 10:12:56,266 -  DEBUG - 12 words detected!
+2024-11-07 10:12:56,303 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-07 10:12:57,147 -  DEBUG - Table CONVERTED_2 already exists -> Dropping it!
+2024-11-07 10:12:57,150 -  DEBUG - New table CONVERTED_2 created!
+2024-11-07 10:12:58,438 -  DEBUG - 12 words detected!
+2024-11-07 10:12:58,466 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted2.png
+2024-11-07 10:15:28,691 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-07 10:15:28,692 -  DEBUG - New directory 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan' created!
+2024-11-07 10:15:28,693 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-11-07 10:15:28,879 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-11-07 10:15:28,895 -  INFO - Database connection successful!
+2024-11-07 10:15:28,896 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2024-11-07 10:15:28,896 -  INFO - Converting 3 pages!
+2024-11-07 10:15:28,896 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-11-07 10:15:28,897 -  INFO - Reading PDF ...
+2024-11-07 10:15:32,346 -  INFO - PDF successfully read!
+2024-11-07 10:15:33,051 -  DEBUG - New table CONVERTED_0 created!
+2024-11-07 10:15:34,418 -  DEBUG - 12 words detected!
+2024-11-07 10:15:34,451 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2024-11-07 10:15:35,213 -  DEBUG - New table CONVERTED_1 created!
+2024-11-07 10:15:36,467 -  DEBUG - 12 words detected!
+2024-11-07 10:15:36,489 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2024-11-07 10:15:37,254 -  DEBUG - New table CONVERTED_2 created!
+2024-11-07 10:15:38,594 -  DEBUG - 12 words detected!
+2024-11-07 10:15:38,616 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png

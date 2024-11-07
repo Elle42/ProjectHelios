@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5323E453-FB98-4AAE-8F13-3F91954940A0}|HeliosInterface\\HeliosInterface.csproj|d:\\matura project\\repos\\intelligence module\\pdf recoc\\pdf-verarbeitung\\heliosinterface\\heliosinterface\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5323E453-FB98-4AAE-8F13-3F91954940A0}|HeliosInterface\\HeliosInterface.csproj|solutionrelative:heliosinterface\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5323E453-FB98-4AAE-8F13-3F91954940A0}|HeliosInterface\\HeliosInterface.csproj|D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\heliosinterface\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5323E453-FB98-4AAE-8F13-3F91954940A0}|HeliosInterface\\HeliosInterface.csproj|solutionrelative:heliosinterface\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5323E453-FB98-4AAE-8F13-3F91954940A0}|HeliosInterface\\HeliosInterface.csproj|D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\heliosinterface\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5323E453-FB98-4AAE-8F13-3F91954940A0}|HeliosInterface\\HeliosInterface.csproj|solutionrelative:heliosinterface\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 211,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\HeliosInterface\\App.xaml",
+              "RelativeDocumentMoniker": "HeliosInterface\\App.xaml",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\HeliosInterface\\App.xaml",
+              "RelativeToolTip": "HeliosInterface\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-29T15:04:33.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\HeliosInterface\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "HeliosInterface\\MainWindow.xaml",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\HeliosInterface\\MainWindow.xaml",
+              "RelativeToolTip": "HeliosInterface\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-24T14:29:32.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\HeliosInterface\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "HeliosInterface\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\PDF-Verarbeitung\\HeliosInterface\\HeliosInterface\\MainWindow.xaml.cs",
+              "RelativeToolTip": "HeliosInterface\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T14:29:31.211Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

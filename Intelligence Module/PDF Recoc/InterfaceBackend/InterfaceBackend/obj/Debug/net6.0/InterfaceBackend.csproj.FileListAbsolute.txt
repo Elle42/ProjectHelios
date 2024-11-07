@@ -1,0 +1,34 @@
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.exe
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.deps.json
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.runtimeconfig.json
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.dll
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.pdb
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.GeneratedMSBuildEditorConfig.editorconfig
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.AssemblyInfoInputs.cache
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.AssemblyInfo.cs
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.csproj.CoreCompileInputs.cache
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.dll
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\refint\InterfaceBackend.dll
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.pdb
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.genruntimeconfig.cache
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\ref\InterfaceBackend.dll
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\INIFileParser.dll
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.csproj.AssemblyReference.cache
+D:\Matura Project\InterfaceBackend\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\Interfac.4252366F.Up2Date
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.csproj.AssemblyReference.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.GeneratedMSBuildEditorConfig.editorconfig
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.AssemblyInfoInputs.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.AssemblyInfo.cs
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.csproj.CoreCompileInputs.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\refint\InterfaceBackend.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.pdb
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.exe
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.deps.json
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.runtimeconfig.json
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\InterfaceBackend.pdb
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\INIFileParser.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\Interfac.4252366F.Up2Date
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.genruntimeconfig.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\ref\InterfaceBackend.dll
