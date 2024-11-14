@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "fVYXvedMrTA=",
+  "success": true,
+  "projectFilePath": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\InterfaceBackend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mutte\\.nuget\\packages\\ini-parser-netstandard\\2.5.2\\ini-parser-netstandard.2.5.2.nupkg.sha512",
+    "C:\\Users\\mutte\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\mutte\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\mutte\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\mutte\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\6.0.25\\microsoft.netcore.app.host.win-x86.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}

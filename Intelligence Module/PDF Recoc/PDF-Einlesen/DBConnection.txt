@@ -1,1 +1,1 @@
-connect 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\TEXTSDB.fdb' user 'HeliosUser' password 'class';
+connect 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.FDB' user 'HeliosUser' password 'class';

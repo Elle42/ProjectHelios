@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|d:\\matura project\\repos\\intelligence module\\pdf recoc\\interfacebackend\\interfacebackend\\reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|solutionrelative:interfacebackend\\reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|d:\\matura project\\repos\\intelligence module\\pdf recoc\\interfacebackend\\interfacebackend\\canvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|solutionrelative:interfacebackend\\canvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|d:\\matura project\\repos\\intelligence module\\pdf recoc\\interfacebackend\\interfacebackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|solutionrelative:interfacebackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|d:\\matura project\\repos\\intelligence module\\pdf recoc\\interfacebackend\\interfacebackend\\interfacebackend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{082B0064-9E2E-4FA9-B49F-19DEA7A9DD00}|InterfaceBackend\\InterfaceBackend.csproj|solutionrelative:interfacebackend\\interfacebackend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 211,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InterfaceBackend",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\InterfaceBackend.csproj",
+              "RelativeDocumentMoniker": "InterfaceBackend\\InterfaceBackend.csproj",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\InterfaceBackend.csproj",
+              "RelativeToolTip": "InterfaceBackend\\InterfaceBackend.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-07T08:35:09.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Reader.cs",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Reader.cs",
+              "RelativeDocumentMoniker": "InterfaceBackend\\Reader.cs",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Reader.cs",
+              "RelativeToolTip": "InterfaceBackend\\Reader.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T08:08:53.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Canvas.cs",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Canvas.cs",
+              "RelativeDocumentMoniker": "InterfaceBackend\\Canvas.cs",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Canvas.cs",
+              "RelativeToolTip": "InterfaceBackend\\Canvas.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T07:59:00.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Program.cs",
+              "RelativeDocumentMoniker": "InterfaceBackend\\Program.cs",
+              "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Program.cs",
+              "RelativeToolTip": "InterfaceBackend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T07:56:03.19Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
