@@ -8,17 +8,31 @@
             "program": "${file}",
             "console": "integratedTerminal",
             // "args": [
+            //     "--FileMode",
             //     "single",
+
+            //     "--FilePath",
             //     "MFH-RF1-Brandschutzplan.pdf",
+
+            //     "--Rotation",
             //     "nr",
+
+            //     "--UsedPages",
             //     "0",
             //     "3",
             //     "5"
             // ]
             "args": [
+                "--FileMode",
                 "multi",
+
+                "--Rotation",
                 "nr",
+
+                "--UsedDir",
                 "GIA",
+
+                "--UsedPdf",
                 "BSP_BUERO_OG.pdf",
                 "BSP_LAGER.pdf"
             ]
