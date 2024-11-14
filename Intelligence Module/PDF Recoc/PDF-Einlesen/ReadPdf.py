@@ -1,4 +1,5 @@
 # Import All
+import argparse
 from pdf2image import convert_from_path
 import cv2
 import numpy as np
@@ -57,19 +58,30 @@ logger.addHandler(handler)
 
 # Initialize Variables
 # Read arguments----------
-fileMode = argv[1]
+argParser = argparse.ArgumentParser(prog='ReadPdf', description='Reads the specified PDF File and Convertes it to images without the Text and creates a database where it stores these texts')
+argParser.add_argument("--FileMode", "-fM")
+argParser.add_argument("--FilePath", "-fP")
+argParser.add_argument("--Rotation", "-r")
+argParser.add_argument("--UsedPages", "-uPa", nargs='+')
+argParser.add_argument("--UsedDir", "-uD")
+argParser.add_argument("--UsedPdf", "-uPd", nargs='+')
+
+args = argParser.parse_args()
+
+fileMode = args.FileMode
 
 # File mode: Single
 if fileMode == 'single':    
-    filePath = argv[2]      # Path to the PDF file to convert
-    rotation = argv[3]      # Rotation direction: rr for counter-clockwise, rl for clockwise
-    usedPages = argv[4:]    # Pages to process, must be sorted
+    filePath = args.FilePath      # Path to the PDF file to convert
+    rotation = args.Rotation      # Rotation direction: rr for clockwise, rl for counter-clockwise
+    usedPages = args.UsedPages    # Pages to process
+    usedPages.sort()
 # File mode: Multi
 if fileMode == 'multi':
-    rotation = argv[2]      # Rotation direction: rr for counter-clockwise, rl for clockwise
-    usedDir = argv[3]       # Directory containing the PDFs to convert
-    usedPdf = argv[4:]      # List of PDF file names
-    filePath = usedDir      # Ensures the conversion loop runs correctly in multi mode
+    rotation = args.Rotation      # Rotation direction: rr for clockwise, rl for counter-clockwise
+    usedDir = args.UsedDir        # Directory containing the PDFs to convert
+    usedPdf = args.UsedPdf        # List of PDF file names
+    filePath = usedDir            # Ensures the conversion loop runs correctly in multi mode
 # ------------------------
 
 # Paths and Directories -------------------------------------------------
@@ -177,10 +189,10 @@ def ConversionLoop(pages):
         con.commit()
 
         # Handle rotation as specified
-        if(rotation == 'rr'):
+        if(rotation == 'rl'):
             logger.debug("Rotating image 90 degrees counterclockwise")
             image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
-        if(rotation == 'rl'):
+        if(rotation == 'rr'):
             logger.debug("Rotating image 90 degrees clockwise")
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 

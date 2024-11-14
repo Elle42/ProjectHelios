@@ -7,22 +7,35 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            // "args": [
-            //     "single",
-            //     "MFH-RF1-Brandschutzplan.pdf",
-            //     "nr",
-            //     "0",
-            //     "3",
-            //     "5"
-            // ]
             "args": [
-                "multi",
+                "--FileMode",
+                "single",
+
+                "--FilePath",
+                "MFH-RF1-Brandschutzplan.pdf",
+
+                "--Rotation",
                 "nr",
-                "GIA",
-                "BSP_BUERO_OG.pdf",
-                "BSP_LAGER.pdf",
-                "BSP_LAGER_Keller.pdf"
+
+                "--UsedPages",
+                "0",
+                "3",
+                "5"
             ]
+            // "args": [
+            //     "--FileMode",
+            //     "multi",
+
+            //     "--Rotation",
+            //     "nr",
+
+            //     "--UsedDir",
+            //     "GIA",
+
+            //     "--UsedPdf",
+            //     "BSP_BUERO_OG.pdf",
+            //     "BSP_LAGER.pdf"
+            // ]
         }
     ]
 }
