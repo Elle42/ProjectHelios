@@ -32,9 +32,11 @@ namespace InterfaceBackend
 
             var parser = new FileIniDataParser();
             // IniData data = parser.ReadFile(AppDomain.CurrentDomain.BaseDirectory);    <------ Wenn das Projekt gebaut wird muss es so verwendet werden
-            IniData data = parser.ReadFile("D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\conf.ini");
+            IniData conf = parser.ReadFile("D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\conf.ini");
 
-            this._pathToPdfFolder = data["general"]["pdfRootPath"];
+            this._pathToPdfFolder = conf["general"]["pdfRootPath"];
+
+            Console.WriteLine(conf["general"]["pdfRootPath"]);
 
         }
 

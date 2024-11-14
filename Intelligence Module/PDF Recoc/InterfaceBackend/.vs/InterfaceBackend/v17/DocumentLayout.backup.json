@@ -37,8 +37,7 @@
               "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\InterfaceBackend.csproj",
               "RelativeToolTip": "InterfaceBackend\\InterfaceBackend.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T08:35:09.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T08:35:09.051Z"
             },
             {
               "$type": "Document",
@@ -48,7 +47,7 @@
               "RelativeDocumentMoniker": "InterfaceBackend\\Reader.cs",
               "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Reader.cs",
               "RelativeToolTip": "InterfaceBackend\\Reader.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T08:08:53.031Z",
               "EditorCaption": ""
@@ -61,7 +60,7 @@
               "RelativeDocumentMoniker": "InterfaceBackend\\Canvas.cs",
               "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Canvas.cs",
               "RelativeToolTip": "InterfaceBackend\\Canvas.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T07:59:00.327Z",
               "EditorCaption": ""
@@ -76,8 +75,7 @@
               "RelativeToolTip": "InterfaceBackend\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T07:56:03.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T07:56:03.19Z"
             }
           ]
         }
