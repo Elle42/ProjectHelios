@@ -73,14 +73,15 @@ fileMode = args.FileMode
 # File mode: Single
 if fileMode == 'single':    
     filePath = args.FilePath      # Path to the PDF file to convert
-    rotation = args.Rotation      # Rotation direction: rr for counter-clockwise, rl for clockwise
-    usedPages = args.UsedPages    # Pages to process, must be sorted
+    rotation = args.Rotation      # Rotation direction: rr for clockwise, rl for counter-clockwise
+    usedPages = args.UsedPages    # Pages to process
+    usedPages.sort()
 # File mode: Multi
 if fileMode == 'multi':
-    rotation = args.Rotation      # Rotation direction: rr for counter-clockwise, rl for clockwise
-    usedDir = args.UsedDir       # Directory containing the PDFs to convert
-    usedPdf = args.UsedPdf      # List of PDF file names
-    filePath = usedDir      # Ensures the conversion loop runs correctly in multi mode
+    rotation = args.Rotation      # Rotation direction: rr for clockwise, rl for counter-clockwise
+    usedDir = args.UsedDir        # Directory containing the PDFs to convert
+    usedPdf = args.UsedPdf        # List of PDF file names
+    filePath = usedDir            # Ensures the conversion loop runs correctly in multi mode
 # ------------------------
 
 # Paths and Directories -------------------------------------------------
@@ -188,10 +189,10 @@ def ConversionLoop(pages):
         con.commit()
 
         # Handle rotation as specified
-        if(rotation == 'rr'):
+        if(rotation == 'rl'):
             logger.debug("Rotating image 90 degrees counterclockwise")
             image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
-        if(rotation == 'rl'):
+        if(rotation == 'rr'):
             logger.debug("Rotating image 90 degrees clockwise")
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
