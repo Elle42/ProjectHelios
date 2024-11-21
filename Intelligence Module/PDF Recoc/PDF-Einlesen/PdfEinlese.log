@@ -1455,3 +1455,204 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I
 2024-11-14 09:07:24,334 -  DEBUG - New table CONVERTED_2 created!
 2024-11-14 09:07:25,758 -  DEBUG - 12 words detected!
 2024-11-14 09:07:25,793 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-11-21 08:38:57,793 -  DEBUG - Root Path: d:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 08:39:52,729 -  DEBUG - Root Path: d:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 08:40:48,809 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 08:40:48,810 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 08:42:09,772 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 08:42:09,773 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 08:42:10,481 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 09:54:09,925 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 09:54:09,926 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 09:54:09,932 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 09:54:09,993 -  ERROR - Database connection failed!
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 154, in <module>
+    con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 869, in connect
+    raise exception_from_status(DatabaseError, _isc_status,
+fdb.fbcore.DatabaseError: ('Error while connecting to database:\n- SQLCODE: -902\n- I/O error during "CreateFile (open)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\TEXTSDB.FDB"\n- Error while trying to open file\n- Der Prozess kann nicht auf die Datei zugreifen, da sie von einem anderen Prozess verwendet wird. ', -902, 335544344)
+2024-11-21 09:54:09,999 -  INFO - Database connection successful!
+2024-11-21 10:24:38,804 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 10:24:38,805 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 10:24:38,810 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 10:24:38,889 -  INFO - Database connection successful!
+2024-11-21 10:26:29,236 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 10:26:29,237 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 10:26:29,243 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 10:26:29,336 -  INFO - Database connection successful!
+2024-11-21 11:17:36,732 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:17:36,733 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:17:36,738 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:17:36,930 -  INFO - Database connection successful!
+2024-11-21 11:17:36,937 -  INFO - Inserted new Fire Plan without specifying planId. It was auto-generated.
+2024-11-21 11:19:14,886 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:19:14,888 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:19:14,891 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:19:14,980 -  INFO - Database connection successful!
+2024-11-21 11:19:14,985 -  INFO - Inserted new Fire Plan!
+2024-11-21 11:19:23,066 -  INFO - Inserted new Fire Plan with generated planId: 2
+2024-11-21 11:43:44,700 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:43:44,701 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:43:44,706 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:43:44,790 -  INFO - Database connection successful!
+2024-11-21 11:43:48,727 -  INFO - Inserted new Fire Plan with generated planId: 2
+2024-11-21 11:43:48,727 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 11:43:53,186 -  DEBUG - 12 words detected!
+2024-11-21 11:48:01,977 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:48:01,978 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:48:01,984 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:48:02,073 -  INFO - Database connection successful!
+2024-11-21 11:48:06,279 -  INFO - Inserted new Fire Plan with generated planId: 2
+2024-11-21 11:48:06,280 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 11:48:10,368 -  DEBUG - 12 words detected!
+2024-11-21 11:49:26,110 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:49:26,111 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:49:26,114 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:49:26,216 -  INFO - Database connection successful!
+2024-11-21 11:49:26,220 -  INFO - Inserted new Fire Plan with generated planId: 2
+2024-11-21 11:49:26,220 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 11:49:29,981 -  DEBUG - 12 words detected!
+2024-11-21 11:51:02,631 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:51:02,633 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:51:02,636 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:51:02,723 -  INFO - Database connection successful!
+2024-11-21 11:51:02,727 -  INFO - Inserted new Fire Plan with generated planId: 2
+2024-11-21 11:51:02,729 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 11:51:06,369 -  DEBUG - 12 words detected!
+2024-11-21 11:51:15,778 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:51:15,779 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:51:15,783 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:51:15,875 -  INFO - Database connection successful!
+2024-11-21 11:51:15,879 -  INFO - Inserted new Fire Plan with generated planId: 3
+2024-11-21 11:51:15,880 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 11:51:19,968 -  DEBUG - 12 words detected!
+2024-11-21 11:54:41,349 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:54:41,351 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:54:41,356 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:54:41,447 -  ERROR - Database connection failed!
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 160, in <module>
+    con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 869, in connect
+    raise exception_from_status(DatabaseError, _isc_status,
+fdb.fbcore.DatabaseError: ('Error while connecting to database:\n- SQLCODE: -902\n- I/O error during "CreateFile (open)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\TEXTSDB.FDB"\n- Error while trying to open file\n- Der Prozess kann nicht auf die Datei zugreifen, da sie von einem anderen Prozess verwendet wird. ', -902, 335544344)
+2024-11-21 11:54:41,473 -  INFO - Database connection successful!
+2024-11-21 11:54:54,791 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 11:54:54,792 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:54:54,796 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 11:54:54,865 -  INFO - Database connection successful!
+2024-11-21 11:54:54,868 -  INFO - Inserted new Fire Plan with generated planId: 4
+2024-11-21 11:54:54,870 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 11:54:58,729 -  DEBUG - 12 words detected!
+2024-11-21 11:54:58,762 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-21 11:55:01,221 -  DEBUG - 12 words detected!
+2024-11-21 12:08:17,643 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 12:08:17,645 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:08:17,649 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:08:17,732 -  INFO - Database connection successful!
+2024-11-21 12:08:17,736 -  INFO - Inserted new Fire Plan with generated planId: 5
+2024-11-21 12:08:17,739 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 12:08:21,403 -  DEBUG - 12 words detected!
+2024-11-21 12:09:04,675 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 12:09:04,676 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:09:04,680 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:09:04,763 -  INFO - Database connection successful!
+2024-11-21 12:09:04,767 -  INFO - Inserted new Fire Plan with generated planId: 6
+2024-11-21 12:09:04,768 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 12:09:08,425 -  DEBUG - 12 words detected!
+2024-11-21 12:11:45,382 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 12:11:45,383 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:11:45,387 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:11:45,487 -  INFO - Database connection successful!
+2024-11-21 12:11:45,490 -  INFO - Inserted new Fire Plan with generated planId: 7
+2024-11-21 12:11:45,492 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 12:11:49,047 -  DEBUG - 12 words detected!
+2024-11-21 12:12:47,636 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 12:12:47,638 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:12:47,641 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 12:12:47,726 -  INFO - Database connection successful!
+2024-11-21 12:12:47,729 -  INFO - Inserted new Fire Plan with generated planId: 8
+2024-11-21 12:12:47,732 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 12:12:51,331 -  DEBUG - 12 words detected!
+2024-11-21 13:51:56,232 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 13:51:56,233 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 13:51:56,279 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 13:51:56,660 -  INFO - Database connection successful!
+2024-11-21 13:51:56,663 -  INFO - Inserted new Fire Plan with generated planId: 9
+2024-11-21 13:51:56,665 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 13:52:01,143 -  DEBUG - 12 words detected!
+2024-11-21 13:57:56,773 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 13:57:56,774 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 13:57:56,777 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 13:57:56,846 -  ERROR - Database connection failed!
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 160, in <module>
+    con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 869, in connect
+    raise exception_from_status(DatabaseError, _isc_status,
+fdb.fbcore.DatabaseError: ('Error while connecting to database:\n- SQLCODE: -902\n- I/O error during "CreateFile (open)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\TEXTSDB.FDB"\n- Error while trying to open file\n- Der Prozess kann nicht auf die Datei zugreifen, da sie von einem anderen Prozess verwendet wird. ', -902, 335544344)
+2024-11-21 13:57:56,869 -  INFO - Database connection successful!
+2024-11-21 13:58:09,582 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 13:58:09,584 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 13:58:09,587 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 13:58:09,659 -  INFO - Database connection successful!
+2024-11-21 13:58:09,662 -  INFO - Inserted new Fire Plan with generated planId: 10
+2024-11-21 13:58:09,665 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 13:58:13,406 -  DEBUG - 12 words detected!
+2024-11-21 13:58:20,166 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-21 13:58:22,670 -  DEBUG - 12 words detected!
+2024-11-21 13:58:22,702 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-21 14:00:03,790 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 14:00:03,791 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:00:03,795 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:00:03,845 -  ERROR - Database connection failed!
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 160, in <module>
+    con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 869, in connect
+    raise exception_from_status(DatabaseError, _isc_status,
+fdb.fbcore.DatabaseError: ('Error while connecting to database:\n- SQLCODE: -902\n- I/O error during "CreateFile (open)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\TEXTSDB.FDB"\n- Error while trying to open file\n- Der Prozess kann nicht auf die Datei zugreifen, da sie von einem anderen Prozess verwendet wird. ', -902, 335544344)
+2024-11-21 14:00:03,850 -  INFO - Database connection successful!
+2024-11-21 14:00:10,438 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 14:00:10,439 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:00:10,443 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:00:10,513 -  INFO - Database connection successful!
+2024-11-21 14:00:10,516 -  INFO - Inserted new Fire Plan with generated planId: 11
+2024-11-21 14:00:10,518 -  INFO - Reading PDFs in multi-file mode
+2024-11-21 14:00:14,301 -  DEBUG - 12 words detected!
+2024-11-21 14:00:14,325 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted0.png
+2024-11-21 14:00:16,828 -  DEBUG - 12 words detected!
+2024-11-21 14:00:16,860 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\GIA/Converted1.png
+2024-11-21 14:01:42,274 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 14:01:42,275 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:01:42,278 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:01:42,326 -  ERROR - Database connection failed!
+Traceback (most recent call last):
+  File "D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\ReadPdf.py", line 160, in <module>
+    con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mutte\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\fdb\fbcore.py", line 869, in connect
+    raise exception_from_status(DatabaseError, _isc_status,
+fdb.fbcore.DatabaseError: ('Error while connecting to database:\n- SQLCODE: -902\n- I/O error during "CreateFile (open)" operation for file "D:\\MATURA PROJECT\\REPOS\\INTELLIGENCE MODULE\\PDF RECOC\\TEXTSDB.FDB"\n- Error while trying to open file\n- Der Prozess kann nicht auf die Datei zugreifen, da sie von einem anderen Prozess verwendet wird. ', -902, 335544344)
+2024-11-21 14:01:42,331 -  INFO - Database connection successful!
+2024-11-21 14:01:54,054 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-21 14:01:54,055 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:01:54,058 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-21 14:01:54,126 -  INFO - Database connection successful!
+2024-11-21 14:01:54,129 -  INFO - Inserted new Fire Plan with generated planId: 12
+2024-11-21 14:01:54,132 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2024-11-21 14:01:54,133 -  INFO - Converting 3 pages!
+2024-11-21 14:01:54,134 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-11-21 14:01:54,136 -  INFO - Reading PDF ...
+2024-11-21 14:01:58,435 -  INFO - PDF successfully read!
+2024-11-21 14:02:00,520 -  DEBUG - 12 words detected!
+2024-11-21 14:02:00,563 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2024-11-21 14:02:02,645 -  DEBUG - 12 words detected!
+2024-11-21 14:02:02,681 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2024-11-21 14:02:04,865 -  DEBUG - 12 words detected!
+2024-11-21 14:02:04,901 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
