@@ -20,29 +20,46 @@ namespace InterfaceBackend
         /// <param name="pathToPdf"></param>
         public Reader(string pathToPdf)
         {
+            var parser = new FileIniDataParser();
+
+            // Load´the right root path
+
 #if DEBUG
-            this._executableRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            this._executableRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
             Console.WriteLine("Debug " + _executableRootPath);
+            IniData conf = parser.ReadFile("D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\conf.ini");
 #else
             this._executableRootPath = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine("EXE " + _executableRootPath);
+            IniData data = parser.ReadFile(AppDomain.CurrentDomain.BaseDirectory);
 #endif
 
             this._pathToPdf = pathToPdf;
-
-            var parser = new FileIniDataParser();
-            // IniData data = parser.ReadFile(AppDomain.CurrentDomain.BaseDirectory);    <------ Wenn das Projekt gebaut wird muss es so verwendet werden
-            IniData conf = parser.ReadFile("D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\conf.ini");
 
             this._pathToPdfFolder = conf["general"]["pdfRootPath"];
 
             Console.WriteLine(conf["general"]["pdfRootPath"]);
 
+            // Copy Pdf in the right Directories and add them to my working Dir
+            try
+            {
+                File.Copy(_pathToPdf, Path.Combine(Directory.GetParent(_executableRootPath).FullName ,_pathToPdfFolder));
+
+            }
+            catch
+            {
+
+            }
         }
 
-        public bool ReadPdf()
+        public bool ReadPdf(int[] pages)
         {
-            return true;
+            throw new NotImplementedException();
+        }
+
+        public bool ReadPdf(string[] pages)
+        {
+            throw new NotImplementedException();
         }
     }
 }
