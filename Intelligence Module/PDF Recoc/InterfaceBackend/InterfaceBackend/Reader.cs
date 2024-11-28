@@ -25,12 +25,18 @@ namespace InterfaceBackend
             // Load´the right root path
 
 #if DEBUG
+            // Set the executable Path based on the curret mode of execution
             this._executableRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
             Console.WriteLine("Debug " + _executableRootPath);
+
+            // Read the conf file
             IniData conf = parser.ReadFile("D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\conf.ini");
 #else
+            // Set the executable Path based on the curret mode of execution
             this._executableRootPath = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine("EXE " + _executableRootPath);
+
+            // Read the conf file
             IniData data = parser.ReadFile(AppDomain.CurrentDomain.BaseDirectory);
 #endif
 
@@ -48,7 +54,7 @@ namespace InterfaceBackend
             }
             catch
             {
-
+                throw new NotImplementedException();
             }
         }
 
@@ -58,6 +64,11 @@ namespace InterfaceBackend
         }
 
         public bool ReadPdf(string[] pages)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Picture[] GetPictures()
         {
             throw new NotImplementedException();
         }
