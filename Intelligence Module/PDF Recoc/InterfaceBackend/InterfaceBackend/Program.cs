@@ -9,10 +9,10 @@ namespace InterfaceBackend
             Console.WriteLine("Hello World!");
 
             // Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
-
-            Reader r = new Reader("D:\\Matura Project\\Repos\\Pläne\\HTL\\Brandschutzplan 255C - 1.OG - Werkstättentrakt HTL.pdf");
-
             int[] pages = new int[] { 1, 2, 3 };
+            Reader r = new Reader("C:\\Users\\Elias.Mutter\\Documents\\Repos\\Pläne\\GIA\\Brandschutzpläne_06_2024.pdf", pages);
+
+            
 
             Console.ReadLine();
         }

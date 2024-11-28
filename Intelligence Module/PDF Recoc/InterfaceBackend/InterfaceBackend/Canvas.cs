@@ -11,14 +11,14 @@ namespace InterfaceBackend
     /// </summary>
     class Canvas
     {
-        private Picture[] pictures;
+        private Image[] _images;
         
     }
 
     /// <summary>
     /// Picture Contains the Reference to the used Png and all the infos for this specific image
     /// </summary>
-    class Picture
+    class Image
     {
         private string _pathToImg;
         private string _pathToDb;
@@ -28,7 +28,7 @@ namespace InterfaceBackend
         private int _cutoutX;
         private int _cutoutY;
 
-        Picture(string pathToOmg, string pathToDb, int width, int height, float scale)
+        Image(string pathToOmg, string pathToDb, int width, int height, float scale)
         {
             this._pathToImg = pathToOmg;
             this._pathToDb = pathToDb;
@@ -37,7 +37,7 @@ namespace InterfaceBackend
             this._scale = scale;
         }
 
-        Picture(string pathToOmg, string pathToDb, int width, int height, float scale, int cutoutX, int cutoutY)
+        Image(string pathToOmg, string pathToDb, int width, int height, float scale, int cutoutX, int cutoutY)
         {
             this._pathToImg = pathToOmg;
             this._pathToDb = pathToDb;

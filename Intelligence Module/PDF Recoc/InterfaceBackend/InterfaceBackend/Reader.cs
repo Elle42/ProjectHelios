@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using IniParser;
 using IniParser.Model;
+using Serilog;
+using Serilog.Sinks.File;
+using Serilog.Sinks.SystemConsole;
 
 namespace InterfaceBackend
 {
@@ -18,7 +21,8 @@ namespace InterfaceBackend
         /// Reads a Pdf and copys it into the working Directory of the Conversion Software
         /// </summary>
         /// <param name="pathToPdf"></param>
-        public Reader(string pathToPdf)
+        /// <param name="pages"></param>
+        public Reader(string pathToPdf, int[] pages)
         {
             var parser = new FileIniDataParser();
 
@@ -30,7 +34,7 @@ namespace InterfaceBackend
             Console.WriteLine("Debug " + _executableRootPath);
 
             // Read the conf file
-            IniData conf = parser.ReadFile("D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\conf.ini");
+            IniData conf = parser.ReadFile(Directory.GetParent(_executableRootPath).FullName + "\\conf.ini");
 #else
             // Set the executable Path based on the curret mode of execution
             this._executableRootPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -49,16 +53,24 @@ namespace InterfaceBackend
             // Copy Pdf in the right Directories and add them to my working Dir
             try
             {
-                File.Copy(_pathToPdf, Path.Combine(Directory.GetParent(_executableRootPath).FullName ,_pathToPdfFolder));
+                Console.WriteLine("Return: " + Directory.GetParent(_executableRootPath).Parent.FullName);
+                Console.WriteLine("PathToPdf: " + _pathToPdf);
+                Console.WriteLine("Folder: " + Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
+                File.Copy(_pathToPdf, Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
 
             }
-            catch
+            catch (UnauthorizedAccessException uaex)
             {
-                throw new NotImplementedException();
+                Console.WriteLine("you are not permitted to acces the specified Directory!");
+                Console.WriteLine(uaex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public bool ReadPdf(int[] pages)
+        public bool ReadPdf()
         {
             throw new NotImplementedException();
         }
@@ -68,7 +80,7 @@ namespace InterfaceBackend
             throw new NotImplementedException();
         }
 
-        public Picture[] GetPictures()
+        public Image[] GetImages()
         {
             throw new NotImplementedException();
         }
