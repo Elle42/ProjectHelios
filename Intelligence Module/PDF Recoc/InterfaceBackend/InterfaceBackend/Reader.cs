@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using Serilog.Sinks.SystemConsole;
 
 namespace InterfaceBackend
 {
-    class Reader
+    class IB_Reader
     {
         private string _pathToPdf;
         private string _pathToPdfFolder;
@@ -22,7 +23,7 @@ namespace InterfaceBackend
         /// </summary>
         /// <param name="pathToPdf"></param>
         /// <param name="pages"></param>
-        public Reader(string pathToPdf, int[] pages)
+        public IB_Reader(string pathToPdf, int[] pages)
         {
             var parser = new FileIniDataParser();
 
@@ -80,7 +81,7 @@ namespace InterfaceBackend
             throw new NotImplementedException();
         }
 
-        public Image[] GetImages()
+        public IB_Image[] GetImages()
         {
             throw new NotImplementedException();
         }
