@@ -118,6 +118,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -128,6 +129,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceBackend\InterfaceBackend.csproj">
+      <Project>{1dea38e7-625d-4a49-ac21-432c7bbb4f68}</Project>
+      <Name>InterfaceBackend</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FW_Braunau-1.png">
+      <CustomToolNamespace>InterfaceFrontend</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HELIOS.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

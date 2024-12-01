@@ -46,10 +46,30 @@ namespace InterfaceFrontend
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.WindowStyle = WindowStyle.None;
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
             this.Topmost = true;
             this.WindowState = WindowState.Maximized;
         }
+
+
+
+        private void BurgerMenuToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SideMenu.Visibility == Visibility.Visible && SideMenu_TextBox.Visibility == Visibility.Visible)
+            {
+                SideMenu.Visibility = Visibility.Collapsed;
+                SideMenu_TextBox.Visibility = Visibility.Collapsed;
+                Background = Brushes.White;
+            }
+            else    
+            {
+                SideMenu.Visibility = Visibility.Visible;
+                SideMenu_TextBox.Visibility = Visibility.Visible;
+                Background = Brushes.LightGray;
+            }
+        }
+
+
 
         private void ImageSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -314,10 +334,7 @@ namespace InterfaceFrontend
                 currentlySelectedBorder = null; // Zustand zurücksetzen
             }
         }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+      
         private void ShowImageInfo(int imageId)
         {
             throw new NotImplementedException();
