@@ -136,6 +136,13 @@ if not os.path.exists(db_path):
 
     # Initalise tables in the new Database
     cur.execute(f"""
+            CREATE TABLE FIRE_PLANS (
+            planId INTEGER PRIMARY KEY,
+            name VARCHAR(40)
+            );    
+        """)
+    cur.execute(f"""
+            
             CREATE TABLE CONVERTED_TEXTS (
             id INTEGER PRIMARY KEY,
             text VARCHAR(40),
@@ -146,11 +153,8 @@ if not os.path.exists(db_path):
 	        FOREIGN KEY (planId) REFERENCES FIRE_PLANS(planId)
             );
 
-            CREATE TABLE FIRE_PLANS (
-            planId INTEGER PRIMARY KEY,
-            name VARCHAR(40)
-            );
         """)
+    con.commit()
     
 else:
     # Existing database found

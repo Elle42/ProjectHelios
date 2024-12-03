@@ -1656,3 +1656,35 @@ fdb.fbcore.DatabaseError: ('Error while connecting to database:\n- SQLCODE: -902
 2024-11-21 14:02:02,681 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
 2024-11-21 14:02:04,865 -  DEBUG - 12 words detected!
 2024-11-21 14:02:04,901 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-11-28 16:19:37,104 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:19:37,104 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:19:37,160 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:19:37,160 -  INFO - Database connection successful!
+2024-11-28 16:22:53,753 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:22:53,753 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:22:53,794 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:22:53,805 -  INFO - Database connection successful!
+2024-11-28 16:23:49,065 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:23:49,065 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:23:49,117 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:23:49,117 -  INFO - Database connection successful!
+2024-11-28 16:25:04,042 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:25:04,042 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:25:04,092 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:25:04,092 -  INFO - Database connection successful!
+2024-11-28 16:25:34,632 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:25:34,632 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:25:34,687 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:25:34,691 -  INFO - Database connection successful!
+2024-11-28 16:26:19,405 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:26:19,405 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:26:19,439 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:26:19,456 -  INFO - Database connection successful!
+2024-11-28 16:26:55,358 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:26:55,373 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:26:55,408 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:26:55,408 -  INFO - Database connection successful!
+2024-11-28 16:27:24,821 -  DEBUG - Root Path: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-11-28 16:27:24,821 -  DEBUG - C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:27:24,868 -  INFO - Database created at: C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-11-28 16:27:24,868 -  INFO - Database connection successful!
