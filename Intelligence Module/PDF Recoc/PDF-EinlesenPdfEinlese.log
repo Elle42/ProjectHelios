@@ -1,0 +1,21 @@
+2024-12-05 09:34:22,856 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-05 09:34:22,857 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-12-05 09:34:22,865 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-12-05 09:34:23,004 -  INFO - Database connection successful!
+2024-12-05 09:34:23,005 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2024-12-05 09:34:23,005 -  INFO - Converting 3 pages!
+2024-12-05 09:34:23,006 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-12-05 09:34:23,007 -  INFO - Reading PDF ...
+2024-12-05 09:34:27,682 -  INFO - PDF successfully read!
+2024-12-05 09:34:28,466 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-12-05 09:34:28,498 -  DEBUG - New table CONVERTED_0 created!
+2024-12-05 09:34:30,013 -  DEBUG - 12 words detected!
+2024-12-05 09:34:30,055 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2024-12-05 09:34:30,853 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-12-05 09:34:30,856 -  DEBUG - New table CONVERTED_1 created!
+2024-12-05 09:34:32,193 -  DEBUG - 12 words detected!
+2024-12-05 09:34:32,228 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2024-12-05 09:34:33,019 -  DEBUG - Table CONVERTED_2 already exists -> Dropping it!
+2024-12-05 09:34:33,023 -  DEBUG - New table CONVERTED_2 created!
+2024-12-05 09:34:34,506 -  DEBUG - 12 words detected!
+2024-12-05 09:34:34,542 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png

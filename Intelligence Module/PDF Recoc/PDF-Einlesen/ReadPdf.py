@@ -41,7 +41,7 @@ match config['general']['logLevel']:
         logger.setLevel(logging.INFO)
 
 # Rotating log handler with max file size of 5 MB
-handler = RotatingFileHandler(config['general']['logFile'], maxBytes=5*1024*1024, backupCount=3)
+handler = RotatingFileHandler(rootPath + config['general']['logFile'], maxBytes=5*1024*1024, backupCount=3)
 
 # Log format -> Time -> Level -> Message
 formatter = logging.Formatter('%(asctime)s -  %(levelname)s - %(message)s')

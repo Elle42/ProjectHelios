@@ -50,3 +50,13 @@ C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\InterfaceBac
 C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.pdb
 C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\InterfaceBackend.genruntimeconfig.cache
 C:\Users\Elias.Mutter\Documents\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\obj\Debug\net6.0\ref\InterfaceBackend.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Serilog.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\Serilog.Sinks.File.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceBackend\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

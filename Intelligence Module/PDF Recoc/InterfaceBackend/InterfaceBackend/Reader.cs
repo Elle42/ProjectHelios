@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using IniParser;
@@ -18,12 +20,25 @@ namespace InterfaceBackend
         private string _pathToPdfFolder;
         private string _executableRootPath;
 
+        public enum Rotation
+        {
+            NoRotation,
+            RotationLeft, 
+            RotationRight
+        }
+
+        public enum FileMode
+        {
+            Single,
+            Multi
+        }
+
         /// <summary>
         /// Reads a Pdf and copys it into the working Directory of the Conversion Software
         /// </summary>
-        /// <param name="pathToPdf"></param>
-        /// <param name="pages"></param>
-        public IB_Reader(string pathToPdf, int[] pages)
+        /// <param name="pathToPdf">The full Path to the Pdf File wich should be copied as a string</param>
+        /// <param name="pages">Specify which of th pages should be converted be adding aintger array</param>
+        public IB_Reader(string pathToPdf, int[] pages, Rotation rotation)
         {
             var parser = new FileIniDataParser();
 
@@ -58,7 +73,6 @@ namespace InterfaceBackend
                 Console.WriteLine("PathToPdf: " + _pathToPdf);
                 Console.WriteLine("Folder: " + Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
                 File.Copy(_pathToPdf, Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
-
             }
             catch (UnauthorizedAccessException uaex)
             {
@@ -69,6 +83,8 @@ namespace InterfaceBackend
             {
                 Console.WriteLine(ex.Message);
             }
+
+            LaunchCommandLineApp(pathToPdf, pages, Rotation.NoRotation, @"D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen", FileMode.Single);
         }
 
         public bool ReadPdf()
@@ -84,6 +100,55 @@ namespace InterfaceBackend
         public IB_Image[] GetImages()
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Launch the Conversion Applikation
+        /// </summary>
+        static void LaunchCommandLineApp(string pathToPdf, int[] pages, Rotation rotation, string pathToExeDir, FileMode fm)
+        {
+            string rotStr;
+            switch (rotation)
+            {
+                case Rotation.RotationLeft:
+                    rotStr = "rl";
+                    break;
+                case Rotation.RotationRight:
+                    rotStr = "rr";
+                    break;
+                case Rotation.NoRotation:
+                    rotStr = "nr";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.CreateNoWindow = false;
+            startInfo.UseShellExecute = false;
+            startInfo.FileName = "ReadPdf.exe";
+            startInfo.WorkingDirectory = pathToExeDir;
+            if (fm == FileMode.Single)
+            {
+                startInfo.Arguments = string.Join(" --FileMode single --FilePath " + pathToPdf + " --Rotation " + rotStr + " --UsedPages ", pages);
+            }
+
+
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            try
+            {
+                // Start the process with the info we specified.
+                // Call WaitForExit and then the using statement will close.
+                using (Process exeProcess = Process.Start(startInfo))
+                {
+                    exeProcess.WaitForExit();
+                }
+            }
+            catch
+            {
+                // Log error.
+            }
         }
     }
 }

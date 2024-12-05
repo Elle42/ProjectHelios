@@ -1455,3 +1455,4 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- I
 2024-11-14 09:07:24,334 -  DEBUG - New table CONVERTED_2 created!
 2024-11-14 09:07:25,758 -  DEBUG - 12 words detected!
 2024-11-14 09:07:25,793 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-12-05 09:32:05,746 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
