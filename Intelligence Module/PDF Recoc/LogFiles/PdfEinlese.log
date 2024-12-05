@@ -40,3 +40,24 @@
 2024-12-05 11:26:52,776 -  DEBUG - New table CONVERTED_2 created!
 2024-12-05 11:26:54,074 -  DEBUG - 12 words detected!
 2024-12-05 11:26:54,099 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-12-05 14:39:02,561 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-05 14:39:02,562 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-12-05 14:39:02,674 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-12-05 14:39:03,131 -  INFO - Database connection successful!
+2024-12-05 14:39:03,132 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2024-12-05 14:39:03,132 -  INFO - Converting 3 pages!
+2024-12-05 14:39:03,133 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-12-05 14:39:03,133 -  INFO - Reading PDF ...
+2024-12-05 14:39:07,216 -  INFO - PDF successfully read!
+2024-12-05 14:39:07,922 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-12-05 14:39:07,939 -  DEBUG - New table CONVERTED_0 created!
+2024-12-05 14:39:09,673 -  DEBUG - 12 words detected!
+2024-12-05 14:39:09,711 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2024-12-05 14:39:10,467 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-12-05 14:39:10,469 -  DEBUG - New table CONVERTED_1 created!
+2024-12-05 14:39:11,666 -  DEBUG - 12 words detected!
+2024-12-05 14:39:11,688 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2024-12-05 14:39:12,450 -  DEBUG - Table CONVERTED_2 already exists -> Dropping it!
+2024-12-05 14:39:12,452 -  DEBUG - New table CONVERTED_2 created!
+2024-12-05 14:39:13,726 -  DEBUG - 12 words detected!
+2024-12-05 14:39:13,750 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
