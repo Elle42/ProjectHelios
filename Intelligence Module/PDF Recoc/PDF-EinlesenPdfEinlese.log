@@ -19,3 +19,25 @@
 2024-12-05 09:34:33,023 -  DEBUG - New table CONVERTED_2 created!
 2024-12-05 09:34:34,506 -  DEBUG - 12 words detected!
 2024-12-05 09:34:34,542 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-12-05 10:36:06,892 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-05 10:38:23,198 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-05 10:38:23,198 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-12-05 10:38:23,233 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan\TEXTSDB.fdb
+2024-12-05 10:38:23,381 -  INFO - Database connection successful!
+2024-12-05 10:38:23,381 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2024-12-05 10:38:23,382 -  INFO - Converting 3 pages!
+2024-12-05 10:38:23,382 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-12-05 10:38:23,382 -  INFO - Reading PDF ...
+2024-12-05 10:38:27,459 -  INFO - PDF successfully read!
+2024-12-05 10:38:28,187 -  DEBUG - Table CONVERTED_0 already exists -> Dropping it!
+2024-12-05 10:38:28,213 -  DEBUG - New table CONVERTED_0 created!
+2024-12-05 10:38:29,779 -  DEBUG - 12 words detected!
+2024-12-05 10:38:29,820 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2024-12-05 10:38:30,597 -  DEBUG - Table CONVERTED_1 already exists -> Dropping it!
+2024-12-05 10:38:30,600 -  DEBUG - New table CONVERTED_1 created!
+2024-12-05 10:38:31,817 -  DEBUG - 12 words detected!
+2024-12-05 10:38:31,841 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2024-12-05 10:38:32,619 -  DEBUG - Table CONVERTED_2 already exists -> Dropping it!
+2024-12-05 10:38:32,621 -  DEBUG - New table CONVERTED_2 created!
+2024-12-05 10:38:33,914 -  DEBUG - 12 words detected!
+2024-12-05 10:38:33,939 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png

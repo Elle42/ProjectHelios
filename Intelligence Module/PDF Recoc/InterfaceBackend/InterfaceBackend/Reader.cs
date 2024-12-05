@@ -19,11 +19,12 @@ namespace InterfaceBackend
         private string _pathToPdf;
         private string _pathToPdfFolder;
         private string _executableRootPath;
+        private Logger logger;
 
         public enum Rotation
         {
             NoRotation,
-            RotationLeft, 
+            RotationLeft,
             RotationRight
         }
 
@@ -42,19 +43,21 @@ namespace InterfaceBackend
         {
             var parser = new FileIniDataParser();
 
+            logger = new Logger();
+
             // Load´the right root path
 
 #if DEBUG
             // Set the executable Path based on the curret mode of execution
             this._executableRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
-            Console.WriteLine("Debug " + _executableRootPath);
+            logger.Log(_executableRootPath, LogLevel.Debug);
 
             // Read the conf file
             IniData conf = parser.ReadFile(Directory.GetParent(_executableRootPath).FullName + "\\conf.ini");
 #else
             // Set the executable Path based on the curret mode of execution
             this._executableRootPath = AppDomain.CurrentDomain.BaseDirectory;
-            Console.WriteLine("EXE " + _executableRootPath);
+            logger.Log(_executableRootPath, LogLevel.Debug);
 
             // Read the conf file
             IniData data = parser.ReadFile(AppDomain.CurrentDomain.BaseDirectory);
@@ -62,26 +65,31 @@ namespace InterfaceBackend
 
             this._pathToPdf = pathToPdf;
 
-            this._pathToPdfFolder = conf["general"]["pdfRootPath"];
+            this._pathToPdfFolder = conf["ReadPdf"]["pdfRootPath"];
 
-            Console.WriteLine(conf["general"]["pdfRootPath"]);
+            logger.Log(conf["ReadPdf"]["pdfRootPath"], LogLevel.Debug);
 
             // Copy Pdf in the right Directories and add them to my working Dir
             try
             {
-                Console.WriteLine("Return: " + Directory.GetParent(_executableRootPath).Parent.FullName);
-                Console.WriteLine("PathToPdf: " + _pathToPdf);
-                Console.WriteLine("Folder: " + Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
+                //Console.WriteLine("Return: " + Directory.GetParent(_executableRootPath).Parent.FullName);
+                //Console.WriteLine("PathToPdf: " + _pathToPdf);
+                //Console.WriteLine("Folder: " + Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
                 File.Copy(_pathToPdf, Directory.GetParent(_executableRootPath).FullName + _pathToPdfFolder + "\\" + _pathToPdf.Split('\\').Last());
+                logger.Log("Succesfully Copied File \"" + this._pathToPdf + "\"", LogLevel.Debug);
             }
             catch (UnauthorizedAccessException uaex)
             {
-                Console.WriteLine("you are not permitted to acces the specified Directory!");
-                Console.WriteLine(uaex.Message);
+                logger.Log("You are not permitted to acces the specified Directory!", LogLevel.Error);
+                logger.Log(uaex.Message, LogLevel.Error);
+            }
+            catch (IOException ex)
+            {
+                logger.Log("File already exists, overwriting it!", LogLevel.Warning);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                logger.Log(ex.Message, LogLevel.Error);
             }
 
             LaunchCommandLineApp(pathToPdf, pages, Rotation.NoRotation, @"D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen", FileMode.Single);
@@ -105,7 +113,7 @@ namespace InterfaceBackend
         /// <summary>
         /// Launch the Conversion Applikation
         /// </summary>
-        static void LaunchCommandLineApp(string pathToPdf, int[] pages, Rotation rotation, string pathToExeDir, FileMode fm)
+        void LaunchCommandLineApp(string pathToPdf, int[] pages, Rotation rotation, string pathToExeDir, FileMode fm)
         {
             string rotStr;
             switch (rotation)
@@ -126,28 +134,42 @@ namespace InterfaceBackend
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.CreateNoWindow = false;
             startInfo.UseShellExecute = false;
-            startInfo.FileName = "ReadPdf.exe";
+            startInfo.FileName = pathToExeDir + "\\ReadPdf.exe";
             startInfo.WorkingDirectory = pathToExeDir;
             if (fm == FileMode.Single)
             {
-                startInfo.Arguments = string.Join(" --FileMode single --FilePath " + pathToPdf + " --Rotation " + rotStr + " --UsedPages ", pages);
+                startInfo.Arguments = " --FileMode single --FilePath "
+                    + pathToPdf.Split('\\')[^1]
+                    + " --Rotation "
+                    + rotStr
+                    + " --UsedPages "
+                    + string.Join(" ", pages);
+
+                this.logger.Log("Starting Application with Arguments: " + " --FileMode single --FilePath "
+                    + pathToPdf.Split('\\')[^1]
+                    + " --Rotation "
+                    + rotStr
+                    + " --UsedPages "
+                    + string.Join(" ", pages),
+                    LogLevel.Debug);
             }
 
 
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
+
+            // Start the Exe
             try
             {
-                // Start the process with the info we specified.
-                // Call WaitForExit and then the using statement will close.
                 using (Process exeProcess = Process.Start(startInfo))
                 {
                     exeProcess.WaitForExit();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Log error.
+
+                throw;
             }
         }
     }

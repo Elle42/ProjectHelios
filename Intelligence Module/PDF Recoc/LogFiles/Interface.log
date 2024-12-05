@@ -1,0 +1,14 @@
+2024-12-05 11:08:27 [Debug] D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend
+2024-12-05 11:08:27 [Debug] \Pdf-Einlesen\PlanPdf
+2024-12-05 11:13:54 [Debug] D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend
+2024-12-05 11:13:54 [Debug] \Pdf-Einlesen\PlanPdf
+2024-12-05 11:13:54 [Error] The file 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf' already exists.
+2024-12-05 11:13:54 [Debug] Starting Application with Arguments:  --FileMode single --FilePath MFH-RF1-Brandschutzplan.pdf --Rotation nr --UsedPages 1 2 3
+2024-12-05 11:18:49 [Debug] D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend
+2024-12-05 11:18:49 [Debug] \Pdf-Einlesen\PlanPdf
+2024-12-05 11:18:49 [Warning] File already exists, overwriting it!
+2024-12-05 11:18:49 [Debug] Starting Application with Arguments:  --FileMode single --FilePath MFH-RF1-Brandschutzplan.pdf --Rotation nr --UsedPages 1 2 3
+2024-12-05 11:20:19 [Debug] D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend
+2024-12-05 11:20:19 [Debug] \Pdf-Einlesen\PlanPdf
+2024-12-05 11:20:19 [Warning] File already exists, overwriting it!
+2024-12-05 11:20:19 [Debug] Starting Application with Arguments:  --FileMode single --FilePath MFH-RF1-Brandschutzplan.pdf --Rotation nr --UsedPages 1 2 3
