@@ -55,15 +55,27 @@ namespace InterfaceFrontend
 
         private void BurgerMenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SideMenu.Visibility == Visibility.Visible && SideMenu_TextBox.Visibility == Visibility.Visible)
+            if (SideMenu.Visibility == Visibility.Visible)
             {
                 SideMenu.Visibility = Visibility.Collapsed;
-                SideMenu_TextBox.Visibility = Visibility.Collapsed;
                 Background = Brushes.White;
             }
             else    
             {
                 SideMenu.Visibility = Visibility.Visible;
+                Background = Brushes.LightGray;
+            }
+        }
+
+        private void InfoCurrentImage_Click(object sender, RoutedEventArgs e)
+        {
+            if(SideMenu_TextBox.Visibility == Visibility.Visible)
+            {
+                SideMenu_TextBox.Visibility = Visibility.Collapsed;
+                Background = Brushes.White;
+            }
+            else
+            {
                 SideMenu_TextBox.Visibility = Visibility.Visible;
                 Background = Brushes.LightGray;
             }
@@ -75,7 +87,7 @@ namespace InterfaceFrontend
         {
             var selectedMode = (imageSelectionComboBox.SelectedItem as ComboBoxItem).Content.ToString();
             confirmButton.Visibility = selectedMode == "Multi" ? Visibility.Visible : Visibility.Collapsed;
-            uploadButton.Visibility = selectedMode == "Single" ? Visibility.Collapsed : Visibility.Visible;
+            uploadButton.Visibility = selectedMode == "Single" ? Visibility.Visible : Visibility.Visible;
         }
 
         private void uploadButton_Click(object sender, RoutedEventArgs e)
