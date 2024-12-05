@@ -34,14 +34,14 @@ config.read(rootPath.rsplit('\\', 1)[0] + '\\conf.ini')
 logger = logging.getLogger('rotating_logger')
 logger.propagate = False
 # Global log level based on configuration
-match config['general']['logLevel']:
+match config['ReadPdf']['logLevel']:
     case 'DEBUG':
         logger.setLevel(logging.DEBUG)
     case 'INFO':
         logger.setLevel(logging.INFO)
 
 # Rotating log handler with max file size of 5 MB
-handler = RotatingFileHandler(rootPath + config['general']['logFile'], maxBytes=5*1024*1024, backupCount=3)
+handler = RotatingFileHandler(rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['logFile'], maxBytes=5*1024*1024, backupCount=3)
 
 # Log format -> Time -> Level -> Message
 formatter = logging.Formatter('%(asctime)s -  %(levelname)s - %(message)s')
@@ -86,7 +86,7 @@ if fileMode == 'multi':
 
 # Paths and Directories -------------------------------------------------
 logger.debug("Root Path: " + rootPath)
-outputPath = rootPath + "\\" + config['general']['outputPath'] + "\\"
+outputPath = rootPath + "\\" + config['ReadPdf']['outputPath'] + "\\"
 
 # Initialize folders if they don't exist
 if not os.path.exists(outputPath + filePath.split('.',1)[0]):
@@ -94,13 +94,13 @@ if not os.path.exists(outputPath + filePath.split('.',1)[0]):
     logger.debug(f"New directory '{outputPath + filePath.split('.', 1)[0]}' created!")
 
 # Load additional paths
-tmpPath = config['general']['tmpPath']
-dirPath = rootPath.rsplit('\\', 1)[0] + config['general']['pdfRootPath'] + "\\"
+tmpPath = config['ReadPdf']['tmpPath']
+dirPath = rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['pdfRootPath'] + "\\"
 # ----------------------------------------------------------------------
 
 # Initialize Database --------------------------------------------------
 # Define database path
-db_path = rootPath + "\\" + config['general']['outputPath'] + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
+db_path = rootPath + "\\" + config['ReadPdf']['outputPath'] + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
 logger.debug(db_path)
 api = config['db']['pathToDLL']
 fdb.load_api(api)

@@ -26,12 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 211,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -42,8 +38,7 @@
               "RelativeToolTip": "InterfaceBackend\\Logger.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAkwCoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T09:47:02.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-05T09:47:02.927Z"
             },
             {
               "$type": "Document",
@@ -53,7 +48,7 @@
               "RelativeDocumentMoniker": "InterfaceBackend\\Reader.cs",
               "ToolTip": "D:\\Matura Project\\Repos\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Reader.cs",
               "RelativeToolTip": "InterfaceBackend\\Reader.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAADwv6gAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAJMAAAAAAAAAAADwv6IAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T08:08:53.031Z",
               "EditorCaption": ""
@@ -68,8 +63,7 @@
               "RelativeToolTip": "InterfaceBackend\\Canvas.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T07:59:00.327Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T07:59:00.327Z"
             },
             {
               "$type": "Document",
@@ -81,8 +75,7 @@
               "RelativeToolTip": "InterfaceBackend\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T07:56:03.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T07:56:03.19Z"
             }
           ]
         }
