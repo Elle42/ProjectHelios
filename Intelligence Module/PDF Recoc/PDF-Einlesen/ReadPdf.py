@@ -109,7 +109,7 @@ dirPath = rootPath.rsplit('\\', 1)[0] + config['general']['pdfRootPath'] + "\\"
 planId = 0
 db_path = rootPath.rsplit('\\', 1)[0] + "\TEXTSDB.fdb"
 logger.debug(db_path)
-api = config['db']['pathToDLL']
+api = rootPath.rsplit('\\', 1)[0] + config['db']['pathToDLL']
 fdb.load_api(api)
 
 # Database credentials
@@ -136,6 +136,13 @@ if not os.path.exists(db_path):
 
     # Initalise tables in the new Database
     cur.execute(f"""
+            CREATE TABLE FIRE_PLANS (
+            planId INTEGER PRIMARY KEY,
+            name VARCHAR(40)
+            );    
+        """)
+    cur.execute(f"""
+            
             CREATE TABLE CONVERTED_TEXTS (
             id INTEGER PRIMARY KEY,
             text VARCHAR(40),
@@ -146,11 +153,8 @@ if not os.path.exists(db_path):
 	        FOREIGN KEY (planId) REFERENCES FIRE_PLANS(planId)
             );
 
-            CREATE TABLE FIRE_PLANS (
-            planId INTEGER PRIMARY KEY,
-            name VARCHAR(40)
-            );
         """)
+    con.commit()
     
 else:
     # Existing database found
@@ -169,7 +173,8 @@ if args.UpdateExisting:
     logger.error("Not yet implemented")
 else:
     fire_plan_name = filePath.split('.',1)[0]
-    
+
+    con.commit()
     # Insert new Fire Plan into the database
     cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?) RETURNING planId", (fire_plan_name,))
 
