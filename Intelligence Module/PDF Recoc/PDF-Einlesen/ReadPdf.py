@@ -65,6 +65,7 @@ argParser.add_argument("--Rotation", "-r")
 argParser.add_argument("--UsedPages", "-uPa", nargs='+')
 argParser.add_argument("--UsedDir", "-uD")
 argParser.add_argument("--UsedPdf", "-uPd", nargs='+')
+argParser.add_argument("--UpdateExisting", "-uE", action='store_true')
 
 args = argParser.parse_args()
 
@@ -98,11 +99,17 @@ tmpPath = config['ReadPdf']['tmpPath']
 dirPath = rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['pdfRootPath'] + "\\"
 # ----------------------------------------------------------------------
 
+
+
+
+
+
 # Initialize Database --------------------------------------------------
 # Define database path
-db_path = rootPath + "\\" + config['ReadPdf']['outputPath'] + "\\" + filePath.split('.',1)[0] + "\TEXTSDB.fdb"
+planId = 0
+db_path = rootPath.rsplit('\\', 1)[0] + "\TEXTSDB.fdb"
 logger.debug(db_path)
-api = config['db']['pathToDLL']
+api = rootPath.rsplit('\\', 1)[0] + config['db']['pathToDLL']
 fdb.load_api(api)
 
 # Database credentials
@@ -118,14 +125,67 @@ if not os.path.exists(db_path):
     except:
         logger.exception("Could not create database")
     logger.info(f"Database created at: {db_path}")
+
+    # Connect to the database
+    try:
+        con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+        cur = con.cursor()
+    except:
+        logger.exception("Database connection failed!")
+    logger.info("Database connection successful!")
+
+    # Initalise tables in the new Database
+    cur.execute(f"""
+            CREATE TABLE FIRE_PLANS (
+            planId INTEGER PRIMARY KEY,
+            name VARCHAR(40)
+            );    
+        """)
+    cur.execute(f"""
+            
+            CREATE TABLE CONVERTED_TEXTS (
+            id INTEGER PRIMARY KEY,
+            text VARCHAR(40),
+            cordLeft INTEGER,
+            cordTop INTEGER,
+	        page INTEGER,
+	        planId INTEGER,
+	        FOREIGN KEY (planId) REFERENCES FIRE_PLANS(planId)
+            );
+
+        """)
+    con.commit()
+    
 else:
     # Existing database found
     logger.info(f"Database already exists at: {db_path}")
 
-# Connect to the database
-con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
-cur = con.cursor()
-logger.info("Database connection successful!")
+    # Connect to the database
+    try:
+        con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+        cur = con.cursor()
+    except:
+        logger.exception("Database connection failed!")
+    logger.info("Database connection successful!")
+
+# Prepare the Database for a new Pdf
+if args.UpdateExisting:
+    logger.error("Not yet implemented")
+else:
+    fire_plan_name = filePath.split('.',1)[0]
+
+    con.commit()
+    # Insert new Fire Plan into the database
+    cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?) RETURNING planId", (fire_plan_name,))
+
+    # Fetch the generated planId
+    planId = cur.fetchone()[0]
+        
+    # Log the inserted planId
+    logger.info(f"Inserted new Fire Plan with generated planId: {planId}")
+    con.commit()
+
+
 
 # Pytesseract
 pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
@@ -134,7 +194,7 @@ pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Recognize all texts in the image and store them in the database, texts are covered with white rectangles
-def TextRecocnition(image, binary, cur, rotation, i):
+def TextRecocnition(image, binary, cur, rotation, page, id):
     # Use Tesseract to extract all text
     data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
     logger.debug(f"{len(data)} words detected!")
@@ -147,8 +207,7 @@ def TextRecocnition(image, binary, cur, rotation, i):
             image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), thickness=-1)
 
             # Write the recognized text into the database
-            cur.execute("INSERT INTO Converted_" + str(i) + "(id, text, cordLeft, cordTop) VALUES (?, ?, ?, ?)", 
-                        (j, data['text'][j], data['left'][j], data['top'][j]))
+            cur.execute("INSERT INTO CONVERTED_TEXTS (text, cordLeft, cordTop, page, planId) VALUES (?, ?, ?, ?, ?)", (data['text'][j], data['left'][j], data['top'][j], page, id))
     return image
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -167,27 +226,6 @@ def ConversionLoop(pages):
         # Convert the image to binary for text recognition
         _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
 
-        # Create or drop the table for the current page in the database
-        table_name = "CONVERTED_" + str(i)
-        cur.execute(f"SELECT 1 FROM rdb$relations WHERE rdb$relation_name = '{table_name.upper()}'")
-        
-        # If table exists, drop it
-        if cur.fetchone():
-            logger.debug(f"Table {table_name} already exists -> Dropping it!")
-            cur.execute(f"DROP TABLE {table_name}")
-        
-        # Create the new table
-        cur.execute(f"""
-            CREATE TABLE {table_name} (
-                id INTEGER PRIMARY KEY,
-                text VARCHAR(40),
-                cordLeft INTEGER,
-                cordTop INTEGER
-            )
-        """)
-        logger.debug(f"New table {table_name} created!")
-        con.commit()
-
         # Handle rotation as specified
         if(rotation == 'rl'):
             logger.debug("Rotating image 90 degrees counterclockwise")
@@ -197,7 +235,7 @@ def ConversionLoop(pages):
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
         # Text recognition
-        image = TextRecocnition(image,binary, cur, "nr", i)
+        image = TextRecocnition(image,binary, cur, "nr", i, planId)
 
         # Apply Gaussian blur and thresholding
         blurred = cv2.GaussianBlur(image, (9,9), 0)
@@ -212,8 +250,6 @@ def ConversionLoop(pages):
         if(fileMode == "single"):
             if(len(usedPages) == 0):
                 break
-
-
 
 # File Modes ----------------------------------------------------------------------------------------------------------
 # Single mode ---------------------------------------------------------------------------------------------------------
@@ -258,3 +294,5 @@ if fileMode == 'multi':
     
     # Start the conversion process
     ConversionLoop(pages)
+
+con.commit()
