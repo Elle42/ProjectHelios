@@ -58,10 +58,6 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
@@ -83,8 +79,7 @@
               "RelativeToolTip": "..\\InterfaceFrontend\\Properties\\Resources.resx",
               "ViewState": "AgIAAF8AAAAAAAAAAAArwHcAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-12-01T19:10:28.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T19:10:28.005Z"
             },
             {
               "$type": "Document",
