@@ -3,10 +3,10 @@
   "WorkspaceRootPath": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -31,7 +31,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 211,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,7 +47,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\MainWindow.xaml",
               "RelativeDocumentMoniker": "..\\InterfaceFrontend\\MainWindow.xaml",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "..\\InterfaceFrontend\\MainWindow.xaml.cs",
@@ -67,7 +67,8 @@
               "RelativeToolTip": "..\\InterfaceFrontend\\MainWindow.xaml.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAkwFwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T14:35:19.164Z"
+              "WhenOpened": "2024-11-28T14:35:19.164Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
