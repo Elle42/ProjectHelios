@@ -61,3 +61,49 @@
 2024-12-05 14:39:12,452 -  DEBUG - New table CONVERTED_2 created!
 2024-12-05 14:39:13,726 -  DEBUG - 12 words detected!
 2024-12-05 14:39:13,750 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-12-12 10:05:44,485 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-12 10:05:44,487 -  DEBUG - New directory 'D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\Brandschutzpläne_06_2024' created!
+2024-12-12 10:05:44,487 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\Brandschutzpläne_06_2024\TEXTSDB.fdb
+2024-12-12 10:05:45,444 -  ERROR - Could not create database
+Traceback (most recent call last):
+  File "ReadPdf.py", line 116, in <module>
+    db_User = "HeliosUser"
+                  ^^^^^^^^^
+  File "fdb\fbcore.py", line 988, in create_database
+fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- Your user name and password are not defined. Ask your database administrator to set up a Firebird login.', -902, 335544472)
+2024-12-12 10:05:45,463 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\Brandschutzpläne_06_2024\TEXTSDB.fdb
+2024-12-12 10:06:33,336 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-12 10:07:14,423 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-12 10:07:14,424 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:07:14,589 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:07:14,716 -  INFO - Database connection successful!
+2024-12-12 10:07:14,728 -  INFO - Inserted new Fire Plan with generated planId: 5
+2024-12-12 10:07:14,730 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2024-12-12 10:07:14,731 -  INFO - Converting 3 pages!
+2024-12-12 10:07:14,731 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2024-12-12 10:07:14,732 -  INFO - Reading PDF ...
+2024-12-12 10:07:21,470 -  INFO - PDF successfully read!
+2024-12-12 10:07:25,353 -  DEBUG - 12 words detected!
+2024-12-12 10:07:25,421 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2024-12-12 10:07:28,543 -  DEBUG - 12 words detected!
+2024-12-12 10:07:28,602 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2024-12-12 10:07:31,905 -  DEBUG - 12 words detected!
+2024-12-12 10:07:31,960 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2024-12-12 10:10:07,140 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-12 10:10:07,141 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:10:07,148 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:10:07,184 -  INFO - Database connection successful!
+2024-12-12 10:10:07,191 -  INFO - Inserted new Fire Plan with generated planId: 6
+2024-12-12 10:10:07,193 -  INFO - Reading PDF Brandschutzpläne_06_2024.pdf in single file mode
+2024-12-12 10:10:07,194 -  INFO - Converting 3 pages!
+2024-12-12 10:10:07,194 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\Brandschutzpläne_06_2024.pdf
+2024-12-12 10:10:07,195 -  INFO - Reading PDF ...
+2024-12-12 10:21:01,486 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-12 10:21:01,486 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:21:01,504 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:21:01,552 -  INFO - Database connection successful!
+2024-12-12 10:21:01,568 -  INFO - Inserted new Fire Plan with generated planId: 7
+2024-12-12 10:21:01,569 -  INFO - Reading PDF Brandschutzpläne_06_2024.pdf in single file mode
+2024-12-12 10:21:01,570 -  INFO - Converting 3 pages!
+2024-12-12 10:21:01,571 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\Brandschutzpläne_06_2024.pdf
+2024-12-12 10:21:01,572 -  INFO - Reading PDF ...
