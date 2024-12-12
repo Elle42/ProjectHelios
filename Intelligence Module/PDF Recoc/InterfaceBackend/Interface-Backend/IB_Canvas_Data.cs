@@ -12,8 +12,30 @@ namespace InterfaceBackend
     /// </summary>
     public class IB_Canvas_Data
     {
-        private IB_Image[] _images;
-        
+        public IB_Image[] _images;
+
+        public bool AddImage(string filepath)
+        {
+            // not implemented
+            return false;
+        }
+
+        public bool RemoveImage(IB_Image image)
+        {
+            // not implemented
+            return false;
+        }
+
+        public IB_Image FindImage(int id)
+        {
+            return null;
+        }
+
+        public IB_Image[] GetAllImages()
+        {
+            return _images;
+        }
+
     }
 
     /// <summary>
@@ -21,6 +43,7 @@ namespace InterfaceBackend
     /// </summary>
     public class IB_Image
     {
+
         private int _id;
         private Point _pos;
         private string _pathToImg;
@@ -32,6 +55,12 @@ namespace InterfaceBackend
         private int _cutoutY;
         private Bitmap _bitMap;
 
+        IB_Image(int id, string pathToImg, Bitmap bitmap)
+        {
+            this._id = id;
+            this._pathToImg = pathToImg;
+            this._bitMap = bitmap;
+        }
 
         IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale)
         {
@@ -53,6 +82,11 @@ namespace InterfaceBackend
             this._scale = scale;
             this._cutoutX = cutoutX;
             this._cutoutY = cutoutY;
+        }
+
+        public string GetPathImage(IB_Image)
+        {
+            return this._pathToImg;
         }
     }
 }
