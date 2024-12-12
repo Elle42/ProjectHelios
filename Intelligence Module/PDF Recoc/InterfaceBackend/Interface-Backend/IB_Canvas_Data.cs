@@ -102,37 +102,23 @@ namespace InterfaceBackend
             return this._bitMap;
         }
 
-        public void SetBitmap(Bitmap bitMap)
-        {
-            this._bitMap = bitMap;
-        }
-
         public ImageSource GetSource()
         {
-            if (_bitMap != null)
+            using (var memory = new System.IO.MemoryStream())
             {
-                using (var memoryStream = new System.IO.MemoryStream())
-                {
-                    try
-                    {
-                        _bitMap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                        memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+                // Speichert die Bitmap als PNG in den MemoryStream
+                _bitMap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
 
-                        var bitmapImage = new BitmapImage();
-                        bitmapImage.BeginInit();
-                        bitmapImage.StreamSource = memoryStream;
-                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                        bitmapImage.EndInit();
-                        return bitmapImage;
-                    }
-                    catch(Exception e)
-                    {
-                        _logger.Log(e.Message, LogLevel.Error);
-                        throw;
-                    }
-                }
+                // Erstelle ein BitmapImage aus dem MemoryStream
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+
+                return bitmapImage;
             }
-            return null;
         }
     }
 }
