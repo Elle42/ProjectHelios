@@ -1,0 +1,147 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77834C0-4122-4368-8561-985C0B3BED03}|..\\InterfaceFrontend\\InterfaceFrontend.csproj|c:\\schule\\diplomarbeit\\repo\\projecthelios\\intelligence module\\pdf recoc\\interfacebackend\\interfacefrontend\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DEA38E7-625D-4A49-AC21-432C7BBB4F68}|InterfaceBackend.csproj|C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DEA38E7-625D-4A49-AC21-432C7BBB4F68}|InterfaceBackend.csproj|solutionrelative:reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DEA38E7-625D-4A49-AC21-432C7BBB4F68}|InterfaceBackend.csproj|C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\ib_canvas_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DEA38E7-625D-4A49-AC21-432C7BBB4F68}|InterfaceBackend.csproj|solutionrelative:ib_canvas_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DEA38E7-625D-4A49-AC21-432C7BBB4F68}|InterfaceBackend.csproj|C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DEA38E7-625D-4A49-AC21-432C7BBB4F68}|InterfaceBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 211,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\InterfaceFrontend\\MainWindow.xaml",
+              "ToolTip": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\MainWindow.xaml",
+              "RelativeToolTip": "..\\InterfaceFrontend\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-28T14:35:19.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\InterfaceFrontend\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\InterfaceFrontend\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAkwFwAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T14:35:19.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "..\\InterfaceFrontend\\Properties\\Resources.resx",
+              "ToolTip": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceFrontend\\Properties\\Resources.resx",
+              "RelativeToolTip": "..\\InterfaceFrontend\\Properties\\Resources.resx",
+              "ViewState": "AgIAAF8AAAAAAAAAAAArwHcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-12-01T19:10:28.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Reader.cs",
+              "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Reader.cs",
+              "RelativeDocumentMoniker": "Reader.cs",
+              "ToolTip": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Reader.cs",
+              "RelativeToolTip": "Reader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T14:37:35.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IB_Canvas_Data.cs",
+              "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\IB_Canvas_Data.cs",
+              "RelativeDocumentMoniker": "IB_Canvas_Data.cs",
+              "ToolTip": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\IB_Canvas_Data.cs",
+              "RelativeToolTip": "IB_Canvas_Data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T16:32:07.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Schule\\Diplomarbeit\\Repo\\ProjectHelios\\Intelligence Module\\PDF Recoc\\InterfaceBackend\\InterfaceBackend\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T14:34:55.592Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 189,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

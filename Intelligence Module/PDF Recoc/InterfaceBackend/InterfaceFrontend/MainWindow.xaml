@@ -1,0 +1,157 @@
+﻿<Window x:Class="InterfaceFrontend.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterfaceFrontend"
+        mc:Ignorable="d"
+        Title="Interface" 
+        WindowStyle="SingleBorderWindow" 
+        AllowsTransparency="False"
+        Background="White"  
+        Loaded="MainWindow_Loaded" 
+        Height="698" 
+        Width="1380">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="480"/>
+            <!-- Header -->
+            <RowDefinition/>
+            <!-- Inhalt -->
+        </Grid.RowDefinitions>
+
+        <DockPanel 
+            Background="LightGray"  
+            Margin="0,0,0,385" >
+            <ToggleButton 
+                x:Name="BurgerMenuToggleButton" 
+                Width="40" 
+                Height="40" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="10,25,0,0"
+                Click="BurgerMenuToggleButton_Click">
+                <TextBlock 
+                    Text="☰" 
+                    FontSize="16" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center" />
+            </ToggleButton>
+            <ToggleButton 
+                x:Name="InfoCurrentImage" 
+                Width="40" 
+                Height="40" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top" 
+                Margin="10,25,0,0"
+                Click="InfoCurrentImage_Click">
+                <TextBlock 
+                    Text="Info" 
+                    FontSize="16" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center" />
+            </ToggleButton>
+            <StackPanel 
+                Orientation="Horizontal" 
+                DockPanel.Dock="Top" 
+                Margin="0,5,0,0" 
+                Width="1330">
+                <Image 
+                Source="C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\FW_Braunau-1.png" 
+                DockPanel.Dock="Top" 
+                Height="85" 
+                Width="900"
+                Margin="0,0,0,5" />
+                <Image
+                Source="C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\HELIOS.png" 
+                Height="85"
+                Width="194" 
+                Margin="0,0,0,5" />
+            </StackPanel>
+        </DockPanel>
+
+        <StackPanel 
+            x:Name="SideMenu" 
+            Orientation="Vertical" 
+            Margin="5,100,0,0" 
+            Visibility="Collapsed" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" Height="0" Width="0">
+
+            <ComboBox 
+                x:Name="imageSelectionComboBox" 
+                SelectionChanged="ImageSelectionComboBox_SelectionChanged"
+                Width="110">
+                <ComboBoxItem Content="Single" />
+                <ComboBoxItem Content="Multi" />
+            </ComboBox>
+
+            <Button 
+                x:Name="uploadButton" 
+                Content="Upload Images" 
+                Click="uploadButton_Click"
+                Width="110" 
+                Margin="0,5,0,0"
+            />
+            <Button 
+                x:Name="confirmButton" 
+                Content="Confirm" 
+                Click="ConfirmButton_Click"
+                Width="110" 
+                Margin="0,5,0,0" 
+                Visibility="Collapsed"
+            />
+            <Button 
+                x:Name="MoveButton" 
+                Content="Bewegen" 
+                Click="ImageMove_Click" 
+                Width="110" 
+                Margin="0,5,0,0" 
+                Visibility="Collapsed" 
+            />
+            <Button 
+                x:Name="ScaleButton" 
+                Content="Skalieren" 
+                Click="ScaleButton_Click" 
+                Width="110" 
+                Margin="0,5,0,0" 
+                Visibility="Collapsed" 
+            />
+            <Button 
+                x:Name="DrawButton" 
+                Content="Zeichnen" 
+                Click="DrawButton_Click" 
+                Width="110" 
+                Margin="0,5,0,0" 
+                Visibility="Collapsed" 
+            />
+            <Button 
+                x:Name="EraseButton" 
+                Content="Löschen" 
+                Click="EraseButton_Click" 
+                Width="110" 
+                Margin="0,5,0,0"  
+                Visibility="Collapsed"
+            />
+        </StackPanel>
+
+        <Canvas 
+            x:Name="imageCanvas" 
+            Background="Black" 
+            Grid.RowSpan="2"    
+            Margin="120,100,0,0" 
+        />
+
+        <TextBlock x:Name="SideMenu_TextBox" 
+               Visibility="Collapsed"
+               HorizontalAlignment="Left"
+               Margin="10,100,0,10"
+               Background="Turquoise"
+               Foreground="Black"
+               FontSize="14"
+               Padding="5"
+               TextWrapping="Wrap" Width="110" Grid.RowSpan="2"
+        />
+    </Grid>
+</Window>
