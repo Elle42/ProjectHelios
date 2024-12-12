@@ -146,7 +146,7 @@ namespace InterfaceBackend
                     + " --UsedPages "
                     + string.Join(" ", pages);
 
-                this.logger.Log("Starting Application with Arguments: " + " --FileMode single --FilePath "
+                this.logger.Log("Starting the Application with Arguments: " + " --FileMode single --FilePath "
                     + pathToPdf.Split('\\')[pathToPdf.Split('\\').Length - 1]
                     + " --Rotation "
                     + rotStr

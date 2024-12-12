@@ -84,7 +84,7 @@ namespace InterfaceBackend
             this._cutoutY = cutoutY;
         }
 
-        public string GetPathImage(IB_Image)
+        public string GetPathImage()
         {
             return this._pathToImg;
         }
