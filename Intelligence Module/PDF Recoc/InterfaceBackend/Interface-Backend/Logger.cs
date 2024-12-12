@@ -20,7 +20,7 @@ public class Logger
 
 #if DEBUG
         // Set the executable Path based on the curret mode of execution
-        this._rootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
+        this._rootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
         Console.WriteLine("Debug " + _rootPath);
 
         // Read the conf file

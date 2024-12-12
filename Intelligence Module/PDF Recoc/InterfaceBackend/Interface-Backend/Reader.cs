@@ -49,7 +49,7 @@ namespace InterfaceBackend
 
 #if DEBUG
             // Set the executable Path based on the curret mode of execution
-            this._executableRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
+            this._executableRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
             logger.Log(_executableRootPath, LogLevel.Debug);
 
             // Read the conf file
@@ -92,7 +92,8 @@ namespace InterfaceBackend
                 logger.Log(ex.Message, LogLevel.Error);
             }
 
-            LaunchCommandLineApp(pathToPdf, pages, Rotation.NoRotation, @"D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen", FileMode.Single);
+            logger.Log(Directory.GetParent(_executableRootPath).FullName + @"PDF-Einlesen", LogLevel.Debug);
+            LaunchCommandLineApp(pathToPdf, pages, Rotation.NoRotation, Directory.GetParent(_executableRootPath).FullName + @"\PDF-Einlesen", FileMode.Single);
         }
 
         public bool ReadPdf()
