@@ -58,3 +58,6 @@ D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface
 D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface-Backend\obj\Debug\Interfac.8E268F4D.Up2Date
 D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface-Backend\obj\Debug\Interface-Backend.exe
 D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface-Backend\obj\Debug\Interface-Backend.pdb
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface-Backend\bin\Debug\System.Drawing.Common.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface-Backend\bin\Debug\System.Drawing.Common.pdb
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\Interface-Backend\bin\Debug\System.Drawing.Common.xml
