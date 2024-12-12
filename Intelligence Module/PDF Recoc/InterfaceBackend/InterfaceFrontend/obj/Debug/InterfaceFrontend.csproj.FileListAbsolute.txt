@@ -11,7 +11,6 @@ C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\Interfac
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceFrontend.exe
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceFrontend.pdb
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\INIFileParser.dll
-C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceBackend.exe
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.dll
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.Console.dll
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.File.dll
@@ -22,8 +21,6 @@ C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\Interfac
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Threading.Channels.dll
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceBackend.pdb
-C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceBackend.exe.config
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\INIFileParser.xml
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.xml
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.Console.xml
@@ -39,3 +36,6 @@ C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\Interfac
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.csproj.CoreCompileInputs.cache
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\Interfac.4EF184F6.Up2Date
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.exe
+C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.exe
+C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.pdb
+C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.exe.config

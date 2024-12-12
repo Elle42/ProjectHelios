@@ -131,12 +131,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InterfaceBackend\InterfaceBackend.csproj">
-      <Project>{1dea38e7-625d-4a49-ac21-432c7bbb4f68}</Project>
-      <Name>InterfaceBackend</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="HELIOS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interface-Backend\Interface-Backend.csproj">
+      <Project>{d61182f8-023c-479c-8392-a01dc33d1fc8}</Project>
+      <Name>Interface-Backend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
