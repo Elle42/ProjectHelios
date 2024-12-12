@@ -39,3 +39,44 @@ C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\Interfac
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.exe
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.pdb
 C:\Schule\Diplomarbeit\Repo\ProjectHelios\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.exe.config
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceFrontend.exe.config
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceFrontend.exe
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\InterfaceFrontend.pdb
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\INIFileParser.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.exe
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.Console.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.File.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Buffers.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Memory.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Numerics.Vectors.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Threading.Channels.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.pdb
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Interface-Backend.exe.config
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\INIFileParser.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.Console.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\Serilog.Sinks.File.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Buffers.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Memory.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Numerics.Vectors.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Threading.Channels.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.csproj.AssemblyReference.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\MainWindow.g.cs
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\App.g.cs
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend_MarkupCompile.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend_MarkupCompile.lref
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\MainWindow.baml
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.g.resources
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.Properties.Resources.resources
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.csproj.GenerateResource.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.csproj.CoreCompileInputs.cache
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\Interfac.4EF184F6.Up2Date
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.exe
+D:\Matura Project\Repos\Intelligence Module\PDF Recoc\InterfaceBackend\InterfaceFrontend\obj\Debug\InterfaceFrontend.pdb

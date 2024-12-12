@@ -3,6 +3,7 @@ using IniParser;
 using System;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 public class Logger
 {
