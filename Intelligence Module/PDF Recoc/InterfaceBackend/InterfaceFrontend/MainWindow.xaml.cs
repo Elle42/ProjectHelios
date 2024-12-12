@@ -26,15 +26,10 @@ namespace InterfaceFrontend
         
         private Point mouseClickPosition;
         private string currentMode = "None";
-        private const double MinImageSize = 50; // Minimale Bildgröße
         private const int MaxImageWidth = 800; // Maximale Breite in Pixel
         private const int MaxImageHeight = 600; // Maximale Höhe in Pixel
-
-        private int imageCounter = 0; // Zähler für Bild-IDs
-        private Dictionary<int, IB_Canvas_Data> imageDataDictionary = new Dictionary<int, IB_Canvas_Data>();
-        private List<IB_Image> uploadedImages = new List<IB_Image>();
-        private List<Border> imageBorders = new List<Border>();
-        
+        private IB_Canvas_Data imageDataDictionary;
+        private int imageCounter = 0; // Zähler für Bild-IDs    
         private Image currentlySelectedImage;
         private Border currentlySelectedBorder;
         private Point imageOriginalPosition;
@@ -58,26 +53,28 @@ namespace InterfaceFrontend
             if (SideMenu.Visibility == Visibility.Visible)
             {
                 SideMenu.Visibility = Visibility.Collapsed;
+                InfoCurrentImageBox.Visibility = Visibility.Collapsed;
+                InfoCurrentImage.Visibility = Visibility.Collapsed;
                 Background = Brushes.White;
             }
+            
             else    
             {
                 SideMenu.Visibility = Visibility.Visible;
+                InfoCurrentImage.Visibility = Visibility.Visible;
                 Background = Brushes.LightGray;
             }
         }
 
         private void InfoCurrentImage_Click(object sender, RoutedEventArgs e)
         {
-            if(SideMenu_TextBox.Visibility == Visibility.Visible)
+            if(InfoCurrentImageBox.Visibility == Visibility.Visible)
             {
-                SideMenu_TextBox.Visibility = Visibility.Collapsed;
-                Background = Brushes.White;
+                InfoCurrentImageBox.Visibility = Visibility.Collapsed;
             }
             else
             {
-                SideMenu_TextBox.Visibility = Visibility.Visible;
-                Background = Brushes.LightGray;
+                InfoCurrentImageBox.Visibility = Visibility.Visible;
             }
         }
 
@@ -115,11 +112,56 @@ namespace InterfaceFrontend
         {
             try
             {
-                
+                BitmapImage bitmapImage = new BitmapImage(new Uri(filePath));
+                Console.WriteLine($"Loaded image: {filePath} with size: {bitmapImage.PixelWidth}x{bitmapImage.PixelHeight}");
+
+                // Skalierungsfaktor berechnen
+                double scaleFactor = Math.Min(
+                    MaxImageWidth / (double)bitmapImage.PixelWidth,
+                    MaxImageHeight / (double)bitmapImage.PixelHeight);
+
+                // Neues Bild erstellen
+                Image newImage = new Image
+                {
+                    Source = bitmapImage,
+                    Width = bitmapImage.PixelWidth * scaleFactor,
+                    Height = bitmapImage.PixelHeight * scaleFactor
+                };
+
+                // Border für das Bild erstellen
+                Border newBorder = new Border
+                {
+                    Width = newImage.Width,
+                    Height = newImage.Height,
+                    Child = newImage,
+                    BorderBrush = Brushes.Transparent,
+                    BorderThickness = new Thickness(1)
+                };
+
+                // Bild zentriert auf das Canvas platzieren
+                double centerX = (imageCanvas.ActualWidth - newBorder.Width) / 2;
+                double centerY = (imageCanvas.ActualHeight - newBorder.Height) / 2;
+
+                Canvas.SetLeft(newBorder, centerX);
+                Canvas.SetTop(newBorder, centerY);
+                imageCanvas.Children.Add(newBorder);
+
+                // Daten im Dictionary speichern
+                imageDataDictionary = new IB_Canvas_Data
+                {
+                    
+                };
+
+                // Event-Handler für Interaktivität hinzufügen
+                newBorder.MouseLeftButtonDown += Image_LeftButtonDown;
+                newBorder.MouseMove += ImageCanvas_MouseMove;
+                newBorder.MouseLeftButtonUp += Image_MouseLeftButtonUp;
+
+                imageCounter++;
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine($"Error loading image: {ex.Message}");
             }
         }
 
@@ -245,12 +287,14 @@ namespace InterfaceFrontend
         // Zeichenfunktion
         private void DrawOnImage(MouseEventArgs e)
         {
+            // Function for drawing to a bitmap
             throw new NotImplementedException();
         }
 
         // Löschfunktion
         private void EraseFromImage(MouseEventArgs e)
         {
+            // Function for erasing from a bitmap
             throw new NotImplementedException();
         }
 
@@ -357,6 +401,11 @@ namespace InterfaceFrontend
             ScaleButton.Visibility = Visibility.Visible;
             DrawButton.Visibility = Visibility.Visible;
             EraseButton.Visibility = Visibility.Visible;
+        }
+
+        private void InfoCurrentImage_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
