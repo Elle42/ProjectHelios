@@ -100,8 +100,6 @@ namespace InterfaceBackend
         }
 
 
-
-
         /// <summary>
         /// Reads a Pdf and copys it into the working Directory of the Conversion Software
         /// </summary>
@@ -162,10 +160,17 @@ namespace InterfaceBackend
             LaunchCommandLineAppMulti(_MultiDir, pages.Select(page => page.Split('\\').LastOrDefault()).ToArray(), Rotation.NoRotation, Directory.GetParent(_executableRootPath).FullName + @"\PDF-Einlesen");
         }
 
+
+        /// <summary>
+        /// Returns the images of the Canvas
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public IB_Image[] GetImages()
         {
             throw new NotImplementedException();
         }
+
 
         /// <summary>
         /// Launch the Conversion Applikation in the File mode Single
@@ -231,6 +236,7 @@ namespace InterfaceBackend
 
             logger.Log("Conversion Abgeschlossen!", LogLevel.Info);
         }
+
 
         /// <summary>
         /// Launch the Conversion Applikation in the File mode Multi

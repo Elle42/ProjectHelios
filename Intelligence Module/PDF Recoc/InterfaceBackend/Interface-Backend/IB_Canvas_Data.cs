@@ -15,12 +15,14 @@ namespace InterfaceBackend
     /// </summary>
     public class IB_Canvas_Data
     {
-        public IB_Image[] _images;
+        private IB_Image[] _images;
+        private Logger _logger;
 
-        public bool AddImage(string filepath)
+
+        IB_Canvas_Data(IB_Image[] images)
         {
-            // not implemented
-            return false;
+            _images = images;
+            _logger = new Logger();
         }
 
         public bool RemoveImage(IB_Image image)
@@ -39,7 +41,28 @@ namespace InterfaceBackend
             return _images;
         }
 
-        
+        /// <summary>
+        /// Register A new Bitmap into The Canvas
+        /// </summary>
+        /// <param name="path"></param>
+        public void RegisterImage(string path)
+        {
+            try
+            {
+                // Load the bitmap from the specified file path
+                using (Bitmap bitmap = new Bitmap(path))
+                {
+                    IB_Image img = new IB_Image(path, bitmap);
+                    _images.Append(img);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex.Message, LogLevel.Error);
+                throw;
+            }
+        }
+
     }
 
     /// <summary>
@@ -59,33 +82,14 @@ namespace InterfaceBackend
         private int _cutoutY;
         private Bitmap _bitMap;
 
-        public IB_Image(int id, string pathToImg, Bitmap bitmap)
+        private Logger _logger;
+
+        public IB_Image(string pathToImg, Bitmap bitmap)
         {
-            this._id = id;
             this._pathToImg = pathToImg;
             this._bitMap = bitmap;
-        }
-
-        public IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale)
-        {
-            this._pos = pos;
-            this._pathToImg = pathToImg;
-            this._pathToDb = pathToDb;
-            this._width = width;
-            this._height = height;
-            this._scale = scale;
-        }
-
-        public IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale, int cutoutX, int cutoutY)
-        {
-            this._pos = pos;
-            this._pathToImg = pathToImg;
-            this._pathToDb = pathToDb;
-            this._width = width;
-            this._height = height;
-            this._scale = scale;
-            this._cutoutX = cutoutX;
-            this._cutoutY = cutoutY;
+            this._width = bitmap.Width;
+            this._height = bitmap.Height;
         }
 
         public string GetPathImage()
@@ -98,28 +102,37 @@ namespace InterfaceBackend
             return this._bitMap;
         }
 
+        public void SetBitmap(Bitmap bitMap)
+        {
+            this._bitMap = bitMap;
+        }
+
         public ImageSource GetSource()
         {
             if (_bitMap != null)
             {
                 using (var memoryStream = new System.IO.MemoryStream())
                 {
-                    _bitMap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                    memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+                    try
+                    {
+                        _bitMap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                        memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
 
-                    var bitmapImage = new BitmapImage();
-                    bitmapImage.BeginInit();
-                    bitmapImage.StreamSource = memoryStream;
-                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmapImage.EndInit();
-
-                    return bitmapImage;
+                        var bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = memoryStream;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                        return bitmapImage;
+                    }
+                    catch(Exception e)
+                    {
+                        _logger.Log(e.Message, LogLevel.Error);
+                        throw;
+                    }
                 }
             }
-
-            // Optional: Rückgabewert, falls kein Bitmap verfügbar ist
             return null;
         }
-
     }
 }
