@@ -21,6 +21,11 @@ namespace InterfaceFrontend
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
+    /// 
+
+
+
+    //BLABALABKAPAN
     public partial class MainWindow : Window
     {
         private Point mouseClickPosition;
@@ -50,9 +55,32 @@ namespace InterfaceFrontend
 
         private void BurgerMenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            SideMenu.Visibility = SideMenu.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            InfoCurrentImageBox.Visibility = SideMenu.Visibility;
-            Background = SideMenu.Visibility == Visibility.Visible ? Brushes.LightGray : Brushes.White;
+            if (SideMenu.Visibility == Visibility.Visible)
+            {
+                SideMenu.Visibility = Visibility.Collapsed;
+                InfoCurrentImageBox.Visibility = Visibility.Collapsed;
+                InfoCurrentImage.Visibility = Visibility.Collapsed;
+                Background = Brushes.White;
+            }
+
+            else
+            {
+                SideMenu.Visibility = Visibility.Visible;
+                InfoCurrentImage.Visibility = Visibility.Visible;
+                Background = Brushes.LightGray;
+            }
+        }
+
+        private void InfoCurrentImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (InfoCurrentImageBox.Visibility == Visibility.Visible)
+            {
+                InfoCurrentImageBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                InfoCurrentImageBox.Visibility = Visibility.Visible;
+            }
         }
 
         private void ImageSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
