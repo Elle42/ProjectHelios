@@ -407,3 +407,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+.vs/
+*.suo
+*.cache
+*.backup.json
+*.MarkupCompile.cache
