@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using InterfaceBackend;
+using System.IO;
+using System.Drawing;
+using Point = System.Windows.Point;
+using Brushes = System.Windows.Media.Brushes;
+using Image = System.Windows.Controls.Image;
 
 
 namespace InterfaceFrontend
@@ -112,57 +116,43 @@ namespace InterfaceFrontend
         {
             try
             {
-                // Erstelle und füge das Bild über IB_Canvas_Data hinzu
-                IB_Canvas_Data canvasData = new IB_Canvas_Data();
-                bool imageAdded = canvasData.AddImage(filePath);
+                // Lade die Bitmap
+                Bitmap bitmap = new Bitmap(filePath);
 
-                if (imageAdded)
+                // Erstelle ein neues IB_Image
+                int imageId = imageCounter++; // Vergibt eine eindeutige ID
+                IB_Image newImage = new IB_Image(imageId, filePath, bitmap);
+
+                // Füge das Bild zur Liste der Bilder hinzu
+                uploadedImages.Add(newImage);
+
+                // Zeige das Bild auf dem Canvas an
+                Image newImageElement = new Image
                 {
-                    // Optional: Wenn du auch ein Bitmap davon im UI-Canvas hinzufügen möchtest:
-                    IB_Image image = canvasData.FindImage(canvasData.GetAllImages().Length - 1); // Das zuletzt hinzugefügte Bild
-                    BitmapImage bitmapImage = new BitmapImage(new Uri(image.GetPathImage(image)));
+                    Source = newImage.GetSource(),
+                    Width = bitmap.Width,
+                    Height = bitmap.Height
+                };
 
-                    // Berechnung des Skalierungsfaktors
-                    double scaleFactor = 1.0;
-                    if (bitmapImage.PixelWidth > MaxImageWidth || bitmapImage.PixelHeight > MaxImageHeight)
-                    {
-                        scaleFactor = Math.Min(MaxImageWidth / (double)bitmapImage.PixelWidth, MaxImageHeight / (double)bitmapImage.PixelHeight);
-                    }
-
-                    // Erstelle das Image-Element
-                    Image newImage = new Image
-                    {
-                        Source = bitmapImage,
-                        Width = bitmapImage.PixelWidth * scaleFactor,
-                        Height = bitmapImage.PixelHeight * scaleFactor
-                    };
-
-                    // Erstelle den Border
-                    Border newBorder = new Border
-                    {
-                        Width = newImage.Width,
-                        Height = newImage.Height,
-                        Child = newImage,
-                        BorderBrush = Brushes.Transparent,
-                        BorderThickness = new Thickness(1)
-                    };
-
-                    // Zentriere das Bild auf dem Canvas
-                    double centerX = (imageCanvas.ActualWidth - newBorder.Width) / 2;
-                    double centerY = (imageCanvas.ActualHeight - newBorder.Height) / 2;
-
-                    Canvas.SetLeft(newBorder, centerX);
-                    Canvas.SetTop(newBorder, centerY);
-                    imageCanvas.Children.Add(newBorder); // Füge den Border zum Canvas hinzu
-                }
-                else
+                // Erstelle einen Border um das Bild (für spätere Auswahl)
+                Border imageBorder = new Border
                 {
-                    Console.WriteLine("Bild konnte nicht hinzugefügt werden.");
-                }
+                    Width = newImageElement.Width,
+                    Height = newImageElement.Height,
+                    Child = newImageElement,
+                    BorderBrush = Brushes.Transparent,
+                    BorderThickness = new Thickness(1)
+                };
+
+                // Füge den Border zum Canvas hinzu
+                CenterElementOnCanvas(imageBorder); // Positioniere das Bild (z. B. zentriert)
+                imageCanvas.Children.Add(imageBorder);
+
+                Console.WriteLine("Bild erfolgreich geladen.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error uploading image: {ex.Message}");
+                Console.WriteLine($"Fehler beim Laden des Bildes: {ex.Message}");
             }
         }
 
@@ -195,6 +185,9 @@ namespace InterfaceFrontend
                 currentlySelectedBorder = border;
                 currentlySelectedImage = border.Child as Image;
                 mouseClickPosition = e.GetPosition(imageCanvas);
+
+                // Füge eine visuelle Markierung hinzu, z.B. durch einen Rahmen
+                currentlySelectedBorder.BorderBrush = Brushes.Red; // Markiere das Bild mit einem roten Rahmen
             }
         }
 

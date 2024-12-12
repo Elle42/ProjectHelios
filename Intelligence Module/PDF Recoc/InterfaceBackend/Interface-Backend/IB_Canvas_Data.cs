@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
 
 namespace InterfaceBackend
 {
@@ -36,6 +39,7 @@ namespace InterfaceBackend
             return _images;
         }
 
+        
     }
 
     /// <summary>
@@ -55,14 +59,14 @@ namespace InterfaceBackend
         private int _cutoutY;
         private Bitmap _bitMap;
 
-        IB_Image(int id, string pathToImg, Bitmap bitmap)
+        public IB_Image(int id, string pathToImg, Bitmap bitmap)
         {
             this._id = id;
             this._pathToImg = pathToImg;
             this._bitMap = bitmap;
         }
 
-        IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale)
+        public IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale)
         {
             this._pos = pos;
             this._pathToImg = pathToImg;
@@ -72,7 +76,7 @@ namespace InterfaceBackend
             this._scale = scale;
         }
 
-        IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale, int cutoutX, int cutoutY)
+        public IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale, int cutoutX, int cutoutY)
         {
             this._pos = pos;
             this._pathToImg = pathToImg;
@@ -88,5 +92,34 @@ namespace InterfaceBackend
         {
             return this._pathToImg;
         }
+
+        public Bitmap GetBitmap()
+        {
+            return this._bitMap;
+        }
+
+        public ImageSource GetSource()
+        {
+            if (_bitMap != null)
+            {
+                using (var memoryStream = new System.IO.MemoryStream())
+                {
+                    _bitMap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                    memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+
+                    var bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memoryStream;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+
+                    return bitmapImage;
+                }
+            }
+
+            // Optional: Rückgabewert, falls kein Bitmap verfügbar ist
+            return null;
+        }
+
     }
 }
