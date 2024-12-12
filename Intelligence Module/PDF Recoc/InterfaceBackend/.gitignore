@@ -1,0 +1,8 @@
+# Visual Studio-related files
+.vs/
+*.suo
+*.csproj.AssemblyReference.cache
+
+# Backup and temporary files
+*.backup.json
+*.json~
