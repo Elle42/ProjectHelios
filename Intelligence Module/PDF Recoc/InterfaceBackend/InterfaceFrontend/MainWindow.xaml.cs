@@ -55,6 +55,7 @@ namespace InterfaceFrontend
             WindowStyle = WindowStyle.SingleBorderWindow;
             Topmost = true;
             WindowState = WindowState.Maximized;
+            imageCanvas.EditingMode = InkCanvasEditingMode.None;
         }
 
         private void BurgerMenuToggleButton_Click(object sender, RoutedEventArgs e)
@@ -158,11 +159,15 @@ namespace InterfaceFrontend
 
                 // Event-Handler für Interaktivität an Border anhängen
                 newBorder.MouseLeftButtonDown += Image_LeftButtonDown;
-                newBorder.MouseMove += ImageCanvas_MouseMove;
                 newBorder.MouseLeftButtonUp += Image_MouseLeftButtonUp;
                 newBorder.MouseWheel += Image_MouseWheel;
-                
-                newImage.MouseWheel += Image_MouseWheel; // Event-Handler hinzufügen
+                newBorder.MouseMove += ImageCanvas_MouseMove;
+
+                newImage.MouseWheel += Image_MouseWheel;
+                newImage.MouseMove += ImageCanvas_MouseMove;
+                newImage.MouseLeftButtonDown += Image_LeftButtonDown;
+                newImage.MouseLeftButtonUp += Image_MouseLeftButtonUp;
+
 
             }
             catch (Exception ex)
@@ -185,29 +190,16 @@ namespace InterfaceFrontend
 
         private void Image_LeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-           
+
+            
             if (sender is Border border)
             {
                 currentlySelectedBorder = border;
                 currentlySelectedImage = border.Child as Image;
                 mouseClickPosition = e.GetPosition(imageCanvas);
-                imageCanvas.EditingMode = InkCanvasEditingMode.None;
+                
                 // Füge eine visuelle Markierung hinzu, z.B. durch einen Rahmen
                 currentlySelectedBorder.BorderBrush = Brushes.Red; // Markiere das Bild mit einem roten Rahmen
-            }
-            if(currentMode == "Draw")
-            {
-                if (e.LeftButton == MouseButtonState.Pressed)
-                {
-                    imageCanvas.EditingMode = InkCanvasEditingMode.Ink;
-                }
-            }
-            if(currentMode == "Erase")
-            {
-                if (e.LeftButton == MouseButtonState.Pressed)
-                {
-                    imageCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
-                }
             }
         }
 
@@ -243,34 +235,73 @@ namespace InterfaceFrontend
         {
             if (currentlySelectedImage == null || currentMode != "Scale") return;
 
-            double scaleFactor = e.Delta > 0 ? 1.05 : 0.95;
-            var transform = currentlySelectedImage.RenderTransform as ScaleTransform ?? new ScaleTransform(1, 1);
-            currentlySelectedImage.RenderTransform = transform;
+            // Aktuelle Transform (für Skalierung) überprüfen oder erstellen
+            var transformGroup = currentlySelectedImage.RenderTransform as TransformGroup;
+            if (transformGroup == null)
+            {
+                transformGroup = new TransformGroup();
+                transformGroup.Children.Add(new ScaleTransform(1, 1));
+                transformGroup.Children.Add(new TranslateTransform(0, 0));
+                currentlySelectedImage.RenderTransform = transformGroup;
+            }
 
-            transform.ScaleX *= scaleFactor;
-            transform.ScaleY *= scaleFactor;
+            // Skalierung anwenden
+            var scaleTransform = transformGroup.Children[0] as ScaleTransform;
+            var translateTransform = transformGroup.Children[1] as TranslateTransform;
+
+            double scaleFactor = e.Delta > 0 ? 1.1 : 0.9;
+
+            // Berechnung des neuen Skalenwerts
+            double newScaleX = scaleTransform.ScaleX * scaleFactor;
+            double newScaleY = scaleTransform.ScaleY * scaleFactor;
+
+            // Mausposition relativ zum Bild
+            Point mousePosition = e.GetPosition(currentlySelectedImage);
+
+            // Anpassung der Skalierung
+            double offsetX = (mousePosition.X - translateTransform.X) * (scaleFactor - 1);
+            double offsetY = (mousePosition.Y - translateTransform.Y) * (scaleFactor - 1);
+
+            translateTransform.X -= offsetX;
+            translateTransform.Y -= offsetY;
+
+            scaleTransform.ScaleX = newScaleX;
+            scaleTransform.ScaleY = newScaleY;
+
+            // Optional: Border anpassen
+            if (currentlySelectedBorder != null)
+            {
+                currentlySelectedBorder.Width = currentlySelectedImage.ActualWidth * newScaleX;
+                currentlySelectedBorder.Height = currentlySelectedImage.ActualHeight * newScaleY;
+            }
         }
+
 
         private void DrawButton_Click(object sender, RoutedEventArgs e)
         {
             SetMode("Draw");
+            imageCanvas.EditingMode = InkCanvasEditingMode.Ink;
             imageCanvas.Cursor = Cursors.Pen;
-
         }
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
             SetMode("Erase");
-            imageCanvas.Cursor = Cursors.Pen;
+            imageCanvas.Cursor = Cursors.Cross;
+            imageCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
         }
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
             SetMode("Scale");
             imageCanvas.Cursor = Cursors.SizeNWSE;
+            imageCanvas.EditingMode = InkCanvasEditingMode.None;
+            
         }
         private void ImageMove_Click(object sender, RoutedEventArgs e)
         {
             SetMode("Move");
             imageCanvas.Cursor = Cursors.Hand;
+            imageCanvas.EditingMode = InkCanvasEditingMode.None;
+
         }
 
         private void SetMode(string mode)
