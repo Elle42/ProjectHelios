@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using InterfaceBackend;
+using System.IO;
+using System.Drawing;
+using Point = System.Windows.Point;
+using Brushes = System.Windows.Media.Brushes;
+using Image = System.Windows.Controls.Image;
 
 
 namespace InterfaceFrontend
@@ -21,18 +25,25 @@ namespace InterfaceFrontend
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
+    /// 
+
+
+
+    //BLABALABKAPAN
     public partial class MainWindow : Window
     {
-        
         private Point mouseClickPosition;
         private string currentMode = "None";
-        private const int MaxImageWidth = 800; // Maximale Breite in Pixel
-        private const int MaxImageHeight = 600; // Maximale Höhe in Pixel
-        private IB_Canvas_Data imageDataDictionary;
-        private int imageCounter = 0; // Zähler für Bild-IDs    
+        private const int MaxImageWidth = 800;
+        private const int MaxImageHeight = 600;
+
+        private int imageCounter = 0;
+        private readonly Dictionary<int, IB_Canvas_Data> imageDataDictionary = new Dictionary<int, IB_Canvas_Data>();
+        private readonly List<IB_Image> uploadedImages = new List<IB_Image>();
+        private readonly List<Border> imageBorders = new List<Border>();
+
         private Image currentlySelectedImage;
         private Border currentlySelectedBorder;
-        private Point imageOriginalPosition;
 
         public MainWindow()
         {
@@ -41,12 +52,10 @@ namespace InterfaceFrontend
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.WindowStyle = WindowStyle.SingleBorderWindow;
-            this.Topmost = true;
-            this.WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.SingleBorderWindow;
+            Topmost = true;
+            WindowState = WindowState.Maximized;
         }
-
-
 
         private void BurgerMenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -57,8 +66,8 @@ namespace InterfaceFrontend
                 InfoCurrentImage.Visibility = Visibility.Collapsed;
                 Background = Brushes.White;
             }
-            
-            else    
+
+            else
             {
                 SideMenu.Visibility = Visibility.Visible;
                 InfoCurrentImage.Visibility = Visibility.Visible;
@@ -68,7 +77,7 @@ namespace InterfaceFrontend
 
         private void InfoCurrentImage_Click(object sender, RoutedEventArgs e)
         {
-            if(InfoCurrentImageBox.Visibility == Visibility.Visible)
+            if (InfoCurrentImageBox.Visibility == Visibility.Visible)
             {
                 InfoCurrentImageBox.Visibility = Visibility.Collapsed;
             }
@@ -78,22 +87,17 @@ namespace InterfaceFrontend
             }
         }
 
-
-
         private void ImageSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedMode = (imageSelectionComboBox.SelectedItem as ComboBoxItem).Content.ToString();
+            var selectedMode = (imageSelectionComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
             confirmButton.Visibility = selectedMode == "Multi" ? Visibility.Visible : Visibility.Collapsed;
-            uploadButton.Visibility = selectedMode == "Single" ? Visibility.Visible : Visibility.Visible;
+            uploadButton.Visibility = Visibility.Visible;
         }
 
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Multiselect = true
-            };
-
+            var openFileDialog = new OpenFileDialog { Multiselect = true };
+            imageCanvas.EditingMode = InkCanvasEditingMode.None;
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (var fileName in openFileDialog.FileNames)
@@ -101,13 +105,12 @@ namespace InterfaceFrontend
                     LoadImage(fileName);
                 }
 
-                if ((imageSelectionComboBox.SelectedItem as ComboBoxItem).Content.ToString() == "Single")
+                if ((imageSelectionComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() == "Single")
                 {
                     ConfirmUploadForSingle();
                 }
             }
         }
-
         private void LoadImage(string filePath)
         {
             try
@@ -115,12 +118,15 @@ namespace InterfaceFrontend
                 BitmapImage bitmapImage = new BitmapImage(new Uri(filePath));
                 Console.WriteLine($"Loaded image: {filePath} with size: {bitmapImage.PixelWidth}x{bitmapImage.PixelHeight}");
 
-                // Skalierungsfaktor berechnen
-                double scaleFactor = Math.Min(
-                    MaxImageWidth / (double)bitmapImage.PixelWidth,
-                    MaxImageHeight / (double)bitmapImage.PixelHeight);
+                // Berechnung des Skalierungsfaktors
+                double scaleFactor = 1.0;
 
-                // Neues Bild erstellen
+                if (bitmapImage.PixelWidth > MaxImageWidth || bitmapImage.PixelHeight > MaxImageHeight)
+                {
+                    scaleFactor = Math.Min(MaxImageWidth / (double)bitmapImage.PixelWidth, MaxImageHeight / (double)bitmapImage.PixelHeight);
+                }
+
+                // Erstelle das Image-Element
                 Image newImage = new Image
                 {
                     Source = bitmapImage,
@@ -128,7 +134,7 @@ namespace InterfaceFrontend
                     Height = bitmapImage.PixelHeight * scaleFactor
                 };
 
-                // Border für das Bild erstellen
+                // Erstelle den Border
                 Border newBorder = new Border
                 {
                     Width = newImage.Width,
@@ -138,30 +144,30 @@ namespace InterfaceFrontend
                     BorderThickness = new Thickness(1)
                 };
 
-                // Bild zentriert auf das Canvas platzieren
+                // Zentriere das Bild auf dem Canvas
                 double centerX = (imageCanvas.ActualWidth - newBorder.Width) / 2;
                 double centerY = (imageCanvas.ActualHeight - newBorder.Height) / 2;
 
                 Canvas.SetLeft(newBorder, centerX);
                 Canvas.SetTop(newBorder, centerY);
-                imageCanvas.Children.Add(newBorder);
+                imageCanvas.Children.Add(newBorder); // Füge den Border zum Canvas hinzu
 
-                // Daten im Dictionary speichern
-                imageDataDictionary = new IB_Canvas_Data
-                {
-                    
-                };
+                Console.WriteLine("Image added to canvas.");
 
-                // Event-Handler für Interaktivität hinzufügen
+                
+
+                // Event-Handler für Interaktivität an Border anhängen
                 newBorder.MouseLeftButtonDown += Image_LeftButtonDown;
                 newBorder.MouseMove += ImageCanvas_MouseMove;
                 newBorder.MouseLeftButtonUp += Image_MouseLeftButtonUp;
+                newBorder.MouseWheel += Image_MouseWheel;
+                
+                newImage.MouseWheel += Image_MouseWheel; // Event-Handler hinzufügen
 
-                imageCounter++;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error loading image: {ex.Message}");
+                Console.WriteLine($"Error uploading image: {ex.Message}");
             }
         }
 
@@ -173,228 +179,106 @@ namespace InterfaceFrontend
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((imageSelectionComboBox.SelectedItem as ComboBoxItem).Content.ToString() == "Multi")
-            {
-                uploadButton.Visibility = Visibility.Collapsed;
-                ShowModeButtons();
-            }
+            uploadButton.Visibility = Visibility.Collapsed;
+            ShowModeButtons();
         }
 
         private void Image_LeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender == null || e == null)
+           
+            if (sender is Border border)
             {
-                Console.WriteLine("Sender oder Event ist null.");
-                return;
+                currentlySelectedBorder = border;
+                currentlySelectedImage = border.Child as Image;
+                mouseClickPosition = e.GetPosition(imageCanvas);
+                imageCanvas.EditingMode = InkCanvasEditingMode.None;
+                // Füge eine visuelle Markierung hinzu, z.B. durch einen Rahmen
+                currentlySelectedBorder.BorderBrush = Brushes.Red; // Markiere das Bild mit einem roten Rahmen
             }
-
-            // Überprüfen, ob der Sender ein Border ist
-            var border = sender as Border;
-            if (border == null)
+            if(currentMode == "Draw")
             {
-                Console.WriteLine("Das angeklickte Element ist kein Border.");
-                return;
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    imageCanvas.EditingMode = InkCanvasEditingMode.Ink;
+                }
             }
-
-            // Das Kind des Borders ist das Image
-            var image = border.Child as Image;
-            if (image == null)
+            if(currentMode == "Erase")
             {
-                Console.WriteLine("Das Border hat kein Image als Kind.");
-                return;
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    imageCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
+                }
             }
-
-            // Setze das aktuell ausgewählte Bild und Border
-            currentlySelectedImage = image;
-            currentlySelectedBorder = border;
-
-            int imageId = (int)image.Tag;
-            ShowImageInfo(imageId);
-            //currentlySelectedImageData = imageDataList.Find(data => data.Id == imageId);
-
-            //if (currentlySelectedImageData == null) return;
-
-            //foreach (var data in imageDataList)
-            //{
-            //    if (data.ImageBorder != null)
-            //        data.ImageBorder.BorderBrush = Brushes.Transparent;
-            //}
-
-            //currentlySelectedImageData.ImageBorder.BorderBrush = Brushes.Blue;
-            //mouseClickPosition = e.GetPosition(imageCanvas);
         }
-
-
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(null);
-
         }
 
         private void ImageCanvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (currentlySelectedImage != null && e.LeftButton == MouseButtonState.Pressed)
             {
-                try
+                if (currentMode == "Move")
                 {
-                    Point currentMousePosition = e.GetPosition(imageCanvas);
-
-                    if (currentMode == "Move")
-                    {
-                        MoveImage(currentlySelectedImage, e);
-                    }
-                    else if (currentMode == "Draw")
-                    {
-                        DrawOnImage(e);
-                    }
-                    else if (currentMode == "Erase")
-                    {
-                        EraseFromImage(e);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error in MouseMove: {ex.Message}");
+                    MoveImage(e);
                 }
             }
         }
 
-        private void MoveImage(object sender, MouseEventArgs e)
+        private void MoveImage(MouseEventArgs e)
         {
-            if (currentlySelectedImage != null && e.LeftButton == MouseButtonState.Pressed)
-            {
-                Point currentMousePosition = e.GetPosition(imageCanvas);
-                double offsetX = currentMousePosition.X - mouseClickPosition.X;
-                double offsetY = currentMousePosition.Y - mouseClickPosition.Y;
+            var currentMousePosition = e.GetPosition(imageCanvas);
+            double offsetX = currentMousePosition.X - mouseClickPosition.X;
+            double offsetY = currentMousePosition.Y - mouseClickPosition.Y;
 
-                // Setze die Position des Borders
-                Canvas.SetLeft(currentlySelectedBorder, Canvas.GetLeft(currentlySelectedBorder) + offsetX);
-                Canvas.SetTop(currentlySelectedBorder, Canvas.GetTop(currentlySelectedBorder) + offsetY);
+            Canvas.SetLeft(currentlySelectedBorder, Canvas.GetLeft(currentlySelectedBorder) + offsetX);
+            Canvas.SetTop(currentlySelectedBorder, Canvas.GetTop(currentlySelectedBorder) + offsetY);
 
-                // Setze die Position des Bildes entsprechend
-                Canvas.SetLeft(currentlySelectedImage, Canvas.GetLeft(currentlySelectedBorder));
-                Canvas.SetTop(currentlySelectedImage, Canvas.GetTop(currentlySelectedBorder));
-
-                mouseClickPosition = currentMousePosition;
-
-
-            }
-        }
-
-
-
-        // Zeichenfunktion
-        private void DrawOnImage(MouseEventArgs e)
-        {
-            // Function for drawing to a bitmap
-            throw new NotImplementedException();
-        }
-
-        // Löschfunktion
-        private void EraseFromImage(MouseEventArgs e)
-        {
-            // Function for erasing from a bitmap
-            throw new NotImplementedException();
+            mouseClickPosition = currentMousePosition;
         }
 
         private void Image_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            if (currentlySelectedImage != null && currentMode == "Scale")
-            {
-                double scaleFactor = e.Delta > 0 ? 1.05 : 0.95;
+            if (currentlySelectedImage == null || currentMode != "Scale") return;
 
-                // Bestimme die aktuelle Position des Bildes im Canvas
-                double currentLeft = Canvas.GetLeft(currentlySelectedBorder);
-                double currentTop = Canvas.GetTop(currentlySelectedBorder);
+            double scaleFactor = e.Delta > 0 ? 1.05 : 0.95;
+            var transform = currentlySelectedImage.RenderTransform as ScaleTransform ?? new ScaleTransform(1, 1);
+            currentlySelectedImage.RenderTransform = transform;
 
-                // Berechne das Zentrum des Bildes vor der Skalierung
-                double centerX = currentLeft + currentlySelectedBorder.Width / 2;
-                double centerY = currentTop + currentlySelectedBorder.Height / 2;
-
-                // Hole den aktuellen Transform (ScaleTransform) oder erstelle einen neuen
-                var transform = currentlySelectedImage.RenderTransform as ScaleTransform;
-                if (transform == null)
-                {
-                    transform = new ScaleTransform(1, 1);
-                    currentlySelectedImage.RenderTransform = transform;
-                }
-
-                // Wende die Skalierung an
-                transform.ScaleX *= scaleFactor;
-                transform.ScaleY *= scaleFactor;
-
-                // Berechne die neuen Dimensionen der Border nach der Skalierung
-                double newWidth = currentlySelectedImage.ActualWidth * transform.ScaleX;
-                double newHeight = currentlySelectedImage.ActualHeight * transform.ScaleY;
-
-                // Setze die neue Größe der Border
-                currentlySelectedBorder.Width = newWidth;
-                currentlySelectedBorder.Height = newHeight;
-
-                // Berechne die neue Position der Border, um das Zentrum beizubehalten
-                double newLeft = centerX - (newWidth / 2);
-                double newTop = centerY - (newHeight / 2);
-
-                // Setze die neue Position der Border im Canvas
-                Canvas.SetLeft(currentlySelectedBorder, newLeft);
-                Canvas.SetTop(currentlySelectedBorder, newTop);
-
-                //currentlySelectedImageData.CurrentWidth = newWidth;
-                //currentlySelectedImageData.CurrentHeight = newHeight;
-
-            }
+            transform.ScaleX *= scaleFactor;
+            transform.ScaleY *= scaleFactor;
         }
-
-        private void UpdateBorderSize()
-        {
-            throw new NotImplementedException();
-        }
-
-
 
         private void DrawButton_Click(object sender, RoutedEventArgs e)
         {
-            currentMode = "Draw";
-            ResetMouseCapture(); // Freigabe der Maus
-            Console.WriteLine("Mode switched to Draw");
-        }
+            SetMode("Draw");
+            imageCanvas.Cursor = Cursors.Pen;
 
+        }
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
-            currentMode = "Erase";
-            ResetMouseCapture(); // Freigabe der Maus
-            Console.WriteLine("Mode switched to Erase");
+            SetMode("Erase");
+            imageCanvas.Cursor = Cursors.Pen;
         }
-
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
-            currentMode = "Scale";
-            ResetMouseCapture(); // Freigabe der Maus
-            Console.WriteLine("Mode switched to Scale");
+            SetMode("Scale");
+            imageCanvas.Cursor = Cursors.SizeNWSE;
         }
-
         private void ImageMove_Click(object sender, RoutedEventArgs e)
         {
-            currentMode = "Move";
-            ResetMouseCapture(); // Freigabe der Maus
-            Console.WriteLine("Mode switched to Move");
+            SetMode("Move");
+            imageCanvas.Cursor = Cursors.Hand;
         }
 
-        private void ResetMouseCapture()
+        private void SetMode(string mode)
         {
-            if (currentlySelectedImage != null)
-            {
-                Mouse.Capture(null); // Maus von der aktuellen Auswahl freigeben
-                currentlySelectedImage = null; // Zustand zurücksetzen
-                currentlySelectedBorder = null; // Zustand zurücksetzen
-            }
+            currentMode = mode;
+            Console.WriteLine($"Mode switched to {mode}");
         }
-      
-        private void ShowImageInfo(int imageId)
-        {
-            throw new NotImplementedException();
-        }
+
         private void ShowModeButtons()
         {
             MoveButton.Visibility = Visibility.Visible;
@@ -403,9 +287,72 @@ namespace InterfaceFrontend
             EraseButton.Visibility = Visibility.Visible;
         }
 
-        private void InfoCurrentImage_Checked(object sender, RoutedEventArgs e)
-        {
 
+
+
+
+
+
+
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            //SaveBitmap();
         }
+
+        //private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    _isDrawing = _isDrawing || _isErasing;
+        //    _lastPoint = e.GetPosition(DrawingCanvas);
+        //}
+
+        //private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    if (_isDrawing || _isErasing)
+        //    {
+        //        if (e.LeftButton == MouseButtonState.Pressed)
+        //        {
+        //            Point currentPoint = e.GetPosition(DrawingCanvas);
+        //            DrawOnBitmap(_lastPoint, currentPoint, _isErasing);
+        //            _lastPoint = currentPoint;
+        //        }
+        //    }
+        //}
+
+        //private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
+        //{
+        //    _isDrawing = false;
+        //    _isErasing = false;
+        //}
+
+        //private void DrawOnBitmap(Point start, Point end, bool erase)
+        //{
+        //    using (var context = _writeableBitmap.GetBitmapContext())
+        //    {
+        //        int thickness = 5;
+        //        var color = erase ? Colors.Transparent : Colors.Black;
+        //        var brush = erase ? Brushes.Transparent : Brushes.Black;
+
+        //        // Draw a line between the points
+        //        var pen = new Pen(new SolidColorBrush(color), thickness);
+        //        DrawingContext dc = DrawingContextHelper.Create(_writeableBitmap);
+        //        dc.DrawLine(pen, start, end);
+        //    }
+
+        //    _writeableBitmap.Invalidate();
+        //}
+
+        //private void SaveBitmap()
+        //{
+        //    string savePath = "output.png";
+        //    using (var fileStream = new FileStream(savePath, FileMode.Create))
+        //    {
+        //        BitmapEncoder encoder = new PngBitmapEncoder();
+        //        encoder.Frames.Add(BitmapFrame.Create(_writeableBitmap));
+        //        encoder.Save(fileStream);
+        //    }
+        //    MessageBox.Show("Image saved to " + savePath);
+        //}
+
     }
 }

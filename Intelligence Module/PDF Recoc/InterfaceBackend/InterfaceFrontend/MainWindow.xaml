@@ -124,8 +124,18 @@
             />
             <Button 
                 x:Name="EraseButton" 
+                
                 Content="Löschen" 
                 Click="EraseButton_Click" 
+                Width="110" 
+                Margin="0,5,0,0"  
+                Visibility="Collapsed"
+                
+            />
+            <Button 
+                x:Name="SaveButton" 
+                Content="Speichern" 
+                Click="SaveButton_Click" 
                 Width="110" 
                 Margin="0,5,0,0"  
                 Visibility="Collapsed"
@@ -151,19 +161,21 @@
             Height="40"
             Grid.Row="3"
         >
-        <TextBlock 
+            <TextBlock 
             Text="Info" 
             FontSize="16" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" />
         </ToggleButton>
 
-        <Canvas 
+        <InkCanvas 
             x:Name="imageCanvas" 
-            Background="White"    
+            Background="White"  
             Grid.Row="1" 
             Grid.Column="1" 
             Grid.RowSpan="3"
+            
+            
         />
     </Grid>
 </Window>

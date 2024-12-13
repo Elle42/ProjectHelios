@@ -107,3 +107,12 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- Y
 2024-12-12 10:21:01,570 -  INFO - Converting 3 pages!
 2024-12-12 10:21:01,571 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\Brandschutzpläne_06_2024.pdf
 2024-12-12 10:21:01,572 -  INFO - Reading PDF ...
+2024-12-12 10:53:37,222 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2024-12-12 10:53:37,223 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:53:37,229 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2024-12-12 10:53:37,248 -  INFO - Database connection successful!
+2024-12-12 10:53:37,252 -  INFO - Inserted new Fire Plan with generated planId: 8
+2024-12-12 10:53:37,254 -  INFO - Reading PDF Brandschutzpläne_06_2024.pdf in single file mode
+2024-12-12 10:53:37,255 -  INFO - Converting 3 pages!
+2024-12-12 10:53:37,255 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\Brandschutzpläne_06_2024.pdf
+2024-12-12 10:53:37,256 -  INFO - Reading PDF ...
