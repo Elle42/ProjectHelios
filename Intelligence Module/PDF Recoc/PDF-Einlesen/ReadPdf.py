@@ -1,4 +1,4 @@
-# Import All
+# Imports
 import argparse
 from pdf2image import convert_from_path
 import cv2
@@ -106,7 +106,7 @@ dirPath = rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['pdfRootPath'] + "\\"
 
 # Initialize Database --------------------------------------------------
 # Define database path
-planId = 0
+planId = 1
 db_path = rootPath.rsplit('\\', 1)[0] + "\TEXTSDB.fdb"
 logger.debug(db_path)
 api = rootPath.rsplit('\\', 1)[0] + config['db']['pathToDLL']
@@ -135,25 +135,54 @@ if not os.path.exists(db_path):
     logger.info("Database connection successful!")
 
     # Initalise tables in the new Database
-    cur.execute(f"""
-            CREATE TABLE FIRE_PLANS (
-            planId INTEGER PRIMARY KEY,
-            name VARCHAR(40)
-            );    
-        """)
-    cur.execute(f"""
-            
-            CREATE TABLE CONVERTED_TEXTS (
-            id INTEGER PRIMARY KEY,
-            text VARCHAR(40),
-            cordLeft INTEGER,
-            cordTop INTEGER,
-	        page INTEGER,
-	        planId INTEGER,
-	        FOREIGN KEY (planId) REFERENCES FIRE_PLANS(planId)
-            );
-
-        """)
+    cur.execute(f"""CREATE TABLE FIRE_PLANS (
+                    planId INTEGER PRIMARY KEY,
+                    name VARCHAR(40)
+                    );    
+    """)
+    cur.execute(f"""CREATE TABLE PAGES (
+                    pageId INTEGER PRIMARY KEY,
+                    planId INTEGER,
+                    FOREIGN KEY (planId) REFERENCES FIRE_PLANS(planId)
+                    );
+    """)
+    cur.execute(f"""CREATE TABLE CONVERTED_TEXTS (
+                    id INTEGER PRIMARY KEY,
+                    text VARCHAR(40),
+                    cordLeft INTEGER,
+                    cordTop INTEGER,
+	                pageId INTEGER,
+	                FOREIGN KEY (pageId) REFERENCES PAGES(pageId)
+                    );
+    """)
+    con.commit()
+    cur.execute(f"""CREATE GENERATOR GEN_CONVERTED_TEXTS_ID;""")
+    cur.execute("""CREATE TRIGGER TRG_CONVERTED_TEXTS_BI FOR CONVERTED_TEXTS
+                    ACTIVE BEFORE INSERT POSITION 0
+                    AS
+                    BEGIN
+                        IF (NEW.ID IS NULL) THEN
+                            NEW.ID = GEN_ID(GEN_CONVERTED_TEXTS_ID, 1);
+                    END;
+    """)
+    cur.execute(f"""CREATE GENERATOR GEN_PAGE_ID;""")
+    cur.execute(f"""CREATE TRIGGER TRG_PAGES_BI FOR PAGES
+                    ACTIVE BEFORE INSERT POSITION 0
+                    AS
+                    BEGIN
+                        IF (NEW.PAGEID IS NULL) THEN
+                            NEW.PAGEID = GEN_ID(GEN_PAGE_ID, 1);
+                    END;
+    """)
+    cur.execute(f"""CREATE GENERATOR GEN_PLAN_ID;""")
+    cur.execute(f"""CREATE TRIGGER TRG_FIRE_PLANS_BI FOR FIRE_PLANS
+                    ACTIVE BEFORE INSERT POSITION 0
+                    AS
+                    BEGIN
+                        IF (NEW.PLANID IS NULL) THEN
+                    NEW.PLANID = GEN_ID(GEN_PLAN_ID, 1);
+                    END;
+    """)
     con.commit()
     
 else:
@@ -189,12 +218,12 @@ else:
 
 # Pytesseract
 pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
-# ----------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Recognize all texts in the image and store them in the database, texts are covered with white rectangles
-def TextRecocnition(image, binary, cur, rotation, page, id):
+def TextRecocnition(image, binary, cur, rotation, id):
     # Use Tesseract to extract all text
     data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
     logger.debug(f"{len(data)} words detected!")
@@ -207,7 +236,7 @@ def TextRecocnition(image, binary, cur, rotation, page, id):
             image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), thickness=-1)
 
             # Write the recognized text into the database
-            cur.execute("INSERT INTO CONVERTED_TEXTS (text, cordLeft, cordTop, page, planId) VALUES (?, ?, ?, ?, ?)", (data['text'][j], data['left'][j], data['top'][j], page, id))
+            cur.execute("INSERT INTO CONVERTED_TEXTS (text, cordLeft, cordTop, pageId) VALUES (?, ?, ?, ?)", (data['text'][j], data['left'][j], data['top'][j], id))
     return image
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -216,8 +245,14 @@ def TextRecocnition(image, binary, cur, rotation, page, id):
 # ---------------------------------------------------------------------------------------------------------------------
 # Takes the read images and processes them
 def ConversionLoop(pages):
+    pageId = 0
+
     # Main conversion loop
     for i, page in enumerate(pages):
+        global planId
+        cur.execute("INSERT INTO PAGES (planId) VALUES (?) RETURNING pageId", (planId,))
+        pageId = cur.fetchone()[0]
+
         # Save the page as a temporary image
         image_path = rootPath + "\\" + tmpPath + f"temp_page_{i}.png"
         page.save(image_path, "PNG")
@@ -235,7 +270,7 @@ def ConversionLoop(pages):
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
         # Text recognition
-        image = TextRecocnition(image,binary, cur, "nr", i, planId)
+        image = TextRecocnition(image,binary, cur, "nr", pageId)
 
         # Apply Gaussian blur and thresholding
         blurred = cv2.GaussianBlur(image, (9,9), 0)
@@ -291,7 +326,6 @@ if fileMode == 'multi':
         # Load first page of each PDF into the array
         pages.append(temp[0])
    
-    
     # Start the conversion process
     ConversionLoop(pages)
 
