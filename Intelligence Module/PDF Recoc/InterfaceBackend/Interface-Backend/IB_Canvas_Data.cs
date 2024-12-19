@@ -92,6 +92,55 @@ namespace InterfaceBackend
             this._height = bitmap.Height;
         }
 
+        public int GetWidth()
+        {
+            return _width;
+        }
+        public void SetWidth(int width)
+        {
+            _width = width;
+        }
+        public int GetHeight()
+        {
+            return _height;
+        }
+        public void SetHeight(int height)
+        {
+            _height = height;
+        }
+        public float GetScale()
+        {
+            return _scale;
+        }
+        public void SetScale(float scale)
+        {
+            _scale = scale;
+        }
+        public int GetCutoutX()
+        {
+            return _cutoutX;
+        }
+        public void SetCutoutX(int cutoutX)
+        {
+            _cutoutX = cutoutX;
+        }
+        public int GetCutoutY()
+        {
+            return _cutoutY;
+        }
+        public void SetCutoutY(int cutoutY)
+        {
+            _cutoutY = cutoutY;
+        }
+        public Point GetPos()
+        { 
+            return _pos; 
+        }
+        public void SetPos(Point pos)
+        {
+            _pos = pos;
+        }
+
         public string GetPathImage()
         {
             return this._pathToImg;
