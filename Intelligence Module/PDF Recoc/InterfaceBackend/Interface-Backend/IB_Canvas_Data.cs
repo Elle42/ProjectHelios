@@ -151,6 +151,11 @@ namespace InterfaceBackend
             return this._bitMap;
         }
 
+        public void SetBitmap(Bitmap bitmap)
+        {
+            _bitMap = bitmap;
+        }
+
         public ImageSource GetSource()
         {
             using (var memory = new System.IO.MemoryStream())
