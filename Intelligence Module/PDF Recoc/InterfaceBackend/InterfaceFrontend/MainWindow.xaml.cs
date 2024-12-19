@@ -149,8 +149,8 @@ namespace InterfaceFrontend
                 double centerX = (imageCanvas.ActualWidth - newBorder.Width) / 2;
                 double centerY = (imageCanvas.ActualHeight - newBorder.Height) / 2;
 
-                Canvas.SetLeft(newBorder, centerX);
-                Canvas.SetTop(newBorder, centerY);
+                InkCanvas.SetLeft(newBorder, centerX);
+                InkCanvas.SetTop(newBorder, centerY);
                 imageCanvas.Children.Add(newBorder); // Füge den Border zum Canvas hinzu
 
                 Console.WriteLine("Image added to canvas.");
@@ -190,22 +190,42 @@ namespace InterfaceFrontend
 
         private void Image_LeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-            
-            if (sender is Border border)
+            if (sender == null || e == null)
             {
-                currentlySelectedBorder = border;
-                currentlySelectedImage = border.Child as Image;
-                mouseClickPosition = e.GetPosition(imageCanvas);
-                
-                // Füge eine visuelle Markierung hinzu, z.B. durch einen Rahmen
-                currentlySelectedBorder.BorderBrush = Brushes.Red; // Markiere das Bild mit einem roten Rahmen
+                Console.WriteLine("Sender oder Event ist null.");
+                return;
             }
+
+            // Überprüfen, ob der Sender ein Border ist
+            var border = sender as Border;
+            if (border == null)
+            {
+                Console.WriteLine("Das angeklickte Element ist kein Border.");
+                return;
+            }
+
+            // Das Kind des Borders ist das Image
+            var image = border.Child as Image;
+            if (image == null)
+            {
+                Console.WriteLine("Das Border hat kein Image als Kind.");
+                return;
+            }
+
+            // Setze das aktuell ausgewählte Bild und Border
+            currentlySelectedImage = image;
+            currentlySelectedBorder = border;
+
+            mouseClickPosition = e.GetPosition(imageCanvas);
+            Mouse.Capture(currentlySelectedImage);
+
+            currentlySelectedBorder.BorderBrush = Brushes.Red;
         }
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(null);
+            
         }
 
         private void ImageCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -214,67 +234,49 @@ namespace InterfaceFrontend
             {
                 if (currentMode == "Move")
                 {
-                    MoveImage(e);
+                    MoveImage(currentlySelectedImage, e);
                 }
             }
         }
 
-        private void MoveImage(MouseEventArgs e)
+        private void MoveImage(object sender ,MouseEventArgs e)
         {
-            var currentMousePosition = e.GetPosition(imageCanvas);
-            double offsetX = currentMousePosition.X - mouseClickPosition.X;
-            double offsetY = currentMousePosition.Y - mouseClickPosition.Y;
+            if (currentlySelectedImage != null && e.LeftButton == MouseButtonState.Pressed)
+            {
+                
+                Point currentMousePosition = e.GetPosition(imageCanvas);
+                double offsetX = currentMousePosition.X - mouseClickPosition.X;
+                double offsetY = currentMousePosition.Y - mouseClickPosition.Y;
 
-            Canvas.SetLeft(currentlySelectedBorder, Canvas.GetLeft(currentlySelectedBorder) + offsetX);
-            Canvas.SetTop(currentlySelectedBorder, Canvas.GetTop(currentlySelectedBorder) + offsetY);
+                // Setze die Position des Borders
+                InkCanvas.SetLeft(currentlySelectedBorder, InkCanvas.GetLeft(currentlySelectedBorder) + offsetX);
+                InkCanvas.SetTop(currentlySelectedBorder, InkCanvas.GetTop(currentlySelectedBorder) + offsetY);
 
-            mouseClickPosition = currentMousePosition;
+                // Setze die Position des Bildes entsprechend
+                InkCanvas.SetLeft(currentlySelectedImage, InkCanvas.GetLeft(currentlySelectedBorder));
+                InkCanvas.SetTop(currentlySelectedImage, InkCanvas.GetTop(currentlySelectedBorder));
+
+                mouseClickPosition = currentMousePosition;
+            }
         }
 
         private void Image_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            if (currentlySelectedImage == null || currentMode != "Scale") return;
+            if (currentlySelectedImage == null || currentlySelectedBorder == null || currentMode != "Scale") return;
 
-            // Aktuelle Transform (für Skalierung) überprüfen oder erstellen
-            var transformGroup = currentlySelectedImage.RenderTransform as TransformGroup;
-            if (transformGroup == null)
-            {
-                transformGroup = new TransformGroup();
-                transformGroup.Children.Add(new ScaleTransform(1, 1));
-                transformGroup.Children.Add(new TranslateTransform(0, 0));
-                currentlySelectedImage.RenderTransform = transformGroup;
-            }
-
-            // Skalierung anwenden
-            var scaleTransform = transformGroup.Children[0] as ScaleTransform;
-            var translateTransform = transformGroup.Children[1] as TranslateTransform;
-
+            // Skalierungsfaktor basierend auf dem Mausrad-Delta
             double scaleFactor = e.Delta > 0 ? 1.1 : 0.9;
 
-            // Berechnung des neuen Skalenwerts
-            double newScaleX = scaleTransform.ScaleX * scaleFactor;
-            double newScaleY = scaleTransform.ScaleY * scaleFactor;
+            // Aktuelle Breite und Höhe des Bildes anpassen
+            currentlySelectedImage.Width *= scaleFactor;
+            currentlySelectedImage.Height *= scaleFactor;
 
-            // Mausposition relativ zum Bild
-            Point mousePosition = e.GetPosition(currentlySelectedImage);
-
-            // Anpassung der Skalierung
-            double offsetX = (mousePosition.X - translateTransform.X) * (scaleFactor - 1);
-            double offsetY = (mousePosition.Y - translateTransform.Y) * (scaleFactor - 1);
-
-            translateTransform.X -= offsetX;
-            translateTransform.Y -= offsetY;
-
-            scaleTransform.ScaleX = newScaleX;
-            scaleTransform.ScaleY = newScaleY;
-
-            // Optional: Border anpassen
-            if (currentlySelectedBorder != null)
-            {
-                currentlySelectedBorder.Width = currentlySelectedImage.ActualWidth * newScaleX;
-                currentlySelectedBorder.Height = currentlySelectedImage.ActualHeight * newScaleY;
-            }
+            // Breite und Höhe der Border anpassen
+            currentlySelectedBorder.Width *= scaleFactor;
+            currentlySelectedBorder.Height *= scaleFactor;
         }
+
+
 
 
         private void DrawButton_Click(object sender, RoutedEventArgs e)
@@ -330,48 +332,6 @@ namespace InterfaceFrontend
         {
             //SaveBitmap();
         }
-
-        //private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    _isDrawing = _isDrawing || _isErasing;
-        //    _lastPoint = e.GetPosition(DrawingCanvas);
-        //}
-
-        //private void Canvas_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    if (_isDrawing || _isErasing)
-        //    {
-        //        if (e.LeftButton == MouseButtonState.Pressed)
-        //        {
-        //            Point currentPoint = e.GetPosition(DrawingCanvas);
-        //            DrawOnBitmap(_lastPoint, currentPoint, _isErasing);
-        //            _lastPoint = currentPoint;
-        //        }
-        //    }
-        //}
-
-        //private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    _isDrawing = false;
-        //    _isErasing = false;
-        //}
-
-        //private void DrawOnBitmap(Point start, Point end, bool erase)
-        //{
-        //    using (var context = _writeableBitmap.GetBitmapContext())
-        //    {
-        //        int thickness = 5;
-        //        var color = erase ? Colors.Transparent : Colors.Black;
-        //        var brush = erase ? Brushes.Transparent : Brushes.Black;
-
-        //        // Draw a line between the points
-        //        var pen = new Pen(new SolidColorBrush(color), thickness);
-        //        DrawingContext dc = DrawingContextHelper.Create(_writeableBitmap);
-        //        dc.DrawLine(pen, start, end);
-        //    }
-
-        //    _writeableBitmap.Invalidate();
-        //}
 
         //private void SaveBitmap()
         //{
