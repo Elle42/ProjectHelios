@@ -1,8 +1,10 @@
 from tkinter import Canvas, Tk, filedialog, Button, Frame, Text, Scrollbar, RIGHT, Y, LEFT, BOTH, TOP, BOTTOM, X
-from PIL import Image, ImageTk, ImageDraw
+from PIL import Image, ImageTk, ImageDraw, ImageGrab
 import time
 import mouse
 from threading import Timer
+import os
+import io
 
 try:
     from ctypes import windll
@@ -217,6 +219,7 @@ class BitmapEditor:
         Button(self.side_frame, text="Canvas erstellen", command=self.create_canvas).pack(fill=X, pady=2)
         Button(self.side_frame, text="Nächste Canvas", command=self.next_canvas).pack(fill=X, pady=2)
         Button(self.side_frame, text="Vorherige Canvas", command=self.previous_canvas).pack(fill=X, pady=2)
+        Button(self.side_frame, text="Canvas Speichern", command=self.save_current_canvas).pack(fill=X, pady=2)
 
         self.canvas_container = Frame(root)
         self.canvas_container.pack(side=LEFT, fill=BOTH, expand=True)
@@ -289,6 +292,43 @@ class BitmapEditor:
         canvas.bind("<B1-Motion>", self.on_canvas_drag)
         canvas.bind("<ButtonRelease-1>", self.on_canvas_release)
         canvas.bind("<MouseWheel>", self.on_canvas_scroll)
+
+    
+    def save_current_canvas(self):
+        """Speichert ausschließlich das aktuelle Canvas als 600x488 Bitmap-Bild."""
+        current_canvas = self.get_current_canvas()
+        if not current_canvas:
+            print("Kein Canvas vorhanden, das gespeichert werden kann.")
+            return
+
+        # Speicherdialog öffnen
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".bmp",
+            filetypes=[("Bitmap Image", "*.bmp"), ("All Files", "*.*")]
+        )
+        if not file_path:
+            return  # Benutzer hat den Dialog abgebrochen
+
+        try:
+            # Holen der genauen Position und Größe des Canvas
+            x = current_canvas.winfo_rootx()
+            y = current_canvas.winfo_rooty()
+            x1 = x + current_canvas.winfo_width()
+            y1 = y + current_canvas.winfo_height()
+
+            # Bildschirmaufnahme des Canvas-Bereichs
+            canvas_image = ImageGrab.grab(bbox=(x, y, x1, y1))
+
+            # Skalieren auf 600x488
+            canvas_image = canvas_image.resize((600, 488), Image.Resampling.LANCZOS)
+
+            # Speichern als Bitmap
+            canvas_image.save(file_path, "BMP")
+
+            print(f"Canvas erfolgreich gespeichert als: {file_path}")
+        except Exception as e:
+            print(f"Fehler beim Speichern des Canvas: {e}")
+
 
     def open_image(self):
         file_path = filedialog.askopenfilename(filetypes=[("Image and Bitmap Files", "*.png;*.jpg;*.jpeg;*.bmp")])
