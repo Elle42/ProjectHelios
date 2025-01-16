@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
 
 namespace InterfaceBackend
 {
@@ -13,7 +16,53 @@ namespace InterfaceBackend
     public class IB_Canvas_Data
     {
         private IB_Image[] _images;
-        
+        private Logger _logger;
+
+
+        IB_Canvas_Data(IB_Image[] images)
+        {
+            _images = images;
+            _logger = new Logger();
+        }
+
+        public bool RemoveImage(IB_Image image)
+        {
+            // not implemented
+            return false;
+        }
+
+        public IB_Image FindImage(int id)
+        {
+            return null;
+        }
+
+        public IB_Image[] GetAllImages()
+        {
+            return _images;
+        }
+
+        /// <summary>
+        /// Register A new Bitmap into The Canvas
+        /// </summary>
+        /// <param name="path"></param>
+        public void RegisterImage(string path)
+        {
+            try
+            {
+                // Load the bitmap from the specified file path
+                using (Bitmap bitmap = new Bitmap(path))
+                {
+                    IB_Image img = new IB_Image(path, bitmap);
+                    _images.Append(img);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(ex.Message, LogLevel.Error);
+                throw;
+            }
+        }
+
     }
 
     /// <summary>
@@ -21,6 +70,7 @@ namespace InterfaceBackend
     /// </summary>
     public class IB_Image
     {
+
         private int _id;
         private Point _pos;
         private string _pathToImg;
@@ -32,27 +82,97 @@ namespace InterfaceBackend
         private int _cutoutY;
         private Bitmap _bitMap;
 
+        private Logger _logger;
 
-        IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale)
+        public IB_Image(string pathToImg, Bitmap bitmap)
         {
-            this._pos = pos;
             this._pathToImg = pathToImg;
-            this._pathToDb = pathToDb;
-            this._width = width;
-            this._height = height;
-            this._scale = scale;
+            this._bitMap = bitmap;
+            this._width = bitmap.Width;
+            this._height = bitmap.Height;
         }
 
-        IB_Image(Point pos, string pathToImg, string pathToDb, int width, int height, float scale, int cutoutX, int cutoutY)
+        public int GetWidth()
         {
-            this._pos = pos;
-            this._pathToImg = pathToImg;
-            this._pathToDb = pathToDb;
-            this._width = width;
-            this._height = height;
-            this._scale = scale;
-            this._cutoutX = cutoutX;
-            this._cutoutY = cutoutY;
+            return _width;
+        }
+        public void SetWidth(int width)
+        {
+            _width = width;
+        }
+        public int GetHeight()
+        {
+            return _height;
+        }
+        public void SetHeight(int height)
+        {
+            _height = height;
+        }
+        public float GetScale()
+        {
+            return _scale;
+        }
+        public void SetScale(float scale)
+        {
+            _scale = scale;
+        }
+        public int GetCutoutX()
+        {
+            return _cutoutX;
+        }
+        public void SetCutoutX(int cutoutX)
+        {
+            _cutoutX = cutoutX;
+        }
+        public int GetCutoutY()
+        {
+            return _cutoutY;
+        }
+        public void SetCutoutY(int cutoutY)
+        {
+            _cutoutY = cutoutY;
+        }
+        public Point GetPos()
+        { 
+            return _pos; 
+        }
+        public void SetPos(Point pos)
+        {
+            _pos = pos;
+        }
+
+        public string GetPathImage()
+        {
+            return this._pathToImg;
+        }
+
+        public Bitmap GetBitmap()
+        {
+            return this._bitMap;
+        }
+
+        public void SetBitmap(Bitmap bitmap)
+        {
+            _bitMap = bitmap;
+        }
+
+        public ImageSource GetSource()
+        {
+            using (var memory = new System.IO.MemoryStream())
+            {
+                // Speichert die Bitmap als PNG in den MemoryStream
+                _bitMap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
+
+                // Erstelle ein BitmapImage aus dem MemoryStream
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+
+                return bitmapImage;
+            }
         }
     }
 }
