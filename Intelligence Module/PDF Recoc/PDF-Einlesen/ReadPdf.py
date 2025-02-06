@@ -100,10 +100,6 @@ dirPath = rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['pdfRootPath'] + "\\"
 # ----------------------------------------------------------------------
 
 
-
-
-
-
 # Initialize Database --------------------------------------------------
 # Define database path
 planId = 1

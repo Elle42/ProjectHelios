@@ -1,10 +1,22 @@
-from tkinter import Canvas, Tk, filedialog, Button, Frame, Text, Scrollbar, RIGHT, Y, LEFT, BOTH, TOP, BOTTOM, X
+from tkinter import Canvas, Tk, filedialog, Button, Frame, Text, Scrollbar, RIGHT, Y, LEFT, BOTH, TOP, BOTTOM, X, Toplevel, messagebox
+import tkinter as tk
 from PIL import Image, ImageTk, ImageDraw, ImageGrab
 import time
 import mouse
 from threading import Timer
 import os
 import io
+import argparse
+from pdf2image import convert_from_path
+import cv2
+import numpy as np
+import pytesseract
+import fdb
+import logging
+import configparser
+import sys
+from sys import argv
+from logging.handlers import RotatingFileHandler
 
 try:
     from ctypes import windll
@@ -14,7 +26,8 @@ except ImportError:
 except Exception as e:
     print(f"Warnung: DPI Awareness konnte nicht gesetzt werden: {e}")
 
-
+# ---------------------------------------------------------------------------
+# IB_Canvas_Data Class
 class IB_Canvas_Data:
     def __init__(self):
         self._images = []
@@ -67,8 +80,11 @@ class IB_Canvas_Data:
 
     def log(self, message, level):
         self._logger.append((level, message))
+# ---------------------------------------------------------------------------
 
 
+# ---------------------------------------------------------------------------
+# Image Class
 class IB_Image:
     _id_counter = 0
 
@@ -165,8 +181,11 @@ class IB_Image:
         # Zeichnungsebene zurücksetzen
         self._draw_layer = Image.new("RGBA", (self._bitMap.width, self._bitMap.height), (255, 255, 255, 0))
         self._draw = ImageDraw.Draw(self._draw_layer)
+# ---------------------------------------------------------------------------
 
 
+# ---------------------------------------------------------------------------
+# Custom Canvas Class
 class CustomCanvas(Canvas):
     """Eine Klasse, die von Canvas erbt und zusätzliche Informationen speichert."""
     def __init__(self, parent, canvas_id):
@@ -182,8 +201,11 @@ class CustomCanvas(Canvas):
     def get_images(self):
         """Gibt alle Bilder zurück, die auf diesem Canvas gespeichert sind."""
         return self.images
+# ---------------------------------------------------------------------------
 
 
+# ---------------------------------------------------------------------------
+# Editor
 class BitmapEditor:
     def __init__(self, root):
         self.root = root
@@ -216,6 +238,7 @@ class BitmapEditor:
         Button(self.button_frame, text="Scale", command=self.activate_scale).pack(fill=X, pady=2)
         Button(self.button_frame, text="Draw", command=self.activate_draw).pack(fill=X, pady=2)
         Button(self.button_frame, text="Erase", command=self.activate_erase).pack(fill=X, pady=2)
+        Button(self.button_frame, text="Load Pdf", command=self.load_from_Pdf).pack(fill=X, pady=2)
         Button(self.side_frame, text="Canvas erstellen", command=self.create_canvas).pack(fill=X, pady=2)
         Button(self.side_frame, text="Nächste Canvas", command=self.next_canvas).pack(fill=X, pady=2)
         Button(self.side_frame, text="Vorherige Canvas", command=self.previous_canvas).pack(fill=X, pady=2)
@@ -239,6 +262,10 @@ class BitmapEditor:
             if canvas.canvas_id == self.current_canvas_id:
                 return canvas
         return None
+
+    def load_from_Pdf(self):
+        myLoader = PdfLoader()
+        myLoader.load_from_Pdf()
 
     def create_canvas(self):
         """Erstellt ein neues Canvas mit einer eindeutigen ID."""
@@ -515,8 +542,367 @@ class BitmapEditor:
             f"Path: {image.get_path_image()}\n"
         )
         self.info_box.insert("end", info)
+# ---------------------------------------------------------------------------
 
+
+# ---------------------------------------------------------------
+# Pdf Loader
+class PdfLoader:
+
+    config = 0
+    logger = 0
+    rootPath = 0
+    cur = 0
+    con = 0
+    outputPath = 0
+    tmpPath = 0
+
+    def __init__(self):
+        global config
+        global logger
+        global rootPath
+        global cur
+        global con
+        global outputPath
+        global tmpPath
+
+        # Root Path
+        rootPath = "Initialized :)"
+
+        # Extract Root Dir
+        if getattr(sys, 'frozen', False):  # Check if it is running under PyInstaller
+            # Running as an executable
+            rootPath = os.path.dirname(sys.executable)
+        else:
+            # Running under Python
+            rootPath = os.path.dirname(os.path.abspath(__file__))
+
+        global config
+
+        # Configurations --------------------------
+        config = configparser.ConfigParser()
+        config.read(rootPath.rsplit('\\', 1)[0] + '\\conf.ini')
+        # ------------------------------------------
+
+        # Logger setup ----------------------------
+        logger = logging.getLogger('rotating_logger')
+        logger.propagate = False
+        # Global log level based on configuration
+        match config['ReadPdf']['logLevel']:
+            case 'DEBUG':
+                logger.setLevel(logging.DEBUG)
+            case 'INFO':
+                logger.setLevel(logging.INFO)
+
+        # Rotating log handler with max file size of 5 MB
+        handler = RotatingFileHandler(rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['logFile'], maxBytes=5*1024*1024, backupCount=3)
+
+        # Log format -> Time -> Level -> Message
+        formatter = logging.Formatter('%(asctime)s -  %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+
+        # Console handler for logging to stdout
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(formatter)
+
+        logger.addHandler(console_handler)
+        logger.addHandler(handler)
+        # ------------------------------------------
+
+
+        # Paths and Directories -------------------------------------------------
+        logger.debug("Root Path: " + rootPath)
+        outputPath = rootPath + "\\" + config['ReadPdf']['outputPath'] + "\\"
+
+        # Load additional paths
+        tmpPath = config['ReadPdf']['tmpPath']
+        dirPath = rootPath.rsplit('\\', 1)[0] + config['ReadPdf']['pdfRootPath'] + "\\"
+        # ----------------------------------------------------------------------
+
+
+        # Initialize Database --------------------------------------------------
+        # Define database path
+        planId = 1
+        db_path = rootPath.rsplit('\\', 1)[0] + "\TEXTSDB.fdb"
+        logger.debug(db_path)
+        api = rootPath.rsplit('\\', 1)[0] + config['db']['pathToDLL']
+        fdb.load_api(api)
+
+        # Database credentials
+        db_User = "HeliosUser"
+        db_Password = "class"
+
+        # Create a new database if one does not exist
+        if not os.path.exists(db_path):
+            # No database found, attempt creation
+            try:
+                con = fdb.create_database(f"CREATE DATABASE '{db_path}' user '{db_User}' password '{db_Password}'")
+                con.close()
+            except:
+                logger.exception("Could not create database")
+            logger.info(f"Database created at: {db_path}")
+
+            # Connect to the database
+            try:
+                con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+                cur = con.cursor()
+            except:
+                logger.exception("Database connection failed!")
+            logger.info("Database connection successful!")
+
+            # Initalise tables in the new Database
+            cur.execute(f"""CREATE TABLE FIRE_PLANS (
+                            planId INTEGER PRIMARY KEY,
+                            name VARCHAR(40)
+                            );    
+            """)
+            cur.execute(f"""CREATE TABLE PAGES (
+                            pageId INTEGER PRIMARY KEY,
+                            planId INTEGER,
+                            FOREIGN KEY (planId) REFERENCES FIRE_PLANS(planId)
+                            );
+            """)
+            cur.execute(f"""CREATE TABLE CONVERTED_TEXTS (
+                            id INTEGER PRIMARY KEY,
+                            text VARCHAR(40),
+                            cordLeft INTEGER,
+                            cordTop INTEGER,
+        	                pageId INTEGER,
+        	                FOREIGN KEY (pageId) REFERENCES PAGES(pageId)
+                            );
+            """)
+            con.commit()
+            cur.execute(f"""CREATE GENERATOR GEN_CONVERTED_TEXTS_ID;""")
+            cur.execute("""CREATE TRIGGER TRG_CONVERTED_TEXTS_BI FOR CONVERTED_TEXTS
+                            ACTIVE BEFORE INSERT POSITION 0
+                            AS
+                            BEGIN
+                                IF (NEW.ID IS NULL) THEN
+                                    NEW.ID = GEN_ID(GEN_CONVERTED_TEXTS_ID, 1);
+                            END;
+            """)
+            cur.execute(f"""CREATE GENERATOR GEN_PAGE_ID;""")
+            cur.execute(f"""CREATE TRIGGER TRG_PAGES_BI FOR PAGES
+                            ACTIVE BEFORE INSERT POSITION 0
+                            AS
+                            BEGIN
+                                IF (NEW.PAGEID IS NULL) THEN
+                                    NEW.PAGEID = GEN_ID(GEN_PAGE_ID, 1);
+                            END;
+            """)
+            cur.execute(f"""CREATE GENERATOR GEN_PLAN_ID;""")
+            cur.execute(f"""CREATE TRIGGER TRG_FIRE_PLANS_BI FOR FIRE_PLANS
+                            ACTIVE BEFORE INSERT POSITION 0
+                            AS
+                            BEGIN
+                                IF (NEW.PLANID IS NULL) THEN
+                            NEW.PLANID = GEN_ID(GEN_PLAN_ID, 1);
+                            END;
+            """)
+            con.commit()
+
+        else:
+            # Existing database found
+            logger.info(f"Database already exists at: {db_path}")
+
+            # Connect to the database
+            try:
+                con = fdb.connect(dsn=db_path, user=db_User, password=db_Password, fb_library_name=api)
+                cur = con.cursor()
+            except:
+                logger.exception("Database connection failed!")
+            logger.info("Database connection successful!")
+
+
+        # Pytesseract ----------------------------------------------------------
+        pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
+
+        # Pdf Loader -----------------------------------------------------------
+        self.pages = []
+        self.pageIndices = []
+        self.pdf_pages = []
+        self.current_page_index = 0
+        pass
+
+    # ---------------------------------------------------------------------------------------------------------------------
+    # Recognize all texts in the image and store them in the database, texts are covered with white rectangles
+    def TextRecocnition(self, image, binary, cur, rotation, id):
+        global logger
+
+        # Use Tesseract to extract all text
+        data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
+        logger.debug(f"{len(data)} words detected!")
+        # Process all detected texts
+        for j in range(len(data['text'])):
+            if int(data['conf'][j]) > 20 and data['text'][j].strip() != "":
+                # Draw a white rectangle over the text
+                x, y, w, h = data['left'][j], data['top'][j], data['width'][j], data['height'][j]
+                image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), thickness=-1)
+                # Write the recognized text into the database
+                cur.execute("INSERT INTO CONVERTED_TEXTS (text, cordLeft, cordTop, pageId) VALUES (?, ?, ?, ?)", (data['text'][j], data['left'][j], data['top'][j], id))
+        return image
+    # ---------------------------------------------------------------------------------------------------------------------
+
+
+
+    # ---------------------------------------------------------------------------------------------------------------------
+    # Takes the read images and processes them
+    def ConversionLoop(self, pages, rotation, name):
+        global logger
+        global config
+        global cur
+        global con
+        global outputPath
+
+        pageId = 0
+
+        # Prepare the Database for a new Pdf
+        fire_plan_name = name
+
+        con.commit()
+        # Insert new Fire Plan into the database
+        cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?) RETURNING planId", (fire_plan_name,))
+
+        # Fetch the generated planId
+        planId = cur.fetchone()[0]
+
+        # Log the inserted planId
+        logger.info(f"Inserted new Fire Plan with generated planId: {planId}")
+        con.commit()
+
+        # Main conversion loop
+        for i, page in enumerate(pages):
+            cur.execute("INSERT INTO PAGES (planId) VALUES (?) RETURNING pageId", (planId,))
+            pageId = cur.fetchone()[0]
+            # Save the page as a temporary image
+            image_path = rootPath + "\\" + tmpPath + f"temp_page_{i}.png"
+            page.save(image_path, "PNG")
+            image = cv2.imread(image_path, 0)
+            # Convert the image to binary for text recognition
+            _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
+            # Handle rotation as specified
+            if(rotation == 'rl'):
+                logger.debug("Rotating image 90 degrees counterclockwise")
+                image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            if(rotation == 'rr'):
+                logger.debug("Rotating image 90 degrees clockwise")
+                image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+            # Text recognition
+            image = self.TextRecocnition(image, binary, cur, "nr", pageId)
+            # Apply Gaussian blur and thresholding
+            blurred = cv2.GaussianBlur(image, (9,9), 0)
+            _, thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
+            # Save the processed images
+            logger.info(f"Image saved at: {outputPath}{name}/Converted{i}.png") 
+            cv2.imwrite(f"{outputPath}{name}/Converted{i}.png", thresh)
+            cv2.imwrite(f"{outputPath}{name}/Blurred{i}.png", blurred)
+
+    def load_from_Pdf(self):
+        # Create the top-level window
+        toplevel = Toplevel()
+        toplevel.title('Load PDF')
+        toplevel.geometry('800x700')
+
+        # Screen in wich the user Selects th PDF File
+        def select_pdf():
+            file_path = filedialog.askopenfilename(
+                title="Select PDF File",
+                filetypes=[("PDF Files", "*.pdf")]
+            )
+            if file_path:
+                display_pdf(file_path)
+
+        # Function to get the Pdf Pages
+        def display_pdf(file_path):
+            try:
+                self.pdf_pages = convert_from_path(file_path, poppler_path=config['Poppler']['pathToPoppler'])
+                self.current_page_index = 0
+                display_image(self.current_page_index)
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to load PDF: {e}")
+
+        # Function to display the images of the current pdf page in the window
+        def display_image(page_index):
+            if 0 <= page_index < len(self.pdf_pages):
+                page_image = self.pdf_pages[page_index]
+                img = page_image.resize((400, 600))
+                img_tk = ImageTk.PhotoImage(img)
+                canvas.itemconfig(image_on_canvas, image=img_tk)
+                canvas.image = img_tk
+                current_page_label.config(text=f"Page {page_index + 1} / {len(self.pdf_pages)}")
+
+        # Function loading the Next Page
+        def next_page():
+            if self.current_page_index < len(self.pdf_pages) - 1:
+                self.current_page_index += 1
+                display_image(self.current_page_index)
+            
+            # Logic to disable the save button if the current page has been saved already
+            if(self.current_page_index in self.pageIndices):
+                save_button.config(state=tk.DISABLED)
+            else:
+                save_button.config(state=tk.NORMAL)
+
+        # Function loading the previous page
+        def prev_page():
+            if self.current_page_index > 0:
+                self.current_page_index -= 1
+                display_image(self.current_page_index)
+
+            # Logic to disable the save button if the current page has been saved already
+            if(self.current_page_index in self.pageIndices):
+                save_button.config(state=tk.DISABLED)
+            else:
+                save_button.config(state=tk.NORMAL)
+
+        # Saving the current page
+        def save_page():
+            if 0 <= self.current_page_index < len(self.pdf_pages):
+                self.pages.append(self.pdf_pages[self.current_page_index])
+                self.pageIndices.append(self.current_page_index)
+
+                # Disablieng the Save button because it has just beed saved
+                save_button.config(state=tk.DISABLED)
+
+        # Starting the conversio process
+        def start_conversion():
+            messagebox.showinfo("Tst", f"Current length of page array {len(self.pages)}!")
+            self.ConversionLoop(self.pages, "nr", "Tst")
+
+        # GUI components
+        select_btn = tk.Button(toplevel, text="Select PDF", command=select_pdf)
+        select_btn.pack()
+
+        canvas = tk.Canvas(toplevel, width=400, height=600)
+        canvas.pack()
+        image_on_canvas = canvas.create_image(0, 0, anchor='nw')
+
+        navigation_frame = tk.Frame(toplevel)
+        navigation_frame.pack()
+
+        prev_button = tk.Button(navigation_frame, text="<< Previous", command=prev_page)
+        prev_button.grid(row=0, column=0)
+
+        current_page_label = tk.Label(navigation_frame, text="Page")
+        current_page_label.grid(row=0, column=1)
+
+        next_button = tk.Button(navigation_frame, text="Next >>", command=next_page)
+        next_button.grid(row=0, column=2)
+
+        save_button = tk.Button(navigation_frame, text="Save Page", command=save_page)
+        save_button.grid(row=0, column=3)
+
+        startConversion_button = tk.Button(navigation_frame, text="Start Conversion", command=start_conversion)
+        startConversion_button.grid(row=0, column=4)
+
+        toplevel.focus_set()
+
+
+
+# ---------------------------------------------------------------------------
+# ##### Main #####
 if __name__ == "__main__":
     root = Tk()
     app = BitmapEditor(root)
     root.mainloop()
+# ---------------------------------------------------------------------------

@@ -116,3 +116,200 @@ fdb.fbcore.DatabaseError: ('Error while creating database:\n- SQLCODE: -902\n- Y
 2024-12-12 10:53:37,255 -  INFO - Converting 3 pages!
 2024-12-12 10:53:37,255 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\Brandschutzpläne_06_2024.pdf
 2024-12-12 10:53:37,256 -  INFO - Reading PDF ...
+2025-02-06 08:22:28,978 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2025-02-06 08:22:28,979 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:22:29,252 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:22:29,388 -  INFO - Database connection successful!
+2025-02-06 08:22:29,392 -  INFO - Inserted new Fire Plan with generated planId: 9
+2025-02-06 08:22:29,394 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2025-02-06 08:22:29,395 -  INFO - Converting 3 pages!
+2025-02-06 08:22:29,396 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2025-02-06 08:22:29,397 -  INFO - Reading PDF ...
+2025-02-06 08:22:34,424 -  INFO - PDF successfully read!
+2025-02-06 08:23:27,532 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2025-02-06 08:23:27,534 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:23:27,666 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:23:27,677 -  INFO - Database connection successful!
+2025-02-06 08:23:27,710 -  INFO - Inserted new Fire Plan with generated planId: 1
+2025-02-06 08:23:27,711 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2025-02-06 08:23:27,712 -  INFO - Converting 3 pages!
+2025-02-06 08:23:27,713 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2025-02-06 08:23:27,714 -  INFO - Reading PDF ...
+2025-02-06 08:23:31,455 -  INFO - PDF successfully read!
+2025-02-06 08:23:34,180 -  DEBUG - 12 words detected!
+2025-02-06 08:23:34,229 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2025-02-06 08:23:36,369 -  DEBUG - 12 words detected!
+2025-02-06 08:23:36,410 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2025-02-06 08:23:38,578 -  DEBUG - 12 words detected!
+2025-02-06 08:23:38,617 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2025-02-06 08:23:47,666 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2025-02-06 08:23:47,667 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:23:47,676 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:23:47,708 -  INFO - Database connection successful!
+2025-02-06 08:23:47,712 -  INFO - Inserted new Fire Plan with generated planId: 2
+2025-02-06 08:23:47,715 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2025-02-06 08:23:47,716 -  INFO - Converting 3 pages!
+2025-02-06 08:23:47,717 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2025-02-06 08:23:47,717 -  INFO - Reading PDF ...
+2025-02-06 08:23:51,323 -  INFO - PDF successfully read!
+2025-02-06 08:23:53,448 -  DEBUG - 12 words detected!
+2025-02-06 08:23:53,489 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2025-02-06 08:23:55,573 -  DEBUG - 12 words detected!
+2025-02-06 08:23:55,619 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2025-02-06 08:23:57,798 -  DEBUG - 12 words detected!
+2025-02-06 08:23:57,837 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2025-02-06 08:24:30,480 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen
+2025-02-06 08:24:30,481 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:24:30,532 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 08:24:30,556 -  INFO - Database connection successful!
+2025-02-06 08:24:30,595 -  INFO - Inserted new Fire Plan with generated planId: 1
+2025-02-06 08:24:30,598 -  INFO - Reading PDF MFH-RF1-Brandschutzplan.pdf in single file mode
+2025-02-06 08:24:30,599 -  INFO - Converting 3 pages!
+2025-02-06 08:24:30,599 -  DEBUG - Directory path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Pdf-Einlesen\PlanPdf\MFH-RF1-Brandschutzplan.pdf
+2025-02-06 08:24:30,599 -  INFO - Reading PDF ...
+2025-02-06 08:24:34,429 -  INFO - PDF successfully read!
+2025-02-06 08:24:36,539 -  DEBUG - 12 words detected!
+2025-02-06 08:24:36,584 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted0.png
+2025-02-06 08:24:38,709 -  DEBUG - 12 words detected!
+2025-02-06 08:24:38,752 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted1.png
+2025-02-06 08:24:40,925 -  DEBUG - 12 words detected!
+2025-02-06 08:24:40,967 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\PDF-Einlesen\Converted\MFH-RF1-Brandschutzplan/Converted2.png
+2025-02-06 10:10:00,711 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:10:00,722 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:10:00,744 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:10:00,805 -  INFO - Database connection successful!
+2025-02-06 10:10:16,737 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:10:16,739 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:10:16,746 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:10:16,786 -  INFO - Database connection successful!
+2025-02-06 10:10:40,406 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:10:40,407 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:10:40,413 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:10:40,454 -  INFO - Database connection successful!
+2025-02-06 10:11:38,046 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:11:38,048 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:11:38,053 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:11:38,092 -  INFO - Database connection successful!
+2025-02-06 10:25:29,443 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:25:29,444 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:25:29,454 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:25:29,487 -  INFO - Database connection successful!
+2025-02-06 10:30:08,572 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:30:08,573 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:30:08,578 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:30:08,610 -  INFO - Database connection successful!
+2025-02-06 10:30:51,963 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:30:51,964 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:30:51,970 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:30:52,014 -  INFO - Database connection successful!
+2025-02-06 10:43:13,412 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:43:13,413 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:43:13,419 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:43:13,468 -  INFO - Database connection successful!
+2025-02-06 10:44:03,140 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:44:03,141 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:44:03,147 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:44:03,192 -  INFO - Database connection successful!
+2025-02-06 10:44:25,605 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:44:25,605 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:44:25,612 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:44:25,652 -  INFO - Database connection successful!
+2025-02-06 10:45:19,340 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:45:19,341 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:45:19,347 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:45:19,387 -  INFO - Database connection successful!
+2025-02-06 10:47:41,842 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:47:41,844 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:47:41,849 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:47:41,893 -  INFO - Database connection successful!
+2025-02-06 10:53:06,290 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:53:06,291 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:53:06,296 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:53:06,336 -  INFO - Database connection successful!
+2025-02-06 10:55:53,834 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 10:55:53,835 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:55:53,841 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 10:55:53,881 -  INFO - Database connection successful!
+2025-02-06 11:10:05,846 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:10:05,847 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:10:05,853 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:10:05,888 -  INFO - Database connection successful!
+2025-02-06 11:15:03,941 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:15:03,942 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:15:04,035 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:15:04,047 -  INFO - Database connection successful!
+2025-02-06 11:15:27,269 -  INFO - Inserted new Fire Plan with generated planId: 1
+2025-02-06 11:16:25,634 -  INFO - Inserted new Fire Plan with generated planId: 2
+2025-02-06 11:18:02,884 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:18:02,885 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:18:02,947 -  INFO - Database created at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:18:02,959 -  INFO - Database connection successful!
+2025-02-06 11:18:32,375 -  INFO - Inserted new Fire Plan with generated planId: 1
+2025-02-06 11:18:59,893 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:18:59,894 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:18:59,899 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:18:59,938 -  INFO - Database connection successful!
+2025-02-06 11:19:14,271 -  INFO - Inserted new Fire Plan with generated planId: 2
+2025-02-06 11:19:16,203 -  DEBUG - 12 words detected!
+2025-02-06 11:19:16,236 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted0.png
+2025-02-06 11:19:17,487 -  DEBUG - 12 words detected!
+2025-02-06 11:19:17,517 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted1.png
+2025-02-06 11:41:31,258 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:41:31,259 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:41:31,265 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:41:31,312 -  INFO - Database connection successful!
+2025-02-06 11:44:05,441 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:44:05,441 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:44:05,447 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:44:05,483 -  INFO - Database connection successful!
+2025-02-06 11:44:31,674 -  INFO - Inserted new Fire Plan with generated planId: 3
+2025-02-06 11:44:33,104 -  DEBUG - 12 words detected!
+2025-02-06 11:44:33,139 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted0.png
+2025-02-06 11:44:34,377 -  DEBUG - 12 words detected!
+2025-02-06 11:44:34,412 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted1.png
+2025-02-06 11:44:35,727 -  DEBUG - 12 words detected!
+2025-02-06 11:44:35,766 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted2.png
+2025-02-06 11:46:24,631 -  INFO - Inserted new Fire Plan with generated planId: 4
+2025-02-06 11:46:25,889 -  DEBUG - 12 words detected!
+2025-02-06 11:46:25,922 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted0.png
+2025-02-06 11:46:27,194 -  DEBUG - 12 words detected!
+2025-02-06 11:46:27,238 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted1.png
+2025-02-06 11:46:28,671 -  DEBUG - 12 words detected!
+2025-02-06 11:46:28,714 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted2.png
+2025-02-06 11:53:53,616 -  INFO - Inserted new Fire Plan with generated planId: 5
+2025-02-06 11:53:54,962 -  DEBUG - 12 words detected!
+2025-02-06 11:54:25,914 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted0.png
+2025-02-06 11:54:27,187 -  DEBUG - 12 words detected!
+2025-02-06 11:54:27,224 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted1.png
+2025-02-06 11:54:28,492 -  DEBUG - 12 words detected!
+2025-02-06 11:54:28,530 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted2.png
+2025-02-06 11:59:45,074 -  DEBUG - Root Path: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python
+2025-02-06 11:59:45,075 -  DEBUG - D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:59:45,085 -  INFO - Database already exists at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\TEXTSDB.fdb
+2025-02-06 11:59:45,127 -  INFO - Database connection successful!
+2025-02-06 12:00:15,916 -  INFO - Inserted new Fire Plan with generated planId: 6
+2025-02-06 12:00:17,205 -  DEBUG - 12 words detected!
+2025-02-06 12:00:17,242 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted0.png
+2025-02-06 12:00:18,447 -  DEBUG - 12 words detected!
+2025-02-06 12:00:18,482 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted1.png
+2025-02-06 12:00:19,693 -  DEBUG - 12 words detected!
+2025-02-06 12:00:19,729 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted2.png
+2025-02-06 12:00:20,897 -  DEBUG - 12 words detected!
+2025-02-06 12:00:20,931 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted3.png
+2025-02-06 12:00:22,128 -  DEBUG - 12 words detected!
+2025-02-06 12:00:22,161 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted4.png
+2025-02-06 13:07:51,527 -  INFO - Inserted new Fire Plan with generated planId: 7
+2025-02-06 13:07:52,911 -  DEBUG - 12 words detected!
+2025-02-06 13:07:52,946 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted0.png
+2025-02-06 13:07:54,158 -  DEBUG - 12 words detected!
+2025-02-06 13:07:54,191 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted1.png
+2025-02-06 13:07:55,410 -  DEBUG - 12 words detected!
+2025-02-06 13:07:55,440 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted2.png
+2025-02-06 13:07:56,597 -  DEBUG - 12 words detected!
+2025-02-06 13:07:56,634 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted3.png
+2025-02-06 13:07:57,829 -  DEBUG - 12 words detected!
+2025-02-06 13:07:57,864 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted4.png
+2025-02-06 13:07:58,903 -  DEBUG - 12 words detected!
+2025-02-06 13:07:58,940 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted5.png
+2025-02-06 13:08:00,238 -  DEBUG - 12 words detected!
+2025-02-06 13:08:00,276 -  INFO - Image saved at: D:\Matura Project\Repos\Intelligence Module\PDF Recoc\Interface-Python\Converted\Tst/Converted6.png
