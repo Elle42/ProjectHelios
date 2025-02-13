@@ -1,12 +1,8 @@
 from tkinter import Canvas, Tk, filedialog, Button, Frame, Text, Scrollbar, RIGHT, Y, LEFT, BOTH, TOP, BOTTOM, X, Toplevel, messagebox
 import tkinter as tk
 from PIL import Image, ImageTk, ImageDraw, ImageGrab
-import time
-import mouse
 from threading import Timer
 import os
-import io
-import argparse
 from pdf2image import convert_from_path
 import cv2
 import numpy as np
@@ -815,7 +811,7 @@ class PdfLoader:
         # Function to get the Pdf Pages
         def display_pdf(file_path):
             try:
-                self.pdf_pages = convert_from_path(file_path, poppler_path=config['Poppler']['pathToPoppler'])
+                self.pdf_pages = convert_from_path(file_path, poppler_path= rootPath.rsplit('\\', 1)[0] + config['Poppler']['pathToPoppler'])
                 self.current_page_index = 0
                 display_image(self.current_page_index)
             except Exception as e:
