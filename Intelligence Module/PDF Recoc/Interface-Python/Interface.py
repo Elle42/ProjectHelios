@@ -228,7 +228,7 @@ class BitmapEditor:
         # ------------------------------------------
 
         # Logger setup ----------------------------
-        editorLogger = logging.getLogger('rotating_logger')
+        editorLogger = logging.getLogger('rotating_editorLogger')
         editorLogger.propagate = False
         # Global log level based on configuration
         match config['Interface']['logLevel']:
@@ -820,12 +820,15 @@ class PdfLoader:
         for i, page in enumerate(pages):
             cur.execute("INSERT INTO PAGES (planId) VALUES (?) RETURNING pageId", (planId,))
             pageId = cur.fetchone()[0]
+
             # Save the page as a temporary image
             image_path = rootPath + "\\" + tmpPath + f"temp_page_{i}.png"
             page.save(image_path, "PNG")
             image = cv2.imread(image_path, 0)
+
             # Convert the image to binary for text recognition
             _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
+
             # Handle rotation as specified
             if(rotation == 'rl'):
                 logger.debug("Rotating image 90 degrees counterclockwise")
@@ -833,21 +836,29 @@ class PdfLoader:
             if(rotation == 'rr'):
                 logger.debug("Rotating image 90 degrees clockwise")
                 image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+
             # Text recognition
             image = self.TextRecocnition(image, binary, cur, "nr", pageId)
+
             # Apply Gaussian blur and thresholding
             blurred = cv2.GaussianBlur(image, (9,9), 0)
             _, thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
+
             # Save the processed images
-            logger.info(f"Image saved at: {outputPath}{name}/Converted{i}.png") 
-            cv2.imwrite(f"{outputPath}{name}/Converted{i}.png", thresh)
-            cv2.imwrite(f"{outputPath}{name}/Blurred{i}.png", blurred)
+            if not os.path.exists(f"{outputPath}{name}"):
+                os.makedirs(f"{outputPath}{name}")
+                logger.debug(f"Created Directory: " + outputPath + name)
+            cv2.imwrite(f"{outputPath}{name}\Converted{i}.png", thresh)
+            cv2.imwrite(f"{outputPath}{name}\Blurred{i}.png", blurred)
+            logger.info(f"Image saved at: " + outputPath + name + "\Converted{i}.png")
 
     def load_from_Pdf(self):
         # Create the top-level window
         toplevel = Toplevel()
         toplevel.title('Load PDF')
         toplevel.geometry('800x700')
+
+        name = 0
 
         # Screen in wich the user Selects th PDF File
         def select_pdf():
@@ -860,12 +871,25 @@ class PdfLoader:
 
         # Function to get the Pdf Pages
         def display_pdf(file_path):
+            global name
+
             try:
-                self.pdf_pages = convert_from_path(file_path, poppler_path= rootPath.rsplit('\\', 1)[0] + config['Poppler']['pathToPoppler'])
+                # Add Poppler to the system PATH only if it's not already there
+                if rootPath.rsplit('\\', 1)[0] + config['Poppler']['pathToPoppler'] not in os.environ["PATH"]:
+                    os.environ["PATH"] = rootPath.rsplit('\\', 1)[0] + config['Poppler']['pathToPoppler'] + os.pathsep + os.environ["PATH"]
+
+                # Converte the pages using poppler
+                self.pdf_pages = convert_from_path(file_path, poppler_path=rootPath.rsplit('\\', 1)[0] + config['Poppler']['pathToPoppler'])
+
+                # name of the Pdf
+                name = os.path.splitext(os.path.basename(file_path))[0]
+
                 self.current_page_index = 0
                 display_image(self.current_page_index)
+
             except Exception as e:
-                messagebox.showerror("Error", f"Failed to load PDF: {e}")
+                # Konvertierung Fehlgeschlagen
+                editorLogger.error(f"Konvertierung der Pdfs fehlgeschlagen: {e}")
 
         # Function to display the images of the current pdf page in the window
         def display_image(page_index):
@@ -912,8 +936,9 @@ class PdfLoader:
 
         # Starting the conversio process
         def start_conversion():
+            global name
             messagebox.showinfo("Tst", f"Current length of page array {len(self.pages)}!")
-            self.ConversionLoop(self.pages, "nr", "Tst")
+            self.ConversionLoop(self.pages, "nr", name)
 
         # GUI components
         select_btn = tk.Button(toplevel, text="Select PDF", command=select_pdf)
