@@ -671,6 +671,7 @@ class PdfLoader:
         planId = 1
         db_path = rootPath.rsplit('\\', 1)[0] + "\TEXTSDB.fdb"
         logger.debug(db_path)
+
         api = rootPath.rsplit('\\', 1)[0] + config['db']['pathToDLL']
         fdb.load_api(api)
 
@@ -761,6 +762,9 @@ class PdfLoader:
 
 
         # Pytesseract ----------------------------------------------------------
+        if rootPath.rsplit('\\', 1)[0] + config['tesseract']['pathToTesseract'] not in os.environ["PATH"]:
+            os.environ["PATH"] = rootPath.rsplit('\\', 1)[0] + config['tesseract']['pathToTesseract'] + os.pathsep + os.environ["PATH"]
+
         pytesseract.pytesseract.tesseract_cmd = rootPath.rsplit('\\', 1)[0] + config['tesseract']['pathToTesseract']
 
         # Pdf Loader -----------------------------------------------------------
