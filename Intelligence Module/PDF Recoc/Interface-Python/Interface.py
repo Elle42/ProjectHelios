@@ -203,7 +203,55 @@ class CustomCanvas(Canvas):
 # ---------------------------------------------------------------------------
 # Editor
 class BitmapEditor:
+    editorLogger = 0
+
     def __init__(self, root):
+        global editorLogger
+
+        # Logging Handling
+                # Root Path
+        rootPath = "Initialized :)"
+
+        # Extract Root Dir
+        if getattr(sys, 'frozen', False):  # Check if it is running under PyInstaller
+            # Running as an executable
+            rootPath = os.path.dirname(sys.executable)
+        else:
+            # Running under Python
+            rootPath = os.path.dirname(os.path.abspath(__file__))
+
+        global config
+
+        # Configurations --------------------------
+        config = configparser.ConfigParser()
+        config.read(rootPath.rsplit('\\', 1)[0] + '\\conf.ini')
+        # ------------------------------------------
+
+        # Logger setup ----------------------------
+        editorLogger = logging.getLogger('rotating_logger')
+        editorLogger.propagate = False
+        # Global log level based on configuration
+        match config['Interface']['logLevel']:
+            case 'DEBUG':
+                editorLogger.setLevel(logging.DEBUG)
+            case 'INFO':
+                editorLogger.setLevel(logging.INFO)
+
+        # Rotating log handler with max file size of 5 MB
+        handler = RotatingFileHandler(rootPath.rsplit('\\', 1)[0] + config['Interface']['logFile'], maxBytes=5*1024*1024, backupCount=3)
+
+        # Log format -> Time -> Level -> Message
+        formatter = logging.Formatter('%(asctime)s -  %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+
+        # Console handler for logging to stdout
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(formatter)
+
+        editorLogger.addHandler(console_handler)
+        editorLogger.addHandler(handler)
+        # ------------------------------------------
+
         self.root = root
         self.root.title("Bitmap Editor")
         self.scale_timer = None 
@@ -245,6 +293,7 @@ class BitmapEditor:
 
         # Initialisiere das erste Canvas
         self.create_canvas()
+        editorLogger.debug("Canvas erstellt!")
 
         # Event bindings
         self.get_current_canvas().bind("<ButtonPress-1>", self.on_canvas_click)
@@ -330,7 +379,8 @@ class BitmapEditor:
             filetypes=[("Bitmap Image", "*.bmp"), ("All Files", "*.*")]
         )
         if not file_path:
-            return  # Benutzer hat den Dialog abgebrochen
+            editorLogger.debug("Speichern abgebrochen!")
+            return  # Benutzer hat den Dialog abgebrochen         
 
         try:
             # Holen der genauen Position und Größe des Canvas
@@ -347,10 +397,10 @@ class BitmapEditor:
 
             # Speichern als Bitmap
             canvas_image.save(file_path, "BMP")
+            editorLogger.debug("Bitmap gespeichert in: " + file_path)
 
-            print(f"Canvas erfolgreich gespeichert als: {file_path}")
         except Exception as e:
-            print(f"Fehler beim Speichern des Canvas: {e}")
+            editorLogger.debug("Fehler beim Speichern: " + e)
 
 
     def open_image(self):
@@ -376,7 +426,7 @@ class BitmapEditor:
                 # Aktualisiere Info-Box
                 self.update_info_box(image)
             else:
-                print("Kein aktives Canvas vorhanden.")
+                editorLogger.debug("Kein Canvas zum speichern vorhanden!")
         
     def activate_move(self):
         self.current_tool = "move"
@@ -711,7 +761,7 @@ class PdfLoader:
 
 
         # Pytesseract ----------------------------------------------------------
-        pytesseract.pytesseract.tesseract_cmd = config['tesseract']['pathToTesseract']
+        pytesseract.pytesseract.tesseract_cmd = rootPath.rsplit('\\', 1)[0] + config['tesseract']['pathToTesseract']
 
         # Pdf Loader -----------------------------------------------------------
         self.pages = []
