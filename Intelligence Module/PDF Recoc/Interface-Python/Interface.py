@@ -967,10 +967,57 @@ class PdfLoader:
         save_button = tk.Button(navigation_frame, text="Save Page", command=save_page)
         save_button.grid(row=0, column=3)
 
-        startConversion_button = tk.Button(navigation_frame, text="Start Conversion", command=start_conversion)
+        startConversion_button = tk.Button(navigation_frame, text="Start Conversion", command=self.PlanAuswahl)
         startConversion_button.grid(row=0, column=4)
 
         toplevel.focus_set()
+
+    def get_existing_plans(self):
+        global cur
+        global con
+        cur.execute("SELECT name FROM FIRE_PLANS")
+        plans = [row[0] for row in cur.fetchall()]
+        return plans
+
+    def add_new_plan(self, plan_name, listbox):
+        global cur
+        cur.execute("SELECT COUNT(*) FROM FIRE_PLANS WHERE name = ?", (plan_name,))
+        if cur.fetchone()[0] > 0:
+            messagebox.showwarning("Warning", "A plan with this name already exists.")
+            return
+
+        # Insert new plan
+        cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?)", (plan_name,))
+        con.commit()
+
+        # Update listbox
+        listbox.insert(tk.END, plan_name)
+        messagebox.showinfo("Success", f"Plan '{plan_name}' created.")
+
+    def PlanAuswahl(self):
+        topLevel = tk.Toplevel()
+        topLevel.title("Plan Selection")
+        topLevel.geometry("400x300")
+
+        # Fetch existing plans
+        plans = self.get_existing_plans()
+
+        # Listbox to display plans
+        listbox = tk.Listbox(topLevel, height=10)
+        listbox.pack(pady=10, fill=tk.BOTH, expand=True)
+
+        for plan in plans:
+            listbox.insert(tk.END, plan, )
+            
+
+        # Entry and button for new plan
+        entry = tk.Entry(topLevel)
+        entry.pack(pady=5)
+
+        add_button = tk.Button(topLevel, text="Create New Plan", command=lambda: self.add_new_plan(entry.get(), listbox))
+        add_button.pack()
+
+        root.mainloop()
 
 
 
