@@ -287,6 +287,7 @@ class BitmapEditor:
         Button(self.side_frame, text="Nächste Canvas", command=self.next_canvas).pack(fill=X, pady=2)
         Button(self.side_frame, text="Vorherige Canvas", command=self.previous_canvas).pack(fill=X, pady=2)
         Button(self.side_frame, text="Canvas Speichern", command=self.save_current_canvas).pack(fill=X, pady=2)
+        Button(self.button_frame, text="Crop Image", command=self.start_cropping).pack(fill=X, pady=2)
 
         self.canvas_container = Frame(root)
         self.canvas_container.pack(side=LEFT, fill=BOTH, expand=True)
@@ -367,41 +368,69 @@ class BitmapEditor:
 
     
     def save_current_canvas(self):
-        """Speichert ausschließlich das aktuelle Canvas als 600x488 Bitmap-Bild."""
+        """Aktiviert den Speichermodus: Benutzer kann einen Bereich auswählen, der gespeichert werden soll."""
         current_canvas = self.get_current_canvas()
         if not current_canvas:
             print("Kein Canvas vorhanden, das gespeichert werden kann.")
             return
 
-        # Speicherdialog öffnen
+        # Aktivieren des Speichermodus: Binde Auswahl-Ereignisse an das Canvas
+        self.saving_mode = True
+        self.save_rectangle = None
+        current_canvas.bind("<ButtonPress-1>", self.on_save_start)
+        current_canvas.bind("<B1-Motion>", self.on_save_drag)
+        current_canvas.bind("<ButtonRelease-1>", self.on_save_end)
+        editorLogger.debug("Speichermodus aktiviert. Ziehe ein Rechteck, um den zu speichernden Bereich auszuwählen.")
+
+    def on_save_start(self, event):
+        self.save_start_x, self.save_start_y = event.x, event.y
+        current_canvas = self.get_current_canvas()
+        if self.save_rectangle:
+            current_canvas.delete(self.save_rectangle)
+        self.save_rectangle = current_canvas.create_rectangle(self.save_start_x, self.save_start_y, event.x, event.y, outline="blue", width=2)
+
+    def on_save_drag(self, event):
+        current_canvas = self.get_current_canvas()
+        current_canvas.coords(self.save_rectangle, self.save_start_x, self.save_start_y, event.x, event.y)
+
+    def on_save_end(self, event):
+        current_canvas = self.get_current_canvas()
+        # Bestimme die Endkoordinaten
+        x1, y1, x2, y2 = self.save_start_x, self.save_start_y, event.x, event.y
+        if x1 > x2:
+            x1, x2 = x2, x1
+        if y1 > y2:
+            y1, y2 = y2, y1
+
+        # Berechne die absoluten Bildschirmkoordinaten des ausgewählten Bereichs
+        canvas_rootx = current_canvas.winfo_rootx()
+        canvas_rooty = current_canvas.winfo_rooty()
+        abs_x1 = canvas_rootx + x1
+        abs_y1 = canvas_rooty + y1
+        abs_x2 = canvas_rootx + x2
+        abs_y2 = canvas_rooty + y2
+
+        # Öffne den Speicherdialog
         file_path = filedialog.asksaveasfilename(
             defaultextension=".bmp",
             filetypes=[("Bitmap Image", "*.bmp"), ("All Files", "*.*")]
         )
-        if not file_path:
-            editorLogger.debug("Speichern abgebrochen!")
-            return  # Benutzer hat den Dialog abgebrochen         
+        if file_path:
+            saved_image = ImageGrab.grab(bbox=(abs_x1, abs_y1, abs_x2, abs_y2))
+            saved_image.save(file_path, "BMP")
+            editorLogger.debug("Bereich gespeichert in: " + file_path)
+        else:
+            editorLogger.debug("Speichern abgebrochen.")
 
-        try:
-            # Holen der genauen Position und Größe des Canvas
-            x = current_canvas.winfo_rootx()
-            y = current_canvas.winfo_rooty()
-            x1 = x + current_canvas.winfo_width()
-            y1 = y + current_canvas.winfo_height()
-
-            # Bildschirmaufnahme des Canvas-Bereichs
-            canvas_image = ImageGrab.grab(bbox=(x, y, x1, y1))
-
-            # Skalieren auf 600x488
-            canvas_image = canvas_image.resize((600, 488), Image.Resampling.LANCZOS)
-
-            # Speichern als Bitmap
-            canvas_image.save(file_path, "BMP")
-            editorLogger.debug("Bitmap gespeichert in: " + file_path)
-
-        except Exception as e:
-            editorLogger.debug("Fehler beim Speichern: " + e)
-
+        # Entferne die Auswahl und stelle die ursprünglichen Bindings wieder her
+        current_canvas.delete(self.save_rectangle)
+        current_canvas.unbind("<ButtonPress-1>")
+        current_canvas.unbind("<B1-Motion>")
+        current_canvas.unbind("<ButtonRelease-1>")
+        current_canvas.bind("<ButtonPress-1>", self.on_canvas_click)
+        current_canvas.bind("<B1-Motion>", self.on_canvas_drag)
+        current_canvas.bind("<ButtonRelease-1>", self.on_canvas_release)
+        self.saving_mode = False
 
     def open_image(self):
         file_path = filedialog.askopenfilename(filetypes=[("Image and Bitmap Files", "*.png;*.jpg;*.jpeg;*.bmp")])
@@ -427,6 +456,74 @@ class BitmapEditor:
                 self.update_info_box(image)
             else:
                 editorLogger.debug("Kein Canvas zum speichern vorhanden!")
+
+    def start_cropping(self):
+        if not self.selected_image:
+            messagebox.showerror("Fehler", "Kein Bild ausgewählt!")
+            return
+        
+        current_canvas = self.get_current_canvas()
+        self.crop_rectangle = None
+        current_canvas.bind("<ButtonPress-1>", self.on_crop_start)
+        current_canvas.bind("<B1-Motion>", self.on_crop_drag)
+        current_canvas.bind("<ButtonRelease-1>", self.on_crop_end)
+
+    def on_crop_start(self, event):
+        self.start_x, self.start_y = event.x, event.y
+        current_canvas = self.get_current_canvas()
+        if self.crop_rectangle:
+            current_canvas.delete(self.crop_rectangle)
+        self.crop_rectangle = current_canvas.create_rectangle(self.start_x, self.start_y, event.x, event.y, outline="red", width=2)
+
+    def on_crop_drag(self, event):
+        current_canvas = self.get_current_canvas()
+        current_canvas.coords(self.crop_rectangle, self.start_x, self.start_y, event.x, event.y)
+
+    def on_crop_end(self, event):
+        # Erhalte die Canvas-Koordinaten des Crop-Rechtecks
+        x1, y1, x2, y2 = self.start_x, self.start_y, event.x, event.y
+        if x1 > x2:
+            x1, x2 = x2, x1
+        if y1 > y2:
+            y1, y2 = y2, y1
+
+        # Ermittle die Position und Größe des Bildes (das mittig auf dem Canvas gezeichnet wurde)
+        img_pos = self.selected_image.get_pos()      # Mittlere Position (x, y)
+        img_width = self.selected_image.get_width()
+        img_height = self.selected_image.get_height()
+        top_left_x = img_pos[0] - img_width // 2
+        top_left_y = img_pos[1] - img_height // 2
+
+        # Berechne die relativen Crop-Koordinaten (bezogen auf das Bild)
+        rel_x1 = x1 - top_left_x
+        rel_y1 = y1 - top_left_y
+        rel_x2 = x2 - top_left_x
+        rel_y2 = y2 - top_left_y
+
+        # Begrenze die Koordinaten auf die Bildgrenzen
+        rel_x1 = max(0, rel_x1)
+        rel_y1 = max(0, rel_y1)
+        rel_x2 = min(img_width, rel_x2)
+        rel_y2 = min(img_height, rel_y2)
+
+        # Führe das Cropping am aktuellen Bitmap durch
+        cropped_bitmap = self.selected_image.get_bitmap().crop((rel_x1, rel_y1, rel_x2, rel_y2))
+        self.selected_image.set_bitmap(cropped_bitmap)
+        # Wichtiger Schritt: Aktualisiere auch das Original-Bitmap, damit spätere Skalierungen
+        # auf dem beschnittenen Bild basieren.
+        self.selected_image._original_bitmap = cropped_bitmap.copy()
+        self.selected_image.set_width(cropped_bitmap.width)
+        self.selected_image.set_height(cropped_bitmap.height)
+
+        self.update_canvas_image()
+        current_canvas = self.get_current_canvas()
+        current_canvas.delete(self.crop_rectangle)
+        current_canvas.unbind("<ButtonPress-1>")
+        current_canvas.unbind("<B1-Motion>")
+        current_canvas.unbind("<ButtonRelease-1>")
+        current_canvas.bind("<ButtonPress-1>", self.on_canvas_click)
+        current_canvas.bind("<B1-Motion>", self.on_canvas_drag)
+        current_canvas.bind("<ButtonRelease-1>", self.on_canvas_release)
         
     def activate_move(self):
         self.current_tool = "move"
@@ -567,13 +664,9 @@ class BitmapEditor:
 
     def update_canvas_image(self):
         if self.selected_image:
-            # Aktualisiere die Canvas-Darstellung
-            tk_image = self.selected_image.get_source()
+            tk_image = ImageTk.PhotoImage(self.selected_image.get_bitmap())
             current_canvas = self.get_current_canvas()
-            if current_canvas:
-                current_canvas.itemconfig(self.selected_image.get_canvas_id(), image=tk_image)
-
-            # Speichere Referenz, um Garbage Collection zu vermeiden
+            current_canvas.itemconfig(self.selected_image.get_canvas_id(), image=tk_image)
             self.image_refs.append(tk_image)
 
 
