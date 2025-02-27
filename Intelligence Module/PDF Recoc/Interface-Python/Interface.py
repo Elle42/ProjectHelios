@@ -793,7 +793,8 @@ class PdfLoader:
             # Initalise tables in the new Database
             cur.execute(f"""CREATE TABLE FIRE_PLANS (
                             planId INTEGER PRIMARY KEY,
-                            name VARCHAR(40)
+                            name VARCHAR(40), 
+                            currentPage INTEGER
                             );    
             """)
             cur.execute(f"""CREATE TABLE PAGES (
@@ -890,7 +891,7 @@ class PdfLoader:
 
     # ---------------------------------------------------------------------------------------------------------------------
     # Takes the read images and processes them
-    def ConversionLoop(self, pages, rotation, name):
+    def ConversionLoop(self, pages, rotation, name, planId):
         global logger
         global config
         global cur
@@ -903,15 +904,18 @@ class PdfLoader:
         fire_plan_name = name
 
         con.commit()
-        # Insert new Fire Plan into the database
-        cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?) RETURNING planId", (fire_plan_name,))
 
-        # Fetch the generated planId
-        planId = cur.fetchone()[0]
+        # Falls keine PlanId vorhanden ist benutze eine neue
+        if planId == 0:
+            # Insert new Fire Plan into the database
+            cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?) RETURNING planId", (fire_plan_name,))
 
-        # Log the inserted planId
-        logger.info(f"Inserted new Fire Plan with generated planId: {planId}")
-        con.commit()
+            # Fetch the generated planId
+            planId = cur.fetchone()[0]
+
+            # Log the inserted planId
+            logger.info(f"Inserted new Fire Plan with generated planId: {planId}")
+            con.commit()
 
         # Main conversion loop
         for i, page in enumerate(pages):
@@ -919,7 +923,7 @@ class PdfLoader:
             pageId = cur.fetchone()[0]
 
             # Save the page as a temporary image
-            image_path = rootPath + "\\" + tmpPath + f"temp_page_{i}.png"
+            image_path = rootPath + "\\" + tmpPath + f"temp_page_{planId}_{pageId}.png"
             page.save(image_path, "PNG")
             image = cv2.imread(image_path, 0)
 
@@ -938,16 +942,16 @@ class PdfLoader:
             image = self.TextRecocnition(image, binary, cur, "nr", pageId)
 
             # Apply Gaussian blur and thresholding
-            blurred = cv2.GaussianBlur(image, (9,9), 0)
+            blurred = cv2.GaussianBlur(image, (3,3), 0)
             _, thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
 
             # Save the processed images
             if not os.path.exists(f"{outputPath}{name}"):
                 os.makedirs(f"{outputPath}{name}")
                 logger.debug(f"Created Directory: " + outputPath + name)
-            cv2.imwrite(f"{outputPath}{name}\Converted{i}.png", thresh)
-            cv2.imwrite(f"{outputPath}{name}\Blurred{i}.png", blurred)
-            logger.info(f"Image saved at: " + outputPath + name + "\Converted{i}.png")
+            cv2.imwrite(f"{outputPath}{name}\Converted{planId}_{pageId}.png", thresh)
+            # cv2.imwrite(f"{outputPath}{name}\Blurred{planId}_{pageId}.png", blurred)
+            logger.info(f"Image saved at: " + outputPath + name + "\Converted{planId}_{pageId}.png")
 
     def load_from_Pdf(self):
         # Create the top-level window
@@ -965,6 +969,7 @@ class PdfLoader:
             )
             if file_path:
                 display_pdf(file_path)
+                toplevel.focus_set()
 
         # Function to get the Pdf Pages
         def display_pdf(file_path):
@@ -1032,10 +1037,70 @@ class PdfLoader:
                 save_button.config(state=tk.DISABLED)
 
         # Starting the conversio process
-        def start_conversion():
+        def start_conversion(planId):
             global name
             messagebox.showinfo("Tst", f"Current length of page array {len(self.pages)}!")
-            self.ConversionLoop(self.pages, "nr", name)
+            self.ConversionLoop(self.pages, "nr", name, planId)
+            toplevel.destroy()
+
+        def get_existing_plans():
+            global cur
+            global con
+            cur.execute("SELECT planId, name FROM FIRE_PLANS")
+            plans = {row[1]: row[0] for row in cur.fetchall()}
+            return plans
+
+        def add_new_plan(newPlanName, listbox):
+            global cur
+            cur.execute("SELECT COUNT(*) FROM FIRE_PLANS WHERE name = ?", (newPlanName,))
+            if cur.fetchone()[0] > 0:
+                logger.error("Ein Plan mit diesem Namen existiert bereits, Aktion Abgebrochen!")
+                messagebox.showwarning("Warning", "A plan with this name already exists.")
+                return
+
+            # Insert new plan
+            cur.execute("INSERT INTO FIRE_PLANS (name, currentPage) VALUES (?, ?)", (newPlanName,0))
+            con.commit()
+
+            # Update listbox
+            listbox.insert(tk.END, newPlanName)
+            messagebox.showinfo("Success", f"Plan '{newPlanName}' created.")
+
+        def on_plan_selected(event, plans_dict):
+            global name
+            selected_index = event.widget.curselection()
+            if selected_index:
+                selected_name = event.widget.get(selected_index[0])  
+                name = selected_name
+                plan_id = plans_dict[selected_name]  
+                start_conversion(plan_id)  
+
+        def PlanAuswahl():
+            topLevel = tk.Toplevel()
+            topLevel.title("Plan Selection")
+            topLevel.geometry("400x300")
+
+            # Fetch existing plans
+            plans = get_existing_plans()
+
+            # Listbox to display plans
+            listbox = tk.Listbox(topLevel, height=10)
+            listbox.pack(pady=10, fill=tk.BOTH, expand=True)
+
+            for plan in plans:
+                listbox.insert(tk.END, plan, )
+
+            # Binding a event to detect user inputs
+            listbox.bind("<<ListboxSelect>>", lambda event: on_plan_selected(event, plans))
+
+            # Entry and button for new plan
+            entry = tk.Entry(topLevel)
+            entry.pack(pady=5)
+
+            add_button = tk.Button(topLevel, text="Create New Plan", command=lambda: add_new_plan(entry.get(), listbox))
+            add_button.pack()
+
+            root.mainloop()
 
         # GUI components
         select_btn = tk.Button(toplevel, text="Select PDF", command=select_pdf)
@@ -1060,57 +1125,12 @@ class PdfLoader:
         save_button = tk.Button(navigation_frame, text="Save Page", command=save_page)
         save_button.grid(row=0, column=3)
 
-        startConversion_button = tk.Button(navigation_frame, text="Start Conversion", command=self.PlanAuswahl)
+        startConversion_button = tk.Button(navigation_frame, text="Start Conversion", command=PlanAuswahl)
         startConversion_button.grid(row=0, column=4)
 
         toplevel.focus_set()
 
-    def get_existing_plans(self):
-        global cur
-        global con
-        cur.execute("SELECT name FROM FIRE_PLANS")
-        plans = [row[0] for row in cur.fetchall()]
-        return plans
-
-    def add_new_plan(self, plan_name, listbox):
-        global cur
-        cur.execute("SELECT COUNT(*) FROM FIRE_PLANS WHERE name = ?", (plan_name,))
-        if cur.fetchone()[0] > 0:
-            messagebox.showwarning("Warning", "A plan with this name already exists.")
-            return
-
-        # Insert new plan
-        cur.execute("INSERT INTO FIRE_PLANS (name) VALUES (?)", (plan_name,))
-        con.commit()
-
-        # Update listbox
-        listbox.insert(tk.END, plan_name)
-        messagebox.showinfo("Success", f"Plan '{plan_name}' created.")
-
-    def PlanAuswahl(self):
-        topLevel = tk.Toplevel()
-        topLevel.title("Plan Selection")
-        topLevel.geometry("400x300")
-
-        # Fetch existing plans
-        plans = self.get_existing_plans()
-
-        # Listbox to display plans
-        listbox = tk.Listbox(topLevel, height=10)
-        listbox.pack(pady=10, fill=tk.BOTH, expand=True)
-
-        for plan in plans:
-            listbox.insert(tk.END, plan, )
-            
-
-        # Entry and button for new plan
-        entry = tk.Entry(topLevel)
-        entry.pack(pady=5)
-
-        add_button = tk.Button(topLevel, text="Create New Plan", command=lambda: self.add_new_plan(entry.get(), listbox))
-        add_button.pack()
-
-        root.mainloop()
+        
 
 
 
