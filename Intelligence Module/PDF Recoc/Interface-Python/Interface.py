@@ -875,7 +875,7 @@ class PdfLoader:
 
         # Use Tesseract to extract all text
         data = pytesseract.image_to_data(binary, output_type=pytesseract.Output.DICT)
-        logger.debug(f"{len(data)} words detected!")
+        logger.debug(f"{len(data['text'])} words detected!")
         # Process all detected texts
         for j in range(len(data['text'])):
             if int(data['conf'][j]) > 20 and data['text'][j].strip() != "":
@@ -928,7 +928,8 @@ class PdfLoader:
             image = cv2.imread(image_path, 0)
 
             # Convert the image to binary for text recognition
-            _, binary = cv2.threshold(image, 150,255, cv2.THRESH_BINARY_INV)
+            blurred = cv2.GaussianBlur(image, (3,3), 0)
+            _, binary = cv2.threshold(blurred, 180,255, cv2.THRESH_BINARY)
 
             # Handle rotation as specified
             if(rotation == 'rl'):
@@ -939,18 +940,25 @@ class PdfLoader:
                 image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
             # Text recognition
+            # image = self.TextRecocnition(image, binary, cur, "nr", pageId)
+
+            _, preThresh = cv2.threshold(image, 200, 255, cv2.THRESH_BINARY)
+            
             image = self.TextRecocnition(image, binary, cur, "nr", pageId)
 
             # Apply Gaussian blur and thresholding
             blurred = cv2.GaussianBlur(image, (3,3), 0)
             _, thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
 
+            # Text recognition
+            # thresh = self.TextRecocnition(thresh, binary, cur, "nr", pageId)
+
             # Save the processed images
             if not os.path.exists(f"{outputPath}{name}"):
                 os.makedirs(f"{outputPath}{name}")
                 logger.debug(f"Created Directory: " + outputPath + name)
             cv2.imwrite(f"{outputPath}{name}\Converted{planId}_{pageId}.png", thresh)
-            # cv2.imwrite(f"{outputPath}{name}\Blurred{planId}_{pageId}.png", blurred)
+            cv2.imwrite(f"{outputPath}{name}\\binary{planId}_{pageId}.png", binary)
             logger.info(f"Image saved at: " + outputPath + name + "\Converted{planId}_{pageId}.png")
 
     def load_from_Pdf(self):
